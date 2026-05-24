@@ -1,0 +1,28 @@
+services:
+  hc-haco2:
+    build: .
+    container_name: hc-heat2
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ${PWD}/data:/app/data
+      - ${PWD}/logs:/app/logs
+      - ${PWD}/config:/app/config
+      - ${PWD}/dashboard:/app/dashboard
+    ports:
+      - "${DASHBOARD_PORT:-5028}:${DASHBOARD_PORT:-5028}"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        compress: "true"
+

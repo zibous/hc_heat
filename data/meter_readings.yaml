@@ -1,0 +1,28 @@
+# Zählerstände zu Beginn der Abrechnungszeiträume
+# Werden für die Verbrauchs- und Kostenberechnung pro Periode benötigt.
+#
+# Gas: Abrechnungszeitraum 01.09. – 31.08.
+# Energie: Kalenderjahr 01.01. – 31.12.
+#
+# Werte aus der Heizung ablesen (nrgtotal, nrgheat, dhw.nrg, gas total_m3)
+# oder aus gespeicherten Snapshots entnehmen.
+
+gas_periods:
+  - from: "2024-09-01"
+    to: "2025-08-31"
+    gas_total_m3: 30850.0       # Gaszähler-Stand am 01.09.2024
+
+  - from: "2025-09-01"
+    to: "2026-08-31"
+    gas_total_m3: 31920.0       # Gaszähler-Stand am 01.09.2025
+
+energy_periods:
+  - year: 2025
+    nrg_total_kwh: 14500.0      # nrgtotal am 01.01.2025
+    nrg_heat_kwh: 10200.0       # nrgheat am 01.01.2025
+    nrg_dhw_kwh: 4300.0         # dhw.nrg am 01.01.2025
+
+  - year: 2026
+    nrg_total_kwh: 15600.0      # nrgtotal am 01.01.2026
+    nrg_heat_kwh: 10950.0       # nrgheat am 01.01.2026
+    nrg_dhw_kwh: 4650.0         # dhw.nrg am 01.01.2026

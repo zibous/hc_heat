@@ -1,0 +1,24 @@
+===== RUFF =====
+lib/core/live_data_builder.py:137:1: invalid-syntax: Unexpected indentation
+lib/core/live_data_builder.py:137:9: invalid-syntax: Invalid annotated assignment target
+lib/core/live_data_builder.py:172:10: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:172:11: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:173:9: invalid-syntax: Invalid annotated assignment target
+lib/core/live_data_builder.py:173:28: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:173:29: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:174:5: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:174:6: invalid-syntax: Expected a statement
+lib/core/live_data_builder.py:177:1: invalid-syntax: Expected a statement
+Found 10 errors.
+
+===== PYRIGHT =====
+/dockerapps/hc_heat2/lib/core/live_data_builder.py
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:40:12 - error: Type "tuple[dict[str, Unknown]]" is not assignable to return type "dict[Unknown, Unknown]"
+    "tuple[dict[str, Unknown]]" is not assignable to "dict[Unknown, Unknown]" (reportReturnType)
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:137:1 - error: Unexpected indentation
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:172:10 - error: Statements must be separated by newlines or semicolons
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:172:10 - error: Expected expression
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:173:28 - error: Statements must be separated by newlines or semicolons
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:173:28 - error: Expected expression
+  /dockerapps/hc_heat2/lib/core/live_data_builder.py:174:5 - error: Expected expression
+7 errors, 0 warnings, 0 informations

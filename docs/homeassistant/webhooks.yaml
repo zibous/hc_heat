@@ -1,0 +1,142 @@
+webhooks_heating_pack:
+
+  input_text:
+    heizung_modus:
+      name: Heizungsmodus
+
+  automation:
+    - alias: "Heizung Webhook Empfänger"
+      id: heizung_webhook
+      mode: queued
+      max: 10
+
+      trigger:
+        - platform: webhook
+          webhook_id: heatcontrol
+          allowed_methods:
+            - POST
+          local_only: true
+
+      action:
+        - choose:
+
+            # ── Betriebsmodus geändert ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'mode_changed' }}
+              sequence:
+                - condition: template
+                  value_template: "{{ trigger.json.new_mode is defined }}"
+                - service: input_text.set_value
+                  target:
+                    entity_id: input_text.heizung_modus
+                  data:
+                    value: "{{ trigger.json.new_mode | default('unbekannt') }}"
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: >
+                      Modus: {{ trigger.json.old_mode | default('?') }}
+                      → {{ trigger.json.new_mode | default('?') }}
+
+            # ── Kessel-Fehler ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'error_boiler' }}
+              sequence:
+                - service: persistent_notification.create
+                  data:
+                    title: "🔥 Kessel-Fehler"
+                    message: "{{ trigger.json.code | default('Unbekannt') }}"
+                    notification_id: heizung_error_boiler
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: "🔥 Kessel-Fehler: {{ trigger.json.code | default('Unbekannt') }}"
+
+            # ── Thermostat-Fehler ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'error_thermostat' }}
+              sequence:
+                - service: persistent_notification.create
+                  data:
+                    title: "🌡️ Thermostat-Fehler"
+                    message: "{{ trigger.json.code | default('Unbekannt') }}"
+                    notification_id: heizung_error_thermostat
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: "🌡️ Thermostat-Fehler: {{ trigger.json.code | default('Unbekannt') }}"
+
+            # ── Temperaturwarnung ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'temp_warning' }}
+              sequence:
+                - service: persistent_notification.create
+                  data:
+                    title: "⚠️ WW-Temperatur niedrig"
+                    message: >
+                      Aktuelle Temperatur: {{ trigger.json.dhw_curtemp | default('?') }}°C
+                      (Schwelle: {{ trigger.json.threshold | default('?') }}°C)
+                    notification_id: heizung_temp_warning
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: >
+                      ⚠️ Temperatur: {{ trigger.json.dhw_curtemp | default('?') }}°C
+                      (< {{ trigger.json.threshold | default('?') }}°C)
+
+            # ── System OK ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'system_ok' }}
+              sequence:
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_temp_warning
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_error_boiler
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_error_thermostat
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_mqtt_error
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: "{{ trigger.json.message | default('System OK') }}"
+
+            # ── MQTT nicht erreichbar ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'mqtt_unavailable' }}
+              sequence:
+                - service: persistent_notification.create
+                  data:
+                    title: "📡 MQTT Broker offline"
+                    message: >
+                      {{ trigger.json.message | default('Keine Verbindung') }}
+                      ({{ trigger.json.host | default('?') }})
+                    notification_id: heizung_mqtt_error
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: >
+                      📡 MQTT offline: {{ trigger.json.message | default('Keine Details') }}
+
+          default:
+            - service: logbook.log
+              data:
+                name: Heizung
+                message: >
+                  Unbekanntes Event: {{ trigger.json.event if trigger.json is defined else 'kein JSON' }}

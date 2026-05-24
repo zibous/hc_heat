@@ -1,0 +1,146 @@
+title: EMS Pro
+views:
+  - title: Status
+    path: ems-pro
+    icon: mdi:heat-pump
+
+    cards:
+
+      ###############################################
+      # 🟢 HAUPTSTATUS (SMART SUMMARY)
+      ###############################################
+
+      - type: vertical-stack
+        cards:
+
+          - type: entities
+            title: EMS System Status
+            show_header_toggle: false
+            entities:
+              - sensor.ems_betriebsmodus
+              - sensor.ems_system_gesundheit
+              - sensor.ems_firmware_version
+              - sensor.ems_uptime
+
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: Vorlauf
+                entity: sensor.vorlauftemperatur
+                min: 0
+                max: 80
+                severity:
+                  green: 35
+                  yellow: 50
+                  red: 65
+
+              - type: gauge
+                name: Warmwasser
+                entity: sensor.warmwasser_temperatur
+                min: 30
+                max: 70
+                severity:
+                  green: 50
+                  yellow: 55
+                  red: 60
+
+              - type: gauge
+                name: Brenner
+                entity: sensor.brennerleistung
+                min: 0
+                max: 100
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 80
+
+      ###############################################
+      # 🔥 BETRIEBSMODI (LIVE STATUS)
+      ###############################################
+
+      - type: grid
+        columns: 3
+        square: false
+        cards:
+
+          - type: tile
+            entity: binary_sensor.ems_heizbetrieb_aktiv
+            name: Heizen
+            icon: mdi:radiator
+
+          - type: tile
+            entity: binary_sensor.ems_warmwasser_aktiv
+            name: Warmwasser
+            icon: mdi:water-boiler
+
+          - type: tile
+            entity: binary_sensor.ems_desinfektion_aktiv
+            name: Desinfektion
+            icon: mdi:bacteria
+
+      ###############################################
+      # 🌡️ HEIZSYSTEM DETAIL
+      ###############################################
+
+      - type: entities
+        title: Heizsystem
+        entities:
+          - sensor.aussentemperatur
+          - sensor.vorlauftemperatur
+          - sensor.soll_vorlauf
+          - sensor.pumpenleistung
+          - sensor.energie_total
+          - sensor.energie_heizen
+
+      ###############################################
+      # 🚿 WARMWASSER DETAIL
+      ###############################################
+
+      - type: entities
+        title: Warmwasser
+        entities:
+          - sensor.warmwasser_temperatur
+          - sensor.warmwasser_soll
+          - sensor.ems_betriebsmodus
+
+      ###############################################
+      # 🧠 SYSTEM HEALTH (DIAGNOSE)
+      ###############################################
+
+      - type: entities
+        title: Diagnose
+        entities:
+          - sensor.ems_bus_rx_qualitat
+          - sensor.ems_bus_tx_qualitat
+          - sensor.ems_api_fehler
+          - sensor.ems_fehlercode
+          - sensor.ems_letzter_fehler
+          - sensor.ems_reset_grund
+
+      ###############################################
+      # ⏱️ LAUFZEITEN (WIE HERSTELLER UI)
+      ###############################################
+
+      - type: entities
+        title: Laufzeiten
+        entities:
+          - input_datetime.heizbetrieb_start
+          - input_number.heizbetrieb_dauer
+
+          - input_datetime.warmwasser_start
+          - input_number.warmwasser_dauer
+
+          - input_datetime.desinfektion_start
+          - input_number.desinfektion_dauer
+
+      ###############################################
+      # 📈 TREND
+      ###############################################
+
+      - type: history-graph
+        title: Temperatur Verlauf (24h)
+        hours_to_show: 24
+        entities:
+          - sensor.vorlauftemperatur
+          - sensor.aussentemperatur
+          - sensor.warmwasser_temperatur

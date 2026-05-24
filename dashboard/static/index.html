@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Heizung Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <link rel="stylesheet" href="css/style.css?v=73">
+</head>
+
+<body>
+    <div class="header">
+        <div>
+            <h1 id="title">Heizung · Dashboard</h1>
+            <div class="subtitle" id="subtitle"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+            <span id="updateTime" style="font-size:.72rem;color:var(--muted)"></span>
+            <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+            <button class="theme-btn" onclick="document.getElementById('bgPicker').click()">🎨</button>
+            <input type="color" id="bgPicker" style="display:none" oninput="applyBgColor(this.value)"
+                onchange="applyBgColor(this.value)">
+            <button class="theme-btn" id="bgResetBtn" onclick="resetBgColor()" style="display:none;font-size:.7rem"
+                title="Farbe zurücksetzen">✕</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="row" id="statusRow"></div>
+        <div class="row" id="infoRow" style="margin-top:12px"></div>
+    </div>
+
+    <div class="card">
+        <h3>🔥 Heizungsanlage</h3>
+        <div id="flowChart"></div>
+        <div id="flowMobile" style="display:none"></div>
+        <div id="statusBanner" style="margin-top:12px;font-size:.85rem;text-align:center"></div>
+        <div id="progressBar" style="margin-top:10px"></div>
+    </div>
+
+    <div class="card">
+        <h3>🌡️ Temperaturen</h3>
+        <div class="tiles" id="tempTiles"></div>
+    </div>
+
+    <div class="card">
+        <h3>📈 Temperaturverlauf</h3>
+        <div class="chart-wrap"><canvas id="tempChart"></canvas></div>
+        <div id="tempInfo" style="margin-top:6px;font-size:.75rem;color:var(--muted);text-align:center"></div>
+    </div>
+
+    <div class="card">
+        <h3>📉 Heizkurve – Außentemperatur → Vorlauf</h3>
+        <div class="chart-wrap"><canvas id="curveChart"></canvas></div>
+        <div id="curveInfo" style="margin-top:6px;font-size:.75rem;color:var(--muted);text-align:center"></div>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Verbrauch · ⛽ Gas · 💰 Kosten</h3>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
+            <button class="ptab active" data-d="1" onclick="switchPeriod(1)">Heute</button>
+            <button class="ptab" data-d="7" onclick="switchPeriod(7)">7 Tage</button>
+            <button class="ptab" data-d="30" onclick="switchPeriod(30)">Monat</button>
+            <button class="ptab" data-d="365" onclick="switchPeriod(365)">Jahr</button>
+            <button class="ptab" data-d="0" onclick="switchPeriod(0)">Zeitraum</button>
+            <input type="date" id="dateFrom"
+                style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:4px 8px;font-size:.8rem;color-scheme:dark">
+            <input type="date" id="dateTo"
+                style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:4px 8px;font-size:.8rem;color-scheme:dark">
+            <button class="ptab" onclick="exportCSV()" style="margin-left:auto">📥 CSV</button>
+        </div>
+        <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
+        <div id="mainTable" style="margin-top:8px;font-size:.75rem;color:var(--muted);text-align:center"></div>
+    </div>
+
+    <div class="card">
+        <h3>📊 Erweiterte Werte</h3>
+        <div id="detailGrid" class="detail-grid"></div>
+    </div>
+
+    <footer style="text-align:center;color:var(--muted);font-size:.7rem;padding:16px">
+        Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s · v79
+    </footer>
+
+    <!-- JS: Reihenfolge wichtig (app → render → charts → daily) -->
+    <script src="js/app.js?v=73"></script>
+    <script src="js/render.js?v=79"></script>
+    <script src="js/schema.js?v=78"></script>
+    <script src="js/charts.js?v=73"></script>
+    <script src="js/daily.js?v=73"></script>
+</body>
+
+</html>

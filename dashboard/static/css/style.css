@@ -1,0 +1,526 @@
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --border: #2e3350;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --accent: #3b82f6;
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --grid: #1e2235;
+    --heat: #ef4444;
+    --dhw: #3b82f6;
+    --gas: #f59e0b;
+    --prev: #8b9dc3
+}
+
+body.light {
+    --bg: #f1f5f9;
+    --surface: #fff;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #94a3b8;
+    --accent: #2563eb;
+    --green: #059669;
+    --red: #dc2626;
+    --orange: #d97706;
+    --grid: #e2e8f0;
+    --heat: #dc2626;
+    --dhw: #2563eb;
+    --gas: #d97706;
+    --prev: #475569
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 16px;
+    transition: background .3s
+}
+
+h1 {
+    color: var(--accent);
+    font-size: 2.5em
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px
+}
+
+.subtitle {
+    font-size: .82rem;
+    color: var(--muted)
+}
+
+.theme-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 9px;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 1rem
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px
+}
+
+/* ── Kacheln (Wetterdaten-Stil) ── */
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px
+}
+
+.tile {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    position: relative;
+    transition: transform .15s, box-shadow .15s;
+    display: flex;
+    flex-direction: column
+}
+
+.tile:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15)
+}
+
+.tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px
+}
+
+.tile-head-lbl {
+    font-size: .72rem;
+    color: var(--muted);
+    font-weight: 600
+}
+
+.tile-head-icon {
+    font-size: 1.2rem;
+    opacity: .7
+}
+
+.tile-val {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.1
+}
+
+.tile-unit {
+    font-size: .85rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-left: 2px
+}
+
+.tile-val.ok {
+    color: var(--green)
+}
+
+.tile-val.warn {
+    color: var(--orange)
+}
+
+.tile-val.err {
+    color: var(--red)
+}
+
+.tile-val.info {
+    color: var(--accent)
+}
+
+.tile-val.heat {
+    color: var(--heat)
+}
+
+.tile-val.dhw {
+    color: var(--dhw)
+}
+
+.tile-val.gas {
+    color: var(--gas)
+}
+
+.tile-sub {
+    font-size: .72rem;
+    color: var(--muted);
+    margin-top: 4px
+}
+
+.tile-trend {
+    font-size: .72rem;
+    margin-top: 6px;
+    color: var(--prev);
+    font-weight: 600
+}
+
+.tile-trend .arrow-up {
+    color: var(--heat)
+}
+
+.tile-trend .arrow-down {
+    color: var(--dhw)
+}
+
+.tile-trend .arrow-same {
+    color: var(--muted)
+}
+
+.tile-gauge {
+    margin-top: auto;
+    padding-top: 10px
+}
+
+.tile-gauge-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden
+}
+
+.tile-gauge-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width .5s
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap
+}
+
+.detail-grid {
+    width: 100%
+}
+
+gap: 4px
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border)
+}
+
+.detail-key {
+    color: var(--muted);
+    font-size: .78rem
+}
+
+.detail-val {
+    font-weight: 600;
+    font-size: .78rem
+}
+
+.detail-section {
+    grid-column: 1/-1;
+    padding: 8px 0 2px;
+    font-size: .72rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+    font-weight: 700
+}
+
+.chart-wrap {
+    position: relative;
+    height: 280px
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important
+}
+
+.flow-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px
+}
+
+.flow-branches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px
+}
+
+.flow-node {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: all .3s
+}
+
+.flow-node.on {
+    box-shadow: 0 0 16px rgba(16, 185, 129, .2)
+}
+
+.flow-node .fn-label {
+    font-size: .7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: .04em
+}
+
+.flow-node .fn-value {
+    font-size: 1.3rem;
+    font-weight: 700
+}
+
+.flow-node .fn-sub {
+    font-size: .72rem;
+    color: var(--muted);
+    margin-top: 4px
+}
+
+.flow-arrow {
+    color: var(--border);
+    font-size: 1.3rem;
+    font-weight: 700
+}
+
+.flow-arrow.on {
+    color: var(--green)
+}
+
+@media(max-width:700px) {
+    .flow-branches {
+        grid-template-columns: 1fr
+    }
+
+    .tiles {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+.ptab {
+    padding: 5px 14px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: .8rem;
+    cursor: pointer
+}
+
+.ptab:hover {
+    border-color: var(--accent);
+    color: var(--text)
+}
+
+.ptab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 700
+}
+
+/* Modus-Segmente */
+.mode-segments {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px
+}
+
+.mode-seg {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    transition: background .3s
+}
+
+.mode-seg.active {
+    box-shadow: 0 0 6px currentColor
+}
+
+.mode-seg[data-m="standby"].active {
+    background: var(--accent)
+}
+
+.mode-seg[data-m="heating"].active {
+    background: var(--heat)
+}
+
+.mode-seg[data-m="dhw"].active {
+    background: var(--dhw)
+}
+
+.mode-seg[data-m="disinfection"].active {
+    background: var(--orange)
+}
+
+/* Gestapelte Gauge (Heizung + WW) */
+.tile-gauge-stacked {
+    display: flex;
+    gap: 1px;
+    margin-top: auto;
+    padding-top: 10px
+}
+
+.tile-gauge-stacked .seg {
+    height: 4px;
+    border-radius: 2px;
+    transition: width .5s;
+    min-width: 0
+}
+
+/* On/Off Segmente */
+.tile-onoff {
+    display: flex;
+    gap: 4px;
+    margin-top: auto;
+    padding-top: 10px
+}
+
+.tile-onoff .seg {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border)
+}
+
+.tile-onoff .seg.on {
+    background: var(--green)
+}
+
+.tile-onoff .seg.off {
+    background: var(--red)
+}
+
+/* Kompakte Detail-Kacheln */
+.dtiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.dtile {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    min-width: 120px;
+    flex: 1 1 120px;
+    overflow: hidden
+}
+
+.dtile-lbl {
+    font-size: .75rem;
+    color: var(--muted);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.dtile-val {
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.dsection {
+    width: 100%;
+    flex-basis: 100%;
+    padding: 10px 0 4px;
+    font-size: .85rem;
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    cursor: pointer;
+    user-select: none
+}
+
+.dgroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%
+}
+
+.dgroup.hidden {
+    display: none
+}
+
+/* Aktive Kacheln: farbiger Hintergrund */
+.tile.bg-heat {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: var(--heat)
+}
+
+.tile.bg-dhw {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: var(--dhw)
+}
+
+.tile.bg-gas {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: var(--gas)
+}
+
+.tile.bg-green {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: var(--green)
+}
+
+.tile.bg-warn {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: var(--orange)
+}
+
+/* Info-Kacheln (zweite Reihe, kompakter) */
+#infoRow .tile {
+    padding: 10px 12px
+}
+
+#infoRow .tile-val {
+    font-size: 1.3rem
+}
+
+#infoRow .tile-head-icon {
+    font-size: 1rem
+}

@@ -1,0 +1,254 @@
+###############################################
+# REST SENSOREN (SYSTEM + BOILER)
+###############################################
+
+sensor:
+  - platform: rest
+    name: "EMS System"
+    resource: "http://ems-heizung.siebler.home/api/system"
+    method: GET
+    value_template: "OK"
+    scan_interval: 30
+    json_attributes:
+      - outsidetemp
+      - pressure
+      - status
+      - errorcode
+
+  - platform: rest
+    name: "EMS Boiler"
+    resource: "http://ems-heizung.siebler.home/api/boiler"
+    method: GET
+    value_template: "OK"
+    scan_interval: 30
+    json_attributes:
+      - heatingactive
+      - burnpower
+      - burngas
+      - boilertemp
+      - flowtemp
+      - returntemp
+      - pump
+      - pumpmod
+      - wwactive
+      - wwCurTemp
+      - wwSelTemp
+      - wwcirculation
+      - wwdisinfecting
+      - wwdisinfecttemp
+      - wwdisinfectdone
+
+###############################################
+# TEMPLATE + BINARY SENSOREN
+###############################################
+
+template:
+  - sensor:
+
+      # SYSTEM
+      - name: "EMS Außentemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_system', 'outsidetemp') | float(0) }}"
+
+      - name: "EMS Anlagendruck"
+        unit_of_measurement: "bar"
+        state: "{{ state_attr('sensor.ems_system', 'pressure') | float(0) }}"
+
+      - name: "EMS Anlagenstatus"
+        state: "{{ state_attr('sensor.ems_system', 'status') }}"
+
+      - name: "EMS Fehlercode"
+        state: "{{ state_attr('sensor.ems_system', 'errorcode') }}"
+
+      # BOILER
+      - name: "EMS Kesseltemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'boilertemp') | float(0) }}"
+
+      - name: "EMS Vorlauftemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'flowtemp') | float(0) }}"
+
+      - name: "EMS Rücklauftemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'returntemp') | float(0) }}"
+
+      - name: "EMS Brennerleistung"
+        unit_of_measurement: "%"
+        state: "{{ state_attr('sensor.ems_boiler', 'burnpower') | float(0) }}"
+
+      - name: "EMS Gasverbrauch Brenner"
+        state: "{{ state_attr('sensor.ems_boiler', 'burngas') | float(0) }}"
+
+      - name: "EMS Pumpenleistung"
+        unit_of_measurement: "%"
+        state: "{{ state_attr('sensor.ems_boiler', 'pumpmod') | float(0) }}"
+
+      # WARMWASSER
+      - name: "EMS Warmwasser Temperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwCurTemp') | float(0) }}"
+
+      - name: "EMS Warmwasser Soll"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwSelTemp') | float(0) }}"
+
+      - name: "EMS Desinfektion Temperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwdisinfecttemp') | float(0) }}"
+
+      # BETRIEBSMODUS
+      - name: "EMS Betriebsmodus"
+        state: >
+          {% set h = state_attr('sensor.ems_boiler', 'heatingactive') %}
+          {% set w = state_attr('sensor.ems_boiler', 'wwactive') %}
+          {% set d = state_attr('sensor.ems_boiler', 'wwdisinfecting') %}
+          {% if d %}
+            Desinfektion
+          {% elif w %}
+            Warmwasser
+          {% elif h %}
+            Heizbetrieb
+          {% else %}
+            Standby
+          {% endif %}
+        icon: >
+          {% if state_attr('sensor.ems_boiler', 'wwdisinfecting') %}
+            mdi:bacteria
+          {% elif state_attr('sensor.ems_boiler', 'wwactive') %}
+            mdi:water-boiler
+          {% elif state_attr('sensor.ems_boiler', 'heatingactive') %}
+            mdi:radiator
+          {% else %}
+            mdi:power-standby
+          {% endif %}
+
+  - binary_sensor:
+
+      - name: "EMS Heizbetrieb Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler', 'heatingactive') == 1 }}"
+
+      - name: "EMS Warmwasser Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwactive') == 1 }}"
+
+      - name: "EMS Zirkulation Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwcirculation') == 1 }}"
+
+      - name: "EMS Desinfektion Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler', 'wwdisinfecting') == 1 }}"
+
+###############################################
+# INPUTS
+###############################################
+
+input_datetime:
+  heizbetrieb_start:
+    has_date: true
+    has_time: true
+  warmwasser_start:
+    has_date: true
+    has_time: true
+  desinfektion_start:
+    has_date: true
+    has_time: true
+
+input_number:
+  heizbetrieb_dauer:
+    min: 0
+    max: 1440
+    step: 1
+  warmwasser_dauer:
+    min: 0
+    max: 1440
+    step: 1
+  desinfektion_dauer:
+    min: 0
+    max: 1440
+    step: 1
+
+###############################################
+# AUTOMATIONEN
+###############################################
+
+automation:
+
+  - alias: "EMS Heizbetrieb Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_heizbetrieb_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.heizbetrieb_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Heizbetrieb Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_heizbetrieb_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.heizbetrieb_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.heizbetrieb_start')))
+                 / 60) | round(1) }}
+
+  - alias: "EMS Warmwasser Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_warmwasser_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.warmwasser_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Warmwasser Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_warmwasser_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.warmwasser_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.warmwasser_start')))
+                 / 60) | round(1) }}
+
+  - alias: "EMS Desinfektion Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_desinfektion_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.desinfektion_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Desinfektion Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_desinfektion_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.desinfektion_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.desinfektion_start')))
+                 / 60) | round(1) }}

@@ -1,0 +1,185 @@
+# ──────────────────────────────────────────────────
+# Feld-Mappings: EMS-ESP API Keys → interne Feldnamen
+# ──────────────────────────────────────────────────
+#
+# Quelle: EMS-ESP32 Firmware v3.8.1
+# API:    GET /api/boiler (flaches JSON + verschachteltes dhw-Objekt)
+#
+# Falls sich die JSON-Struktur ändert (Firmware-Update,
+# anderes Entitäts-ID Format), hier die neuen Keys eintragen.
+#
+# Format: interner_name: ["api_key", "alias1", "alias2"]
+#         → Der erste gefundene Key wird verwendet.
+#
+# ──────────────────────────────────────────────────
+
+# ══════════════════════════════════════════════════
+# BOILER / KESSEL  (aus /api/boiler Root-Ebene)
+# ══════════════════════════════════════════════════
+boiler:
+
+  # --- Temperaturen ---
+  flow_temp: ["curflowtemp"]              # Aktuelle Vorlauftemperatur (°C)
+  flow_set_temp: ["selflowtemp"]          # Soll-Vorlauftemperatur (°C)
+  outdoor_temp: ["outdoortemp"]           # Außentemperatur (°C)
+
+  # --- Brenner Status ---
+  burner_active: ["burngas"]              # Brenner 1 aktiv (an/aus)
+  burner_active2: ["burngas2"]            # Brenner 2 aktiv (an/aus)
+  heating_active: ["heatingactive"]       # Heizbetrieb aktiv (an/aus)
+  heating_enabled: ["heatingactivated"]   # Heizung freigegeben (an/aus)
+  tapwater_active: ["tapwateractive"]     # Warmwasserbetrieb aktiv (an/aus)
+
+  # --- Brenner Leistung ---
+  burner_power_percent: ["curburnpow"]    # Aktuelle Brennerleistung (%)
+  burner_power_set: ["selburnpow"]        # Soll-Brennerleistung (%)
+  flame_current: ["flamecurr"]            # Flammenstrom (µA)
+  nominal_power_kw: ["nompower"]          # Nennleistung Kessel (kW)
+
+  # --- Pumpe ---
+  pump_active: ["heatingpump"]            # Heizungspumpe aktiv (an/aus)
+  pump_modulation: ["heatingpumpmod"]     # Pumpenmodulation (%)
+  pump_mode: ["pumpmode"]                 # Pumpenmodus (z.B. "deltaP-2")
+  pump_min: ["pumpmodmin"]                # Pumpe Minimum (%)
+  pump_max: ["pumpmodmax"]                # Pumpe Maximum (%)
+
+  # --- Energie (kumulativ seit Installation) ---
+  energy_total_kwh: ["nrgtotal"]          # Gesamtenergie Kessel (kWh)
+  energy_heat_kwh: ["nrgheat"]            # Energie Heizbetrieb (kWh)
+
+  # --- Laufzeiten ---
+  burner_starts: ["burnstarts"]           # Brennerstarts gesamt
+  burner_runtime_min: ["burnworkmin"]     # Brenner-Laufzeit gesamt (min)
+  heating_runtime_min: ["heatworkmin"]    # Heizungs-Laufzeit gesamt (min)
+  heating_starts: ["heatstarts"]          # Heizungsstarts gesamt
+  uptime_sec: ["ubauptime"]              # Betriebsstunden Steuerung (sec)
+
+  # --- Fehler / Service ---
+  lastcode: ["lastcode"]                  # Letzter Fehlercode mit Datum
+  service_code: ["servicecode"]           # Aktueller Servicecode
+  service_code_number: ["servicecodenumber"]  # Servicecode Nummer
+  maintenance_message: ["maintenancemessage"] # Wartungsmeldung (z.B. "H00")
+  maintenance_date: ["maintenancedate"]       # Nächstes Wartungsdatum
+
+
+# ══════════════════════════════════════════════════
+# DHW / WARMWASSER  (aus /api/boiler → dhw Objekt)
+# ══════════════════════════════════════════════════
+dhw:
+
+  # --- Temperaturen ---
+  curtemp: ["curtemp"]                    # Aktuelle Speichertemperatur (°C)
+  curtemp2: ["curtemp2", "storagetemp2"]  # Speichertemperatur Sensor 2 (°C)
+  settemp: ["settemp"]                    # Solltemperatur (°C)
+  seltemp: ["seltemp"]                    # Gewählte Temperatur (°C)
+  flowtempoffset: ["flowtempoffset"]      # Vorlauf-Temperaturanhebung (°C)
+
+  # --- Einstellungen ---
+  comfort: ["comfort"]                    # Komfortmodus (z.B. "Eco")
+  storage_type: ["type"]                  # Speichertyp (z.B. "Speicher")
+  charge_type: ["chargetype"]             # Ladeart (z.B. "3-Wege-Ventil")
+
+  # --- Status ---
+  activated: ["activated"]                # Warmwasser aktiviert (an/aus)
+  active: ["active"]                      # Warmwasser gerade aktiv (an/aus)
+  charging: ["charging"]                  # Speicher wird geladen (an/aus)
+  recharging: ["recharging"]              # Nachladung aktiv (an/aus)
+  tempok: ["tempok"]                      # Temperatur erreicht (an/aus)
+  onetime: ["onetime"]                    # Einmalladung aktiv (an/aus)
+  threeway_valve: ["3wayvalve"]           # 3-Wege-Ventil offen (an/aus)
+  chargepump: ["chargepump"]              # Ladepumpe aktiv (an/aus)
+  circpump: ["circpump"]                  # Zirkulationspumpe aktiv (an/aus)
+
+  # --- Desinfektion ---
+  disinfecting: ["disinfecting"]          # Desinfektion läuft (an/aus)
+  disinfection_temp: ["disinfectiontemp"] # Desinfektionstemperatur (°C)
+
+  # --- Zähler ---
+  starts: ["starts"]                      # Warmwasser-Starts gesamt
+  workm: ["workm"]                        # Warmwasser-Laufzeit gesamt (min)
+  nrg: ["nrg"]                            # Warmwasser-Energie gesamt (kWh)
+
+
+# ══════════════════════════════════════════════════
+# SYSTEM  (aus /api/boiler Root-Ebene)
+# ══════════════════════════════════════════════════
+system:
+  outdoor_temp: ["outdoortemp"]           # Außentemperatur (°C)
+  heating_off: ["heatingoff"]             # Heizung abgeschaltet (an/aus)
+  heating_active: ["heatingactive"]       # Heizbetrieb aktiv (an/aus)
+  tapwater_active: ["tapwateractive"]     # Warmwasserbetrieb aktiv (an/aus)
+
+  # --- Heizkurve ---
+  curve_on: ["curveon"]                   # Heizkurve aktiv (an/aus)
+  curve_base: ["curvebase"]               # Heizkurve Basis (°C)
+  curve_end: ["curveend"]                 # Heizkurve Endpunkt (°C)
+
+  # --- Sommer / Frost ---
+  summer_temp: ["summertemp"]             # Sommerbetrieb ab Temperatur (°C)
+  frost_mode: ["nofrostmode"]             # Frostschutzmodus (an/aus)
+  frost_temp: ["nofrosttemp"]             # Frostschutztemperatur (°C)
+
+
+# ══════════════════════════════════════════════════
+# HEIZKREIS  (aus /api/boiler Root-Ebene)
+# ══════════════════════════════════════════════════
+heating_circuit:
+  flow_temp: ["curflowtemp"]              # Vorlauftemperatur (°C)
+  return_temp: ["curreturntemp"]          # Rücklauftemperatur (°C)
+  set_flow_temp: ["selflowtemp"]          # Soll-Vorlauftemperatur (°C)
+  mode: ["pumpmode"]                      # Pumpenmodus (z.B. "deltaP-2")
+  pump_active: ["heatingpump"]            # Heizungspumpe aktiv (an/aus)
+  pump_modulation: ["heatingpumpmod"]     # Pumpenmodulation (%)
+
+
+# ══════════════════════════════════════════════════
+# THERMOSTAT  (aus /api/thermostat – Langname-Keys werden normalisiert)
+# ══════════════════════════════════════════════════
+thermostat:
+  lastcode: ["lastcode"]                      # Letzter Fehlercode Thermostat
+  datetime: ["datetime"]                      # Datum/Zeit vom Thermostat
+  dampedoutdoortemp: ["dampedoutdoortemp"]    # Gedämpfte Außentemperatur (°C)
+  building: ["building"]                      # Gebäudetyp (Leicht/Mittel/Schwer)
+  minexttemp: ["minexttemp"]                  # Min. Außentemperatur Auslegung (°C)
+
+
+# ══════════════════════════════════════════════════
+# THERMOSTAT HK1  (Heizkreis 1 vom Thermostat)
+# ══════════════════════════════════════════════════
+thermostat_hc1:
+  mode: ["mode"]                              # Betriebsart (auto/manuell)
+  modetype: ["modetype"]                      # Modustyp (Komfort/Eco)
+  seltemp: ["seltemp"]                        # Gewählte Raumtemperatur (°C)
+  comforttemp: ["comforttemp"]                # Komforttemperatur (°C)
+  ecotemp: ["ecotemp"]                        # Eco-Temperatur (°C)
+  manualtemp: ["manualtemp"]                  # Manuelle Temperatur (°C)
+  summertemp: ["summertemp"]                  # Sommertemperatur (°C)
+  designtemp: ["designtemp"]                  # Auslegungstemperatur (°C)
+  targetflowtemp: ["targetflowtemp"]          # Berechnete Vorlauftemperatur (°C)
+  minflowtemp: ["minflowtemp"]               # Min. Vorlauftemperatur (°C)
+  maxflowtemp: ["maxflowtemp"]               # Max. Vorlauftemperatur (°C)
+  heatingtype: ["heatingtype"]                # Heizungstyp (Heizkörper/Fußboden)
+  summermode: ["summermode"]                  # Sommerbetrieb (Winter/Sommer)
+  controlmode: ["controlmode"]                # Steuermodus (Wetter kompensiert)
+  nofrostmode: ["nofrostmode"]                # Frostschutzmodus (Außen/Raum)
+  nofrosttemp: ["nofrosttemp"]                # Frostschutztemperatur (°C)
+  program: ["program"]                        # Schaltprogramm (prog 1, prog 2)
+  control: ["control"]                        # Fernsteuerung (RC310)
+
+
+# ══════════════════════════════════════════════════
+# THERMOSTAT WWK  (Warmwasserkreis vom Thermostat)
+# ══════════════════════════════════════════════════
+thermostat_wwk:
+  mode: ["mode"]                              # Betriebsart (Eigenprog./An/Aus)
+  settemp: ["settemp"]                        # Solltemperatur (°C)
+  settemplow: ["settemplow"]                  # Untere Solltemperatur (°C)
+  circmode: ["circmode"]                      # Zirkulationspumpenmodus
+  chargeduration: ["chargeduration"]          # Ladedauer (min)
+  charge: ["charge"]                          # Laden aktiv (an/aus)
+  disinfecting: ["disinfecting"]              # Desinfektion aktiv (an/aus)
+  disinfectday: ["disinfectday"]              # Desinfektionstag (Mo-So)
+  disinfecttime: ["disinfecttime"]            # Desinfektionszeit (min)
+  dailyheating: ["dailyheating"]              # Tägliches Heizen (an/aus)
+  dailyheattime: ["dailyheattime"]            # Tägliche Heizzeit (min)
+  extra: ["extra"]                            # Extra-Warmwasser (an/aus)

@@ -1,0 +1,1592 @@
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: === hc_haco2 Heizungscontroller gestartet ===
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: Intervall: 60s
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: Heizung: Heizungsanlage 2021
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: Boiler URL: http://ems-heizung.siebler.home/api/boiler
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: Gaszähler URL: http://10.1.1.246/text_sensor/gasmeterdata
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: MQTT: deaktiviert
+2026-05-01 09:59:35 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 09:59:35 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 09:59:35 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 09:59:35 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 09:59:35 [WARNING] hc_haco2.calc.error: Neuer Fehlercode: 6L(229) 24.01.2026 17:42 (0 min)
+2026-05-01 09:59:35 [WARNING] hc_haco2.app: Neuer Fehler: 6L(229) 24.01.2026 17:42 (0 min)
+2026-05-01 09:59:35 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_09-59-35.json
+2026-05-01 09:59:35 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.1°C | Flow=31.9°C | Burner=False | DHW=48.8°C
+2026-05-01 10:00:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:00:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:00:36 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:00:36 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:00:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-00-36.json
+2026-05-01 10:00:36 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.1°C | Flow=31.5°C | Burner=False | DHW=48.8°C
+2026-05-01 10:01:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:01:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:01:36 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:01:36 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:01:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-01-36.json
+2026-05-01 10:01:36 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.2°C | Flow=31.1°C | Burner=False | DHW=48.8°C
+2026-05-01 10:02:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:02:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:02:36 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:02:36 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:02:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-02-36.json
+2026-05-01 10:02:36 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.2°C | Flow=31.0°C | Burner=False | DHW=48.8°C
+2026-05-01 10:03:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:03:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:03:37 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 10:03:37 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 10:03:37 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 10:03:37 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-03-37.json
+2026-05-01 10:03:37 [INFO ] hc_haco2.app: Mode=heating | Outdoor=11.2°C | Flow=41.0°C | Burner=True | DHW=48.8°C
+2026-05-01 10:04:45 [WARNING] hc_haco2.manager: Timeout bei: http://ems-heizung.siebler.home/api/boiler
+2026-05-01 10:04:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 0 Keys
+2026-05-01 10:04:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:04:45 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 10:04:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:04:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-04-45.json
+2026-05-01 10:04:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=0.0°C | Flow=0.0°C | Burner=None | DHW=0.0°C
+2026-05-01 10:05:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:05:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:05:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:05:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:05:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-05-45.json
+2026-05-01 10:05:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.2°C | Flow=37.0°C | Burner=False | DHW=48.8°C
+2026-05-01 10:06:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:06:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:06:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:06:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:06:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-06-45.json
+2026-05-01 10:06:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.2°C | Flow=34.3°C | Burner=False | DHW=48.7°C
+2026-05-01 10:07:46 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:07:46 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:07:46 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:07:46 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:07:46 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-07-46.json
+2026-05-01 10:07:46 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.2°C | Flow=33.1°C | Burner=False | DHW=48.7°C
+2026-05-01 10:08:51 [WARNING] hc_haco2.manager: Verbindung fehlgeschlagen: http://ems-heizung.siebler.home/api/boiler
+2026-05-01 10:08:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 0 Keys
+2026-05-01 10:08:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:08:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:08:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-08-51.json
+2026-05-01 10:08:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=0.0°C | Flow=0.0°C | Burner=None | DHW=0.0°C
+2026-05-01 10:09:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:09:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:09:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:09:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:09:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-09-51.json
+2026-05-01 10:09:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.4°C | Flow=32.2°C | Burner=False | DHW=48.7°C
+2026-05-01 10:10:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:10:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:10:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:10:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:10:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-10-52.json
+2026-05-01 10:10:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.4°C | Flow=32.1°C | Burner=False | DHW=48.7°C
+2026-05-01 10:11:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:11:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:11:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:11:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:11:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-11-53.json
+2026-05-01 10:11:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.4°C | Flow=31.9°C | Burner=False | DHW=48.6°C
+2026-05-01 10:12:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:12:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:12:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:12:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:12:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-12-53.json
+2026-05-01 10:12:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.4°C | Flow=31.6°C | Burner=False | DHW=48.6°C
+2026-05-01 10:13:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:13:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:13:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:13:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:13:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-13-53.json
+2026-05-01 10:13:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=31.6°C | Burner=False | DHW=48.4°C
+2026-05-01 10:14:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:14:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:14:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:14:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:14:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-14-53.json
+2026-05-01 10:14:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=31.6°C | Burner=False | DHW=48.2°C
+2026-05-01 10:15:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:15:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:15:54 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:15:54 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:15:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-15-54.json
+2026-05-01 10:15:54 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=31.9°C | Burner=False | DHW=48.2°C
+2026-05-01 10:16:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:16:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:16:54 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:16:54 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:16:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-16-54.json
+2026-05-01 10:16:54 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=31.9°C | Burner=False | DHW=48.2°C
+2026-05-01 10:17:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:17:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:17:55 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:17:55 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:17:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-17-55.json
+2026-05-01 10:17:55 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=31.9°C | Burner=False | DHW=48.1°C
+2026-05-01 10:18:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 10:18:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:18:55 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:18:55 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:18:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-18-55.json
+2026-05-01 10:18:55 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.6°C | Flow=47.0°C | Burner=False | DHW=47.9°C
+2026-05-01 10:19:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:19:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:19:55 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:19:55 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:19:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-19-55.json
+2026-05-01 10:19:55 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=41.8°C | Burner=False | DHW=47.9°C
+2026-05-01 10:20:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:20:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:20:55 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:20:55 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:20:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-20-55.json
+2026-05-01 10:20:55 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=36.5°C | Burner=False | DHW=47.8°C
+2026-05-01 10:21:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:21:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:21:56 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:21:56 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:21:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-21-56.json
+2026-05-01 10:21:56 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=33.8°C | Burner=False | DHW=47.8°C
+2026-05-01 10:22:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:22:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:22:56 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:22:56 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:22:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-22-56.json
+2026-05-01 10:22:56 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=32.8°C | Burner=False | DHW=47.8°C
+2026-05-01 10:24:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:24:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:24:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:24:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:24:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-24-01.json
+2026-05-01 10:24:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=32.1°C | Burner=False | DHW=47.8°C
+2026-05-01 10:25:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:25:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:25:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:25:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:25:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-25-01.json
+2026-05-01 10:25:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=31.7°C | Burner=False | DHW=47.8°C
+2026-05-01 10:26:02 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:26:02 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:26:02 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:26:02 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:26:02 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-26-02.json
+2026-05-01 10:26:02 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=31.5°C | Burner=False | DHW=47.8°C
+2026-05-01 10:27:02 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:27:02 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:27:02 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:27:02 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:27:02 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-27-02.json
+2026-05-01 10:27:02 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=31.2°C | Burner=False | DHW=47.8°C
+2026-05-01 10:28:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:28:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:28:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:28:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:28:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-28-03.json
+2026-05-01 10:28:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.7°C | Flow=31.1°C | Burner=False | DHW=47.8°C
+2026-05-01 10:29:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:29:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:29:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:29:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:29:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-29-03.json
+2026-05-01 10:29:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.9°C | Flow=31.1°C | Burner=False | DHW=47.8°C
+2026-05-01 10:30:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:30:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:30:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:30:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:30:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-30-03.json
+2026-05-01 10:30:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.9°C | Flow=31.4°C | Burner=False | DHW=47.8°C
+2026-05-01 10:31:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:31:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:31:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:31:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:31:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-31-04.json
+2026-05-01 10:31:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.9°C | Flow=31.6°C | Burner=False | DHW=47.7°C
+2026-05-01 10:32:05 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:32:05 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:32:05 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:32:05 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:32:05 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-32-05.json
+2026-05-01 10:32:05 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.9°C | Flow=31.7°C | Burner=False | DHW=47.7°C
+2026-05-01 10:33:05 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:33:05 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:33:05 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:33:05 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:33:05 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-33-05.json
+2026-05-01 10:33:05 [INFO ] hc_haco2.app: Mode=standby | Outdoor=11.9°C | Flow=31.7°C | Burner=False | DHW=47.7°C
+2026-05-01 10:34:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:34:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:34:06 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:34:06 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:34:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-34-06.json
+2026-05-01 10:34:06 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=31.7°C | Burner=False | DHW=47.7°C
+2026-05-01 10:35:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:35:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:35:06 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:35:06 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:35:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-35-06.json
+2026-05-01 10:35:06 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=31.7°C | Burner=False | DHW=47.7°C
+2026-05-01 10:36:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:36:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:36:06 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:36:06 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:36:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-36-06.json
+2026-05-01 10:36:06 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=31.6°C | Burner=False | DHW=47.7°C
+2026-05-01 10:37:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 10:37:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:37:06 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 10:37:06 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 10:37:06 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 10:37:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-37-06.json
+2026-05-01 10:37:06 [INFO ] hc_haco2.app: Mode=heating | Outdoor=12.0°C | Flow=31.6°C | Burner=True | DHW=47.7°C
+2026-05-01 10:38:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 10:38:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:38:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:38:07 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 10:38:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:38:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-38-07.json
+2026-05-01 10:38:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=46.3°C | Burner=False | DHW=47.7°C
+2026-05-01 10:39:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:39:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:39:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:39:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:39:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-39-07.json
+2026-05-01 10:39:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=39.5°C | Burner=False | DHW=47.7°C
+2026-05-01 10:40:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:40:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:40:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:40:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:40:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-40-07.json
+2026-05-01 10:40:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=34.9°C | Burner=False | DHW=47.7°C
+2026-05-01 10:41:08 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:41:08 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:41:08 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:41:08 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:41:08 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-41-08.json
+2026-05-01 10:41:08 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.0°C | Flow=32.8°C | Burner=False | DHW=47.7°C
+2026-05-01 10:42:08 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:42:08 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:42:08 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:42:08 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:42:08 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-42-08.json
+2026-05-01 10:42:08 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=31.9°C | Burner=False | DHW=47.7°C
+2026-05-01 10:43:08 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:43:08 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:43:08 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:43:08 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:43:08 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-43-08.json
+2026-05-01 10:43:08 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=31.4°C | Burner=False | DHW=47.6°C
+2026-05-01 10:44:09 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:44:09 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:44:09 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:44:09 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:44:09 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-44-09.json
+2026-05-01 10:44:09 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=31.0°C | Burner=False | DHW=47.6°C
+2026-05-01 10:45:09 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:45:09 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:45:09 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:45:09 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:45:09 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-45-09.json
+2026-05-01 10:45:09 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=30.9°C | Burner=False | DHW=47.6°C
+2026-05-01 10:46:10 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:46:10 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:46:10 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:46:10 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:46:10 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-46-10.json
+2026-05-01 10:46:10 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=30.7°C | Burner=False | DHW=47.6°C
+2026-05-01 10:47:10 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:47:10 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:47:10 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:47:10 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:47:10 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-47-10.json
+2026-05-01 10:47:10 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=30.6°C | Burner=False | DHW=47.6°C
+2026-05-01 10:48:10 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:48:10 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:48:10 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:48:10 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:48:10 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-48-10.json
+2026-05-01 10:48:10 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.2°C | Flow=30.7°C | Burner=False | DHW=47.6°C
+2026-05-01 10:49:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 10:49:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:49:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:49:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:49:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-49-11.json
+2026-05-01 10:49:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=31.0°C | Burner=False | DHW=47.6°C
+2026-05-01 10:50:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:50:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:50:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:50:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:50:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-50-11.json
+2026-05-01 10:50:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=31.1°C | Burner=False | DHW=47.6°C
+2026-05-01 10:51:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:51:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:51:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:51:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:51:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-51-11.json
+2026-05-01 10:51:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=31.4°C | Burner=False | DHW=47.6°C
+2026-05-01 10:52:12 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:52:12 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:52:12 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:52:12 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:52:12 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-52-12.json
+2026-05-01 10:52:12 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=31.4°C | Burner=False | DHW=47.6°C
+2026-05-01 10:53:12 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 10:53:12 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:53:12 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:53:12 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:53:12 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-53-12.json
+2026-05-01 10:53:12 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=44.4°C | Burner=False | DHW=47.6°C
+2026-05-01 10:54:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:54:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:54:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:54:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:54:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-54-13.json
+2026-05-01 10:54:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=42.8°C | Burner=False | DHW=47.6°C
+2026-05-01 10:55:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:55:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:55:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:55:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:55:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-55-13.json
+2026-05-01 10:55:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=36.8°C | Burner=False | DHW=47.5°C
+2026-05-01 10:56:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:56:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:56:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:56:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:56:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-56-13.json
+2026-05-01 10:56:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=33.5°C | Burner=False | DHW=47.5°C
+2026-05-01 10:57:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:57:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:57:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:57:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:57:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-57-13.json
+2026-05-01 10:57:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.3°C | Flow=32.2°C | Burner=False | DHW=47.5°C
+2026-05-01 10:58:14 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:58:14 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:58:14 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:58:14 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:58:14 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-58-14.json
+2026-05-01 10:58:14 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=31.6°C | Burner=False | DHW=47.5°C
+2026-05-01 10:59:14 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 10:59:14 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 10:59:14 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 10:59:14 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 10:59:14 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_10-59-14.json
+2026-05-01 10:59:14 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=31.1°C | Burner=False | DHW=47.5°C
+2026-05-01 11:00:14 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:00:14 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:00:14 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:00:14 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:00:14 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-00-14.json
+2026-05-01 11:00:14 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=30.9°C | Burner=False | DHW=47.5°C
+2026-05-01 11:01:14 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:01:14 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:01:14 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:01:14 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:01:14 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-01-14.json
+2026-05-01 11:01:14 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=30.6°C | Burner=False | DHW=47.5°C
+2026-05-01 11:02:18 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:02:18 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:02:18 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:02:18 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:02:18 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-02-18.json
+2026-05-01 11:02:18 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=30.5°C | Burner=False | DHW=47.5°C
+2026-05-01 11:03:18 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:03:18 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:03:18 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:03:18 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:03:18 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-03-18.json
+2026-05-01 11:03:18 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.5°C | Flow=30.5°C | Burner=False | DHW=47.3°C
+2026-05-01 11:04:19 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:04:19 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:04:19 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:04:19 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:04:19 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-04-19.json
+2026-05-01 11:04:19 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.7°C | Flow=30.6°C | Burner=False | DHW=47.3°C
+2026-05-01 11:05:19 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:05:19 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:05:19 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:05:19 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:05:19 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-05-19.json
+2026-05-01 11:05:19 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.7°C | Flow=31.0°C | Burner=False | DHW=47.3°C
+2026-05-01 11:06:19 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:06:19 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:06:19 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:06:19 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:06:19 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-06-19.json
+2026-05-01 11:06:19 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.7°C | Flow=31.1°C | Burner=False | DHW=47.3°C
+2026-05-01 11:07:20 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:07:20 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:07:20 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:07:20 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:07:20 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-07-20.json
+2026-05-01 11:07:20 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.7°C | Flow=31.2°C | Burner=False | DHW=47.3°C
+2026-05-01 11:08:20 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:08:20 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:08:20 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:08:20 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 11:08:20 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 11:08:20 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-08-20.json
+2026-05-01 11:08:20 [INFO ] hc_haco2.app: Mode=heating | Outdoor=12.7°C | Flow=41.8°C | Burner=True | DHW=47.2°C
+2026-05-01 11:09:20 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:09:20 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:09:20 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:09:20 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 11:09:20 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:09:20 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-09-20.json
+2026-05-01 11:09:20 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=43.0°C | Burner=False | DHW=47.2°C
+2026-05-01 11:10:21 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:10:21 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:10:21 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:10:21 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:10:21 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-10-21.json
+2026-05-01 11:10:21 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=36.7°C | Burner=False | DHW=47.2°C
+2026-05-01 11:11:21 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:11:21 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:11:21 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:11:21 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:11:21 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-11-21.json
+2026-05-01 11:11:21 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=33.7°C | Burner=False | DHW=47.2°C
+2026-05-01 11:12:21 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:12:21 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:12:21 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:12:21 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:12:21 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-12-21.json
+2026-05-01 11:12:21 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=32.3°C | Burner=False | DHW=47.2°C
+2026-05-01 11:13:22 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:13:22 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:13:22 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:13:22 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:13:22 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-13-22.json
+2026-05-01 11:13:22 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=31.6°C | Burner=False | DHW=47.2°C
+2026-05-01 11:14:23 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:14:23 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:14:23 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:14:23 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:14:23 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-14-23.json
+2026-05-01 11:14:23 [INFO ] hc_haco2.app: Mode=standby | Outdoor=12.8°C | Flow=31.1°C | Burner=False | DHW=47.2°C
+2026-05-01 11:15:24 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:15:24 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:15:24 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:15:24 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:15:24 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-15-24.json
+2026-05-01 11:15:24 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.0°C | Flow=30.9°C | Burner=False | DHW=47.2°C
+2026-05-01 11:16:24 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:16:24 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:16:24 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:16:24 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:16:24 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-16-24.json
+2026-05-01 11:16:24 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.0°C | Flow=30.6°C | Burner=False | DHW=47.2°C
+2026-05-01 11:17:25 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:17:25 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:17:25 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:17:25 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:17:25 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-17-25.json
+2026-05-01 11:17:25 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.0°C | Flow=30.5°C | Burner=False | DHW=47.2°C
+2026-05-01 11:18:25 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:18:25 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:18:25 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:18:25 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:18:25 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-18-25.json
+2026-05-01 11:18:25 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.0°C | Flow=30.4°C | Burner=False | DHW=47.2°C
+2026-05-01 11:19:26 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:19:26 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:19:26 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:19:26 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:19:26 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-19-26.json
+2026-05-01 11:19:26 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=30.5°C | Burner=False | DHW=47.2°C
+2026-05-01 11:20:27 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:20:27 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:20:27 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:20:27 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:20:27 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-20-27.json
+2026-05-01 11:20:27 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=30.7°C | Burner=False | DHW=47.2°C
+2026-05-01 11:21:27 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:21:27 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:21:27 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:21:27 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:21:27 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-21-27.json
+2026-05-01 11:21:27 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=31.0°C | Burner=False | DHW=47.1°C
+2026-05-01 11:22:27 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:22:27 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:22:27 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:22:27 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:22:27 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-22-27.json
+2026-05-01 11:22:27 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=31.1°C | Burner=False | DHW=47.1°C
+2026-05-01 11:23:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:23:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:23:28 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:23:28 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 11:23:28 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 11:23:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-23-28.json
+2026-05-01 11:23:28 [INFO ] hc_haco2.app: Mode=heating | Outdoor=13.1°C | Flow=41.2°C | Burner=True | DHW=47.1°C
+2026-05-01 11:24:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:24:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:24:28 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:24:28 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 11:24:28 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:24:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-24-28.json
+2026-05-01 11:24:28 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=40.6°C | Burner=False | DHW=47.1°C
+2026-05-01 11:25:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:25:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:25:28 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:25:28 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:25:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-25-28.json
+2026-05-01 11:25:28 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=31.7°C | Burner=False | DHW=47.1°C
+2026-05-01 11:26:29 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:26:29 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:26:29 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:26:29 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:26:29 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-26-29.json
+2026-05-01 11:26:29 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=28.0°C | Burner=False | DHW=47.1°C
+2026-05-01 11:27:29 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:27:29 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:27:29 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:27:29 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:27:29 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-27-29.json
+2026-05-01 11:27:29 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.1°C | Flow=27.9°C | Burner=False | DHW=47.1°C
+2026-05-01 11:28:30 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:28:30 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:28:30 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:28:30 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:28:30 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-28-30.json
+2026-05-01 11:28:30 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.3°C | Flow=28.9°C | Burner=False | DHW=47.1°C
+2026-05-01 11:29:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 11:29:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:29:31 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:29:31 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:29:31 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-29-31.json
+2026-05-01 11:29:31 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.3°C | Flow=28.9°C | Burner=False | DHW=47.0°C
+2026-05-01 11:30:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 11:30:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:30:31 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:30:31 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:30:31 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-30-31.json
+2026-05-01 11:30:31 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.3°C | Flow=28.9°C | Burner=False | DHW=47.0°C
+2026-05-01 11:31:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1521 bytes
+2026-05-01 11:31:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:31:31 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:31:31 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:31:31 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-31-31.json
+2026-05-01 11:31:31 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.3°C | Flow=29.0°C | Burner=False | DHW=47.0°C
+2026-05-01 11:32:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1524 bytes
+2026-05-01 11:32:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:32:32 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:32:32 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> dhw
+2026-05-01 11:32:32 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:32:32 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-32-32.json
+2026-05-01 11:32:32 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.3°C | Flow=36.9°C | Burner=True | DHW=46.7°C
+2026-05-01 11:33:32 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:33:32 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:33:32 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:33:32 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:33:32 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-33-32.json
+2026-05-01 11:33:32 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.3°C | Flow=38.1°C | Burner=True | DHW=45.9°C
+2026-05-01 11:34:33 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:34:33 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:34:33 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:34:33 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:34:33 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-34-33.json
+2026-05-01 11:34:33 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.4°C | Flow=47.1°C | Burner=True | DHW=45.2°C
+2026-05-01 11:35:34 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:35:34 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:35:34 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:35:34 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:35:34 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-35-34.json
+2026-05-01 11:35:34 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.4°C | Flow=60.0°C | Burner=True | DHW=44.7°C
+2026-05-01 11:36:34 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:36:34 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:36:34 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:36:34 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:36:34 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-36-34.json
+2026-05-01 11:36:34 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.4°C | Flow=67.0°C | Burner=True | DHW=45.1°C
+2026-05-01 11:37:35 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:37:35 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:37:35 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:37:35 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:37:35 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-37-35.json
+2026-05-01 11:37:35 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.4°C | Flow=70.0°C | Burner=True | DHW=46.1°C
+2026-05-01 11:38:35 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:38:35 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:38:35 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:38:35 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:38:35 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-38-35.json
+2026-05-01 11:38:35 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.4°C | Flow=71.9°C | Burner=True | DHW=47.3°C
+2026-05-01 11:39:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:39:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:39:36 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:39:36 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:39:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-39-36.json
+2026-05-01 11:39:36 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=73.4°C | Burner=True | DHW=48.5°C
+2026-05-01 11:40:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:40:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:40:36 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:40:36 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:40:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-40-36.json
+2026-05-01 11:40:36 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=74.8°C | Burner=True | DHW=49.5°C
+2026-05-01 11:41:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:41:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:41:37 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:41:37 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:41:37 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-41-37.json
+2026-05-01 11:41:37 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=76.1°C | Burner=True | DHW=50.3°C
+2026-05-01 11:42:37 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:42:37 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:42:37 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:42:37 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:42:37 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-42-37.json
+2026-05-01 11:42:37 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=77.4°C | Burner=True | DHW=51.2°C
+2026-05-01 11:43:38 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 11:43:38 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:43:38 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:43:38 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:43:38 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-43-38.json
+2026-05-01 11:43:38 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=78.5°C | Burner=True | DHW=52.0°C
+2026-05-01 11:44:38 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:44:38 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:44:39 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:44:39 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:44:39 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-44-39.json
+2026-05-01 11:44:39 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.6°C | Flow=79.8°C | Burner=True | DHW=52.8°C
+2026-05-01 11:45:39 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 11:45:39 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:45:40 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:45:40 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:45:40 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-45-40.json
+2026-05-01 11:45:40 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.7°C | Flow=80.7°C | Burner=True | DHW=53.9°C
+2026-05-01 11:46:40 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 11:46:40 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:46:40 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:46:40 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:46:40 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-46-40.json
+2026-05-01 11:46:40 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.7°C | Flow=81.7°C | Burner=True | DHW=54.9°C
+2026-05-01 11:47:41 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 11:47:41 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:47:41 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 11:47:41 [DEBUG] hc_haco2.app: Betriebsmodus: dhw
+2026-05-01 11:47:41 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-47-41.json
+2026-05-01 11:47:41 [INFO ] hc_haco2.app: Mode=dhw | Outdoor=13.7°C | Flow=83.0°C | Burner=True | DHW=56.0°C
+2026-05-01 11:48:42 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 11:48:42 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:48:42 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:48:42 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: dhw -> standby
+2026-05-01 11:48:42 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:48:42 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-48-42.json
+2026-05-01 11:48:42 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.7°C | Flow=82.4°C | Burner=False | DHW=57.3°C
+2026-05-01 11:49:42 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 11:49:42 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:49:42 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:49:42 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:49:42 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-49-42.json
+2026-05-01 11:49:42 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.7°C | Flow=73.2°C | Burner=False | DHW=58.3°C
+2026-05-01 11:50:43 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:50:43 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:50:43 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:50:43 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:50:43 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-50-43.json
+2026-05-01 11:50:43 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=38.6°C | Burner=False | DHW=59.1°C
+2026-05-01 11:51:43 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:51:43 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:51:43 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:51:43 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:51:43 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-51-43.json
+2026-05-01 11:51:43 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=31.4°C | Burner=False | DHW=59.4°C
+2026-05-01 11:52:44 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:52:44 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:52:44 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:52:44 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:52:44 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-52-44.json
+2026-05-01 11:52:44 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=30.1°C | Burner=False | DHW=59.6°C
+2026-05-01 11:53:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:53:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:53:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:53:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:53:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-53-45.json
+2026-05-01 11:53:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=31.2°C | Burner=False | DHW=59.7°C
+2026-05-01 11:54:46 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:54:46 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:54:46 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:54:46 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:54:46 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-54-46.json
+2026-05-01 11:54:46 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=31.2°C | Burner=False | DHW=59.7°C
+2026-05-01 11:55:47 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:55:47 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:55:47 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:55:47 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:55:47 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-55-47.json
+2026-05-01 11:55:47 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.1°C | Flow=31.0°C | Burner=False | DHW=59.7°C
+2026-05-01 11:56:49 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:56:49 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:56:49 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:56:49 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:56:49 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-56-49.json
+2026-05-01 11:56:49 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=31.4°C | Burner=False | DHW=59.7°C
+2026-05-01 11:57:50 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:57:50 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:57:50 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:57:50 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:57:50 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-57-50.json
+2026-05-01 11:57:50 [INFO ] hc_haco2.app: Mode=standby | Outdoor=13.9°C | Flow=31.4°C | Burner=False | DHW=59.7°C
+2026-05-01 11:58:50 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 11:58:50 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:58:50 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:58:50 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:58:50 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-58-50.json
+2026-05-01 11:58:50 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.1°C | Flow=31.1°C | Burner=False | DHW=59.7°C
+2026-05-01 11:59:50 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 11:59:50 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 11:59:50 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 11:59:50 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 11:59:50 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_11-59-50.json
+2026-05-01 11:59:50 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.1°C | Flow=31.0°C | Burner=False | DHW=59.7°C
+2026-05-01 12:00:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 12:00:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:00:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:00:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:00:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-00-51.json
+2026-05-01 12:00:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.1°C | Flow=31.0°C | Burner=False | DHW=59.7°C
+2026-05-01 12:01:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:01:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:01:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:01:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:01:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-01-51.json
+2026-05-01 12:01:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.2°C | Flow=30.9°C | Burner=False | DHW=59.7°C
+2026-05-01 12:02:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:02:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:02:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:02:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:02:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-02-52.json
+2026-05-01 12:02:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.2°C | Flow=30.7°C | Burner=False | DHW=59.7°C
+2026-05-01 12:03:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:03:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:03:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:03:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:03:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-03-52.json
+2026-05-01 12:03:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.2°C | Flow=30.6°C | Burner=False | DHW=59.7°C
+2026-05-01 12:04:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:04:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:04:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:04:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:04:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-04-52.json
+2026-05-01 12:04:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.2°C | Flow=30.6°C | Burner=False | DHW=59.7°C
+2026-05-01 12:05:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:05:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:05:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:05:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:05:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-05-52.json
+2026-05-01 12:05:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.2°C | Flow=30.5°C | Burner=False | DHW=59.7°C
+2026-05-01 12:06:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:06:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:06:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:06:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:06:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-06-53.json
+2026-05-01 12:06:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.4°C | Flow=30.4°C | Burner=False | DHW=59.7°C
+2026-05-01 12:07:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:07:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:07:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:07:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:07:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-07-53.json
+2026-05-01 12:07:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.4°C | Flow=30.4°C | Burner=False | DHW=59.7°C
+2026-05-01 12:08:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:08:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:08:54 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 12:08:54 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 12:08:54 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 12:08:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-08-54.json
+2026-05-01 12:08:54 [INFO ] hc_haco2.app: Mode=heating | Outdoor=14.4°C | Flow=30.2°C | Burner=True | DHW=59.7°C
+2026-05-01 12:09:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 12:09:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:09:54 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 12:09:54 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 12:09:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-09-54.json
+2026-05-01 12:09:54 [INFO ] hc_haco2.app: Mode=heating | Outdoor=14.4°C | Flow=36.4°C | Burner=True | DHW=59.7°C
+2026-05-01 12:10:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 12:10:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:10:54 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 12:10:54 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 12:10:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-10-54.json
+2026-05-01 12:10:54 [INFO ] hc_haco2.app: Mode=heating | Outdoor=14.4°C | Flow=37.0°C | Burner=True | DHW=59.7°C
+2026-05-01 12:11:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 12:11:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:11:55 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 12:11:55 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 12:11:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-11-55.json
+2026-05-01 12:11:55 [INFO ] hc_haco2.app: Mode=heating | Outdoor=14.4°C | Flow=38.0°C | Burner=True | DHW=59.7°C
+2026-05-01 12:12:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 12:12:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:12:56 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 12:12:56 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 12:12:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-12-56.json
+2026-05-01 12:12:56 [INFO ] hc_haco2.app: Mode=heating | Outdoor=14.5°C | Flow=39.1°C | Burner=True | DHW=59.7°C
+2026-05-01 12:13:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1524 bytes
+2026-05-01 12:13:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:13:56 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:13:56 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 12:13:56 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:13:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-13-56.json
+2026-05-01 12:13:56 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.5°C | Flow=40.5°C | Burner=False | DHW=59.6°C
+2026-05-01 12:14:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:14:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:14:56 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:14:56 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:14:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-14-56.json
+2026-05-01 12:14:56 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.5°C | Flow=36.7°C | Burner=False | DHW=59.6°C
+2026-05-01 12:15:57 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:15:57 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:15:57 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:15:57 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:15:57 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-15-57.json
+2026-05-01 12:15:57 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.5°C | Flow=35.2°C | Burner=False | DHW=59.6°C
+2026-05-01 12:16:57 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:16:57 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:16:57 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:16:57 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:16:57 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-16-57.json
+2026-05-01 12:16:57 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.5°C | Flow=35.2°C | Burner=False | DHW=59.6°C
+2026-05-01 12:17:57 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:17:57 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:17:57 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:17:57 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:17:57 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-17-57.json
+2026-05-01 12:17:57 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.5°C | Flow=34.8°C | Burner=False | DHW=59.6°C
+2026-05-01 12:18:58 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:18:58 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:18:58 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:18:58 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:18:58 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-18-58.json
+2026-05-01 12:18:58 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=34.3°C | Burner=False | DHW=59.6°C
+2026-05-01 12:19:58 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:19:58 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:19:58 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:19:58 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:19:58 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-19-58.json
+2026-05-01 12:19:58 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=34.1°C | Burner=False | DHW=59.6°C
+2026-05-01 12:20:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:20:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:20:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:20:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:20:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-20-59.json
+2026-05-01 12:20:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=34.0°C | Burner=False | DHW=59.6°C
+2026-05-01 12:21:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:21:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:21:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:21:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:21:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-21-59.json
+2026-05-01 12:21:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=33.7°C | Burner=False | DHW=59.6°C
+2026-05-01 12:22:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:22:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:22:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:22:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:22:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-22-59.json
+2026-05-01 12:22:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=33.5°C | Burner=False | DHW=59.6°C
+2026-05-01 12:24:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:24:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:24:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:24:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:24:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-24-00.json
+2026-05-01 12:24:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=33.3°C | Burner=False | DHW=59.6°C
+2026-05-01 12:25:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:25:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:25:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:25:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:25:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-25-00.json
+2026-05-01 12:25:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.7°C | Flow=33.1°C | Burner=False | DHW=59.6°C
+2026-05-01 12:26:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:26:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:26:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:26:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:26:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-26-00.json
+2026-05-01 12:26:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=33.0°C | Burner=False | DHW=59.5°C
+2026-05-01 12:27:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:27:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:27:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:27:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:27:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-27-00.json
+2026-05-01 12:27:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=32.8°C | Burner=False | DHW=59.5°C
+2026-05-01 12:28:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:28:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:28:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:28:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:28:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-28-01.json
+2026-05-01 12:28:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=32.7°C | Burner=False | DHW=59.5°C
+2026-05-01 12:29:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:29:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:29:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:29:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:29:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-29-01.json
+2026-05-01 12:29:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=32.6°C | Burner=False | DHW=59.5°C
+2026-05-01 12:30:02 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:30:02 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:30:02 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:30:02 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:30:02 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-30-02.json
+2026-05-01 12:30:02 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=32.3°C | Burner=False | DHW=59.5°C
+2026-05-01 12:31:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:31:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:31:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:31:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:31:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-31-03.json
+2026-05-01 12:31:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=14.8°C | Flow=32.2°C | Burner=False | DHW=59.5°C
+2026-05-01 12:32:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:32:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:32:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:32:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:32:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-32-04.json
+2026-05-01 12:32:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.0°C | Flow=32.1°C | Burner=False | DHW=59.5°C
+2026-05-01 12:33:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1521 bytes
+2026-05-01 12:33:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:33:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:33:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:33:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-33-04.json
+2026-05-01 12:33:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.0°C | Flow=32.0°C | Burner=False | DHW=59.5°C
+2026-05-01 12:34:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:34:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:34:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:34:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:34:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-34-04.json
+2026-05-01 12:34:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.0°C | Flow=31.9°C | Burner=False | DHW=59.5°C
+2026-05-01 12:35:05 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:35:05 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:35:05 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:35:05 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:35:05 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-35-05.json
+2026-05-01 12:35:05 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.0°C | Flow=31.7°C | Burner=False | DHW=59.4°C
+2026-05-01 12:36:05 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:36:05 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:36:05 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:36:05 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:36:05 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-36-05.json
+2026-05-01 12:36:05 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.0°C | Flow=31.6°C | Burner=False | DHW=59.4°C
+2026-05-01 12:37:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:37:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:37:06 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:37:06 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:37:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-37-06.json
+2026-05-01 12:37:06 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.1°C | Flow=31.5°C | Burner=False | DHW=59.4°C
+2026-05-01 12:38:06 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:38:06 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:38:06 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:38:06 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:38:06 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-38-06.json
+2026-05-01 12:38:06 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.1°C | Flow=31.4°C | Burner=False | DHW=59.4°C
+2026-05-01 12:39:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:39:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:39:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:39:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:39:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-39-07.json
+2026-05-01 12:39:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.1°C | Flow=31.2°C | Burner=False | DHW=59.4°C
+2026-05-01 12:40:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:40:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:40:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:40:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:40:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-40-07.json
+2026-05-01 12:40:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.1°C | Flow=31.1°C | Burner=False | DHW=59.4°C
+2026-05-01 12:41:07 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:41:07 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:41:07 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:41:07 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:41:07 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-41-07.json
+2026-05-01 12:41:07 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.1°C | Flow=31.0°C | Burner=False | DHW=59.4°C
+2026-05-01 12:42:08 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:42:08 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:42:08 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:42:08 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:42:08 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-42-08.json
+2026-05-01 12:42:08 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.3°C | Flow=30.9°C | Burner=False | DHW=59.4°C
+2026-05-01 12:43:09 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:43:09 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:43:09 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:43:09 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:43:09 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-43-09.json
+2026-05-01 12:43:09 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.3°C | Flow=30.7°C | Burner=False | DHW=59.4°C
+2026-05-01 12:44:10 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:44:10 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:44:10 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:44:10 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:44:10 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-44-10.json
+2026-05-01 12:44:10 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.4°C | Flow=30.7°C | Burner=False | DHW=59.4°C
+2026-05-01 12:45:10 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:45:10 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:45:10 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:45:10 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:45:10 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-45-10.json
+2026-05-01 12:45:10 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.4°C | Flow=30.6°C | Burner=False | DHW=59.4°C
+2026-05-01 12:46:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:46:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:46:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:46:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:46:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-46-11.json
+2026-05-01 12:46:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.4°C | Flow=30.5°C | Burner=False | DHW=59.4°C
+2026-05-01 12:47:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:47:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:47:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:47:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:47:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-47-11.json
+2026-05-01 12:47:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.4°C | Flow=30.4°C | Burner=False | DHW=59.3°C
+2026-05-01 12:48:11 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:48:11 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:48:11 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:48:11 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:48:11 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-48-11.json
+2026-05-01 12:48:11 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.6°C | Flow=30.4°C | Burner=False | DHW=59.3°C
+2026-05-01 12:49:12 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:49:12 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:49:12 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:49:12 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:49:12 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-49-12.json
+2026-05-01 12:49:12 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.6°C | Flow=30.2°C | Burner=False | DHW=59.3°C
+2026-05-01 12:50:12 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:50:12 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:50:12 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:50:12 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:50:12 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-50-12.json
+2026-05-01 12:50:12 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.7°C | Flow=30.1°C | Burner=False | DHW=59.3°C
+2026-05-01 12:51:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:51:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:51:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:51:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:51:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-51-13.json
+2026-05-01 12:51:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.7°C | Flow=30.1°C | Burner=False | DHW=59.3°C
+2026-05-01 12:52:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:52:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:52:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:52:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:52:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-52-13.json
+2026-05-01 12:52:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.7°C | Flow=30.0°C | Burner=False | DHW=59.3°C
+2026-05-01 12:53:13 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:53:13 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:53:13 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:53:13 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:53:13 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-53-13.json
+2026-05-01 12:53:13 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.7°C | Flow=29.9°C | Burner=False | DHW=59.3°C
+2026-05-01 12:54:14 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:54:14 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:54:14 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:54:14 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:54:14 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-54-14.json
+2026-05-01 12:54:14 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.7°C | Flow=29.9°C | Burner=False | DHW=59.3°C
+2026-05-01 12:55:15 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:55:15 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:55:15 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:55:15 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:55:15 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-55-15.json
+2026-05-01 12:55:15 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.8°C | Flow=29.7°C | Burner=False | DHW=59.3°C
+2026-05-01 12:56:15 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:56:15 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:56:15 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:56:15 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:56:15 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-56-15.json
+2026-05-01 12:56:15 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.8°C | Flow=29.7°C | Burner=False | DHW=59.3°C
+2026-05-01 12:57:16 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 12:57:16 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:57:16 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:57:16 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:57:16 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-57-16.json
+2026-05-01 12:57:16 [INFO ] hc_haco2.app: Mode=standby | Outdoor=15.8°C | Flow=29.6°C | Burner=False | DHW=59.3°C
+2026-05-01 12:58:16 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:58:16 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:58:16 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:58:16 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:58:16 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-58-16.json
+2026-05-01 12:58:16 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.0°C | Flow=29.4°C | Burner=False | DHW=59.2°C
+2026-05-01 12:59:16 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 12:59:16 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 12:59:16 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 12:59:16 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 12:59:16 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_12-59-16.json
+2026-05-01 12:59:16 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.0°C | Flow=29.4°C | Burner=False | DHW=59.2°C
+2026-05-01 13:00:17 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 13:00:17 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:00:20 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 13:00:20 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 13:00:20 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 13:00:20 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-00-20.json
+2026-05-01 13:00:20 [INFO ] hc_haco2.app: Mode=heating | Outdoor=16.0°C | Flow=35.6°C | Burner=True | DHW=59.2°C
+2026-05-01 13:01:20 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 13:01:20 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:01:23 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 13:01:23 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 13:01:23 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-01-23.json
+2026-05-01 13:01:23 [INFO ] hc_haco2.app: Mode=heating | Outdoor=16.0°C | Flow=36.5°C | Burner=True | DHW=59.2°C
+2026-05-01 13:02:24 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 13:02:24 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:02:26 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 13:02:26 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 13:02:26 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-02-26.json
+2026-05-01 13:02:26 [INFO ] hc_haco2.app: Mode=heating | Outdoor=16.1°C | Flow=37.4°C | Burner=True | DHW=59.2°C
+2026-05-01 13:03:26 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1529 bytes
+2026-05-01 13:03:26 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:03:27 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 13:03:27 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 13:03:27 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-03-27.json
+2026-05-01 13:03:27 [INFO ] hc_haco2.app: Mode=heating | Outdoor=16.1°C | Flow=38.7°C | Burner=True | DHW=59.2°C
+2026-05-01 13:04:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:04:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:04:28 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:04:28 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 13:04:28 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:04:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-04-28.json
+2026-05-01 13:04:28 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.1°C | Flow=35.7°C | Burner=False | DHW=59.2°C
+2026-05-01 13:05:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:05:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:05:28 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:05:28 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:05:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-05-28.json
+2026-05-01 13:05:28 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.1°C | Flow=34.3°C | Burner=False | DHW=59.2°C
+2026-05-01 13:06:28 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:06:28 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:06:28 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:06:28 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:06:28 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-06-28.json
+2026-05-01 13:06:28 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.2°C | Flow=34.1°C | Burner=False | DHW=59.2°C
+2026-05-01 13:07:29 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:07:29 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:07:29 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:07:29 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:07:29 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-07-29.json
+2026-05-01 13:07:29 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.2°C | Flow=34.0°C | Burner=False | DHW=59.2°C
+2026-05-01 13:08:29 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:08:29 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:08:29 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:08:29 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:08:29 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-08-29.json
+2026-05-01 13:08:29 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.2°C | Flow=33.6°C | Burner=False | DHW=59.2°C
+2026-05-01 13:09:29 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:09:29 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:09:29 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:09:29 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:09:29 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-09-29.json
+2026-05-01 13:09:29 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.4°C | Flow=33.2°C | Burner=False | DHW=59.1°C
+2026-05-01 13:10:30 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:10:30 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:10:30 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:10:30 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:10:30 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-10-30.json
+2026-05-01 13:10:30 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.4°C | Flow=33.1°C | Burner=False | DHW=59.2°C
+2026-05-01 13:11:30 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:11:30 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:11:30 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:11:30 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:11:30 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-11-30.json
+2026-05-01 13:11:30 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.4°C | Flow=32.8°C | Burner=False | DHW=59.1°C
+2026-05-01 13:12:30 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:12:30 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:12:30 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:12:30 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:12:30 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-12-30.json
+2026-05-01 13:12:30 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.4°C | Flow=32.6°C | Burner=False | DHW=59.1°C
+2026-05-01 13:13:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:13:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:13:31 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:13:31 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:13:31 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-13-31.json
+2026-05-01 13:13:31 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.4°C | Flow=32.5°C | Burner=False | DHW=59.1°C
+2026-05-01 13:14:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:14:31 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:14:31 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:14:31 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:14:31 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-14-31.json
+2026-05-01 13:14:31 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.5°C | Flow=32.3°C | Burner=False | DHW=59.1°C
+2026-05-01 13:15:31 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:15:32 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:15:32 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:15:32 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:15:32 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-15-32.json
+2026-05-01 13:15:32 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.5°C | Flow=32.2°C | Burner=False | DHW=59.1°C
+2026-05-01 13:16:32 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:16:32 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:16:32 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:16:32 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:16:32 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-16-32.json
+2026-05-01 13:16:32 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.5°C | Flow=32.1°C | Burner=False | DHW=59.1°C
+2026-05-01 13:17:32 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:17:32 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:17:32 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:17:32 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:17:32 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-17-32.json
+2026-05-01 13:17:32 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.5°C | Flow=32.0°C | Burner=False | DHW=59.1°C
+2026-05-01 13:18:33 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:18:33 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:18:33 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:18:33 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:18:33 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-18-33.json
+2026-05-01 13:18:33 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.7°C | Flow=31.9°C | Burner=False | DHW=59.1°C
+2026-05-01 13:19:33 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:19:33 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:19:33 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:19:33 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:19:33 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-19-33.json
+2026-05-01 13:19:33 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.7°C | Flow=31.7°C | Burner=False | DHW=59.1°C
+2026-05-01 13:20:34 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:20:34 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:20:34 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:20:34 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:20:34 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-20-34.json
+2026-05-01 13:20:34 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.7°C | Flow=31.6°C | Burner=False | DHW=59.1°C
+2026-05-01 13:21:34 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:21:34 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:21:34 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:21:34 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:21:34 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-21-34.json
+2026-05-01 13:21:34 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.7°C | Flow=31.5°C | Burner=False | DHW=59.1°C
+2026-05-01 13:22:34 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:22:34 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:22:34 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:22:34 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:22:34 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-22-34.json
+2026-05-01 13:22:34 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.7°C | Flow=31.4°C | Burner=False | DHW=59.1°C
+2026-05-01 13:23:35 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:23:35 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:23:35 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:23:35 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:23:35 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-23-35.json
+2026-05-01 13:23:35 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.8°C | Flow=31.2°C | Burner=False | DHW=58.9°C
+2026-05-01 13:24:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:24:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:24:36 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:24:36 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:24:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-24-36.json
+2026-05-01 13:24:36 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.8°C | Flow=31.1°C | Burner=False | DHW=58.9°C
+2026-05-01 13:25:36 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:25:36 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:25:36 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:25:36 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:25:36 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-25-36.json
+2026-05-01 13:25:36 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.8°C | Flow=31.0°C | Burner=False | DHW=58.9°C
+2026-05-01 13:26:37 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:26:37 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:26:37 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:26:37 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:26:37 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-26-37.json
+2026-05-01 13:26:37 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.8°C | Flow=31.0°C | Burner=False | DHW=58.9°C
+2026-05-01 13:27:38 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:27:38 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:27:38 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:27:38 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:27:38 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-27-38.json
+2026-05-01 13:27:38 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.9°C | Flow=30.9°C | Burner=False | DHW=58.9°C
+2026-05-01 13:28:38 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:28:38 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:28:38 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:28:38 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:28:38 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-28-38.json
+2026-05-01 13:28:38 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.9°C | Flow=30.7°C | Burner=False | DHW=58.9°C
+2026-05-01 13:29:39 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:29:39 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:29:39 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:29:39 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:29:39 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-29-39.json
+2026-05-01 13:29:39 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.9°C | Flow=30.6°C | Burner=False | DHW=58.9°C
+2026-05-01 13:30:39 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:30:39 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:30:39 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:30:39 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:30:39 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-30-39.json
+2026-05-01 13:30:39 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.9°C | Flow=30.5°C | Burner=False | DHW=58.9°C
+2026-05-01 13:31:39 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:31:39 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:31:39 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:31:39 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:31:39 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-31-39.json
+2026-05-01 13:31:39 [INFO ] hc_haco2.app: Mode=standby | Outdoor=16.9°C | Flow=30.5°C | Burner=False | DHW=58.9°C
+2026-05-01 13:32:40 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:32:40 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:32:40 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:32:40 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:32:40 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-32-40.json
+2026-05-01 13:32:40 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=30.4°C | Burner=False | DHW=58.9°C
+2026-05-01 13:33:42 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:33:42 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:33:42 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:33:42 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:33:42 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-33-42.json
+2026-05-01 13:33:42 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=30.2°C | Burner=False | DHW=58.9°C
+2026-05-01 13:34:44 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:34:44 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:34:44 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:34:44 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:34:44 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-34-44.json
+2026-05-01 13:34:44 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=30.2°C | Burner=False | DHW=58.9°C
+2026-05-01 13:35:44 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:35:44 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:35:44 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:35:44 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:35:44 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-35-44.json
+2026-05-01 13:35:44 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=30.1°C | Burner=False | DHW=58.9°C
+2026-05-01 13:36:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:36:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:36:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:36:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:36:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-36-45.json
+2026-05-01 13:36:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=30.0°C | Burner=False | DHW=58.8°C
+2026-05-01 13:37:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:37:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:37:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:37:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:37:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-37-45.json
+2026-05-01 13:37:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.1°C | Flow=29.9°C | Burner=False | DHW=58.8°C
+2026-05-01 13:38:45 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:38:45 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:38:45 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:38:45 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:38:45 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-38-45.json
+2026-05-01 13:38:45 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.2°C | Flow=29.9°C | Burner=False | DHW=58.8°C
+2026-05-01 13:39:46 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:39:46 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:39:46 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:39:46 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:39:46 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-39-46.json
+2026-05-01 13:39:46 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.2°C | Flow=29.9°C | Burner=False | DHW=58.8°C
+2026-05-01 13:40:46 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:40:46 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:40:46 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:40:46 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:40:46 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-40-46.json
+2026-05-01 13:40:46 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.2°C | Flow=29.7°C | Burner=False | DHW=58.8°C
+2026-05-01 13:41:47 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:41:47 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:41:47 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:41:47 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:41:47 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-41-47.json
+2026-05-01 13:41:47 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.2°C | Flow=29.6°C | Burner=False | DHW=58.8°C
+2026-05-01 13:42:47 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:42:47 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:42:47 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:42:47 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:42:47 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-42-47.json
+2026-05-01 13:42:47 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.2°C | Flow=29.4°C | Burner=False | DHW=58.8°C
+2026-05-01 13:43:48 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:43:48 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:43:48 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:43:48 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:43:48 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-43-48.json
+2026-05-01 13:43:48 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.4°C | Burner=False | DHW=58.8°C
+2026-05-01 13:44:48 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:44:48 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:44:48 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:44:48 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:44:48 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-44-48.json
+2026-05-01 13:44:48 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.3°C | Burner=False | DHW=58.8°C
+2026-05-01 13:45:49 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:45:49 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:45:49 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:45:49 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:45:49 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-45-49.json
+2026-05-01 13:45:49 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.3°C | Burner=False | DHW=58.8°C
+2026-05-01 13:46:49 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:46:49 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:46:49 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:46:49 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:46:49 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-46-49.json
+2026-05-01 13:46:49 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.2°C | Burner=False | DHW=58.8°C
+2026-05-01 13:47:49 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:47:49 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:47:49 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:47:49 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:47:49 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-47-49.json
+2026-05-01 13:47:49 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.2°C | Burner=False | DHW=58.8°C
+2026-05-01 13:48:50 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:48:50 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:48:50 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:48:50 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:48:50 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-48-50.json
+2026-05-01 13:48:50 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.0°C | Burner=False | DHW=58.7°C
+2026-05-01 13:49:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1523 bytes
+2026-05-01 13:49:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:49:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:49:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:49:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-49-51.json
+2026-05-01 13:49:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=29.0°C | Burner=False | DHW=58.7°C
+2026-05-01 13:50:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:50:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:50:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:50:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:50:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-50-51.json
+2026-05-01 13:50:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.4°C | Flow=28.9°C | Burner=False | DHW=58.7°C
+2026-05-01 13:51:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:51:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:51:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:51:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:51:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-51-51.json
+2026-05-01 13:51:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.5°C | Flow=28.9°C | Burner=False | DHW=58.7°C
+2026-05-01 13:52:51 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:52:51 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:52:51 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:52:51 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:52:51 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-52-51.json
+2026-05-01 13:52:51 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.5°C | Flow=28.9°C | Burner=False | DHW=58.7°C
+2026-05-01 13:53:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:53:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:53:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:53:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:53:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-53-52.json
+2026-05-01 13:53:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.5°C | Flow=28.7°C | Burner=False | DHW=58.7°C
+2026-05-01 13:54:52 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:54:52 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:54:52 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:54:52 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:54:52 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-54-52.json
+2026-05-01 13:54:52 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.5°C | Flow=28.7°C | Burner=False | DHW=58.7°C
+2026-05-01 13:55:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:55:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:55:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:55:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:55:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-55-53.json
+2026-05-01 13:55:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.5°C | Flow=28.6°C | Burner=False | DHW=58.7°C
+2026-05-01 13:56:53 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:56:53 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:56:53 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:56:53 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:56:53 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-56-53.json
+2026-05-01 13:56:53 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.6°C | Flow=28.6°C | Burner=False | DHW=58.7°C
+2026-05-01 13:57:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:57:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:57:54 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:57:54 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:57:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-57-54.json
+2026-05-01 13:57:54 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.6°C | Flow=28.5°C | Burner=False | DHW=58.7°C
+2026-05-01 13:58:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:58:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:58:54 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:58:54 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:58:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-58-54.json
+2026-05-01 13:58:54 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.6°C | Flow=28.5°C | Burner=False | DHW=58.7°C
+2026-05-01 13:59:54 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1525 bytes
+2026-05-01 13:59:54 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 13:59:54 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 13:59:54 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 13:59:54 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_13-59-54.json
+2026-05-01 13:59:54 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.6°C | Flow=28.5°C | Burner=False | DHW=58.6°C
+2026-05-01 14:00:55 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:00:55 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:00:55 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 14:00:55 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: standby -> heating
+2026-05-01 14:00:55 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 14:00:55 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-00-55.json
+2026-05-01 14:00:55 [INFO ] hc_haco2.app: Mode=heating | Outdoor=17.6°C | Flow=34.6°C | Burner=True | DHW=58.6°C
+2026-05-01 14:01:56 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1524 bytes
+2026-05-01 14:01:56 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:01:56 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 14:01:56 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 14:01:56 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-01-56.json
+2026-05-01 14:01:56 [INFO ] hc_haco2.app: Mode=heating | Outdoor=17.6°C | Flow=35.0°C | Burner=True | DHW=58.6°C
+2026-05-01 14:02:57 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1527 bytes
+2026-05-01 14:02:57 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:02:58 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 14:02:58 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 14:02:58 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-02-58.json
+2026-05-01 14:02:58 [INFO ] hc_haco2.app: Mode=heating | Outdoor=17.6°C | Flow=36.3°C | Burner=True | DHW=58.6°C
+2026-05-01 14:03:58 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:03:58 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:03:58 [DEBUG] hc_haco2.manager: GET http://10.1.1.246/text_sensor/gasmeterdata -> 141 bytes
+2026-05-01 14:03:58 [DEBUG] hc_haco2.app: Betriebsmodus: heating
+2026-05-01 14:03:58 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-03-58.json
+2026-05-01 14:03:58 [INFO ] hc_haco2.app: Mode=heating | Outdoor=17.6°C | Flow=37.4°C | Burner=True | DHW=58.6°C
+2026-05-01 14:04:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:04:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:04:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:04:59 [INFO ] hc_haco2.calc.runtime: Betriebswechsel: heating -> standby
+2026-05-01 14:04:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:04:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-04-59.json
+2026-05-01 14:04:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=34.9°C | Burner=False | DHW=58.6°C
+2026-05-01 14:05:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:05:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:05:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:05:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:05:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-05-59.json
+2026-05-01 14:05:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=33.5°C | Burner=False | DHW=58.6°C
+2026-05-01 14:06:59 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:06:59 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:06:59 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:06:59 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:06:59 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-06-59.json
+2026-05-01 14:06:59 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=32.8°C | Burner=False | DHW=58.6°C
+2026-05-01 14:08:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:08:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:08:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:08:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:08:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-08-00.json
+2026-05-01 14:08:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=32.8°C | Burner=False | DHW=58.6°C
+2026-05-01 14:09:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:09:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:09:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:09:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:09:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-09-00.json
+2026-05-01 14:09:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=32.5°C | Burner=False | DHW=58.6°C
+2026-05-01 14:10:00 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:10:00 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:10:00 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:10:00 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:10:00 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-10-00.json
+2026-05-01 14:10:00 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=32.2°C | Burner=False | DHW=58.6°C
+2026-05-01 14:11:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:11:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:11:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:11:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:11:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-11-01.json
+2026-05-01 14:11:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.8°C | Flow=32.1°C | Burner=False | DHW=58.6°C
+2026-05-01 14:12:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:12:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:12:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:12:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:12:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-12-01.json
+2026-05-01 14:12:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.9°C | Flow=31.9°C | Burner=False | DHW=58.6°C
+2026-05-01 14:13:01 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:13:01 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:13:01 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:13:01 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:13:01 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-13-01.json
+2026-05-01 14:13:01 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.9°C | Flow=31.7°C | Burner=False | DHW=58.5°C
+2026-05-01 14:14:02 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:14:02 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:14:02 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:14:02 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:14:02 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-14-02.json
+2026-05-01 14:14:02 [INFO ] hc_haco2.app: Mode=standby | Outdoor=17.9°C | Flow=31.6°C | Burner=False | DHW=58.5°C
+2026-05-01 14:15:02 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:15:02 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:15:02 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:15:02 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:15:02 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-15-02.json
+2026-05-01 14:15:02 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.1°C | Flow=31.5°C | Burner=False | DHW=58.5°C
+2026-05-01 14:16:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:16:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:16:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:16:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:16:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-16-03.json
+2026-05-01 14:16:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.1°C | Flow=31.4°C | Burner=False | DHW=58.5°C
+2026-05-01 14:17:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:17:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:17:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:17:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:17:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-17-03.json
+2026-05-01 14:17:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.1°C | Flow=31.2°C | Burner=False | DHW=58.5°C
+2026-05-01 14:18:03 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:18:03 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:18:03 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:18:03 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:18:03 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-18-03.json
+2026-05-01 14:18:03 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.1°C | Flow=31.1°C | Burner=False | DHW=58.5°C
+2026-05-01 14:19:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:19:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:19:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:19:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:19:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-19-04.json
+2026-05-01 14:19:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.2°C | Flow=31.1°C | Burner=False | DHW=58.5°C
+2026-05-01 14:20:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1526 bytes
+2026-05-01 14:20:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:20:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:20:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:20:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-20-04.json
+2026-05-01 14:20:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.2°C | Flow=31.0°C | Burner=False | DHW=58.5°C
+2026-05-01 14:21:04 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:21:04 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:21:04 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:21:04 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:21:04 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-21-04.json
+2026-05-01 14:21:04 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.2°C | Flow=30.9°C | Burner=False | DHW=58.5°C
+2026-05-01 14:22:05 [DEBUG] hc_haco2.manager: GET http://ems-heizung.siebler.home/api/boiler -> 1528 bytes
+2026-05-01 14:22:05 [DEBUG] hc_haco2.manager: Boiler-Daten geladen: 55 Keys
+2026-05-01 14:22:05 [DEBUG] hc_haco2.manager: Gaszähler übersprungen (Brenner aus, TTL abgelaufen)
+2026-05-01 14:22:05 [DEBUG] hc_haco2.app: Betriebsmodus: standby
+2026-05-01 14:22:05 [INFO ] hc_haco2.history: Snapshot gespeichert: 2026-05-01_14-22-05.json
+2026-05-01 14:22:05 [INFO ] hc_haco2.app: Mode=standby | Outdoor=18.3°C | Flow=30.7°C | Burner=False | DHW=58.5°C
+2026-05-01 14:23:02 [INFO ] hc_haco2.app: Signal 15 empfangen – beende...
+2026-05-01 14:23:03 [INFO ] hc_haco2.app: === hc_haco2 beendet ===

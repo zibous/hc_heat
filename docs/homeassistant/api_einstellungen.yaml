@@ -1,0 +1,127 @@
+###############################################
+# EMS THERMOSTAT / EINSTELLUNGEN
+###############################################
+
+sensor:
+  - platform: rest
+    name: "EMS Thermostat"
+    resource: "http://ems-heizung.siebler.home/api/thermostat"
+    method: GET
+    value_template: "OK"
+    scan_interval: 300
+    json_attributes:
+      # Allgemein
+      - datetime
+      - intoffset
+      - dampedoutdoortemp
+
+      # HK1 (Heizkreis 1)
+      - seltemp
+      - mode
+      - modetype
+      - ecotemp
+      - manualtemp
+      - comforttemp
+      - summertemp
+      - designtemp
+      - offsettemp
+      - minflowtemp
+      - maxflowtemp
+      - targetflowtemp
+      - heatingtype
+      - controlmode
+      - program
+      - vacationmode
+      - pumpopt
+      - switchonoptimization
+
+      # WWK (Warmwasser)
+      - settemp
+      - settemplow
+      - circmode
+      - circpump
+      - disinfecting
+      - disinfectday
+      - disinfecttime
+      - charge
+      - active
+      - tempok
+
+###############################################
+# TEMPLATE SENSOR
+###############################################
+
+template:
+  - sensor:
+
+      ###################################
+      # SYSTEM / AUSSEN
+      ###################################
+
+      - name: "Gedämpfte Außentemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','dampedoutdoortemp') | float(0) }}"
+
+      - name: "Offset Temperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','intoffset') | float(0) }}"
+
+      ###################################
+      # HK1 (HEIZUNG)
+      ###################################
+
+      - name: "HK1 Solltemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','seltemp') | float(0) }}"
+
+      - name: "HK1 Komforttemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','comforttemp') | float(0) }}"
+
+      - name: "HK1 Eco Temperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','ecotemp') | float(0) }}"
+
+      - name: "HK1 Vorlauf Soll"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','targetflowtemp') | float(0) }}"
+
+      - name: "HK1 Betriebsart"
+        state: "{{ state_attr('sensor.ems_thermostat','mode') }}"
+
+      - name: "HK1 Modus Typ"
+        state: "{{ state_attr('sensor.ems_thermostat','modetype') }}"
+
+      - name: "Heizungsprogramm"
+        state: "{{ state_attr('sensor.ems_thermostat','program') }}"
+
+      ###################################
+      # WARMWASSER (WWK)
+      ###################################
+
+      - name: "WW Solltemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','settemp') | float(0) }}"
+
+      - name: "WW untere Solltemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_thermostat','settemplow') | float(0) }}"
+
+      - name: "WW Zirkulation Modus"
+        state: "{{ state_attr('sensor.ems_thermostat','circmode') }}"
+
+      - name: "WW Zirkulationspumpe"
+        state: "{{ state_attr('sensor.ems_thermostat','circpump') }}"
+
+      - name: "WW Desinfektion"
+        state: "{{ state_attr('sensor.ems_thermostat','disinfecting') }}"
+
+      ###################################
+      # STATUS FLAGS
+      ###################################
+
+      - name: "Urlaubsmodus"
+        state: "{{ state_attr('sensor.ems_thermostat','vacationmode') }}"
+
+      - name: "Heiztyp"
+        state: "{{ state_attr('sensor.ems_thermostat','heatingtype') }}"

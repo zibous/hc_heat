@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ruff_cache/
+.pytest_cache/
+.pyrightcache/
+
+# Umgebung
+.venv/
+.env
+
+# Daten (nicht ins Repo)
+data/heating.db
+data/heating.db.bak
+data/heating_sim.db
+data/processed/*.json
+data/raw/api-system-values.json
+
+# Logs
+logs/*.log
+logs/flow_trace.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+
+# Temp
+*.egg-info/
+build/
+dist/
+daten.txt
+testergebnis.txt

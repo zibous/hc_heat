@@ -1,0 +1,90 @@
+# Buderus LOGAMAX PLUS GB172 – Fehlercodes (Deutsch)
+#
+# Format: "CODE": "Beschreibung"
+# Untercodes mit Klammern: "6L(229)": "Beschreibung"
+
+# --- Status / Laufmeldungen ---
+"0A": "Brennerstart läuft"
+"0C": "Zündung läuft"
+"0E": "Heizbedarf unter Mindestleistung (On/Off-Betrieb)"
+"0H": "Standby-Modus – kein aktiver Wärmebedarf"
+"0L": "Gasventilöffnung / Prüffunktion"
+"0U": "Heizleistung hoch"
+"0Y": "Vorlauftemperatur über Sollwert – Abschaltung"
+
+# --- Brenner / Flamme ---
+"6A": "Flamme nicht erkannt (Zündproblem)"
+"6B": "Brenner blockiert / Sicherheitsabschaltung"
+"6C": "Flamme während Betrieb erloschen / Ionisation instabil"
+"6E": "Flamme erkannt trotz geschlossenem Gasventil"
+"6F": "Flammenüberwachung defekt"
+"6G": "Gasdruck zu niedrig"
+"6H": "Brennerheizung defekt"
+"6J": "Zündversuch fehlgeschlagen"
+"6K": "Flammenfühler instabil"
+"6L": "Ionisationsfehler im Brennerbetrieb"
+"6P": "Gebläse startet nicht"
+
+# --- Untercodes 6L (Ionisation / Flamme) ---
+"6L(229)": "Keine Ionisation während Brennerbetrieb"
+"6L(512)": "Mehrfache Flammenunterbrechungen"
+"6L(516)": "Kurzzeitige Flammenunterbrechung"
+"6L(532)": "Flamme instabil – Ionisationsproblem"
+"6L(534)": "Flamme bricht wiederholt ab"
+
+# --- Untercodes 6C ---
+"6C(228)": "Flammensignal bei aus"
+"6C(306)": "Flammensignal nach Abschaltung"
+"6C(508)": "Zu hoher Flammenfühlerstrom"
+"6C(227)": "Flamme kurz erloschen"
+"6C(309)": "Flamme nach Neustart ausgefallen"
+
+# --- Netz / Strom / Sicherheit ---
+"7A": "Netzspannung zu niedrig"
+"7B": "Netzausfall / Spannung kritisch"
+"7C": "Netzspannung unterbrochen"
+"7D": "Sicherheitsabschaltung wegen Überlast"
+"7L(261)": "Zeitfehler Sicherheitszeit"
+"9L(234)": "Gasventil oder Kabel defekt"
+"9F": "Fremde Störung / Steuerung blockiert"
+
+# --- Sensor / Hydraulik / Temperatur ---
+"5L": "Drucksensorfehler"
+"5P": "Kein Temperaturanstieg – Luft im System?"
+"5A": "Drucksensor reagiert nicht"
+"5B": "Wasserfluss-Sensor defekt"
+"5C": "Temperatursensor Vorlauf defekt"
+"5D": "Temperatursensor Rücklauf defekt"
+"2A": "Temperatur zu hoch"
+"2E": "Temperatur zu niedrig"
+"2F": "Fühlerfehler Heizung"
+"2G": "Fühlerfehler Boiler"
+
+# --- System / Elektronik ---
+"A11": "Zünd-/Flammenfolgefehler"
+"A12": "Steuerung defekt – Reset nötig"
+"A13": "Kommunikationsstörung Brenner/Platine"
+"A21": "Durchfluss-/Strömungsschalterfehler"
+"A3": "Überhitzungsschutz ausgelöst"
+"A5": "Vorlauftemperatursensor defekt"
+"A6": "Rücklauftemperatursensor defekt"
+"A7": "Warmwasser-Temperatursensor defekt"
+"A8": "Elektronikplatine defekt"
+"A9": "Kommunikationsfehler Steuerung/Brenner"
+
+# --- Wasser / Boiler ---
+"B1": "Druck zu niedrig"
+"B2": "Wasserfluss zu niedrig"
+"B3": "Zirkulationspumpe defekt"
+"B4": "Warmwasserbereitungsfehler"
+"B5": "Warmwasser-Temperatur zu niedrig"
+"B6": "Warmwasser-Temperatur zu hoch"
+"B7": "Kaltwasserzulauffehler"
+"C1": "Abgassensor defekt"
+"C2": "Abgasstörung / Lüfterprobleme"
+"C3": "Kondensatpumpe defekt"
+
+# --- Thermostat / Kommunikation ---
+"4C": "Kommunikationsfehler Thermostat"
+"4C(224)": "Kommunikationsfehler RC310 – Bus-Störung"
+"4Y": "Thermostat-Verbindung unterbrochen"

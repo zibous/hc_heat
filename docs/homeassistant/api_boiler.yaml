@@ -1,0 +1,216 @@
+###############################################
+# REST SENSOR
+###############################################
+
+sensor:
+  - platform: rest
+    name: "EMS Boiler Komplett"
+    resource: "http://ems-heizung.siebler.home/api/boiler"
+    method: GET
+    headers:
+      Authorization: "Bearer YOUR_API_TOKEN"
+    value_template: "OK"
+    scan_interval: 30
+    json_attributes:
+      - heatingactive
+      - burngas
+      - curflowtemp
+      - selflowtemp
+      - heatingpumpmod
+      - outdoortemp
+      - nrgtotal
+      - nrgheat
+      - dhw
+
+###############################################
+# TEMPLATE + BINARY SENSOREN
+###############################################
+
+template:
+  - sensor:
+
+      # Temperaturen
+      - name: "Außentemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','outdoortemp') | float(0) }}"
+
+      - name: "Vorlauftemperatur"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','curflowtemp') | float(0) }}"
+
+      - name: "Soll Vorlauf"
+        unit_of_measurement: "°C"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','selflowtemp') | float(0) }}"
+
+      - name: "Pumpenleistung"
+        unit_of_measurement: "%"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','heatingpumpmod') | float(0) }}"
+
+      # Warmwasser (dhw!)
+      - name: "Warmwasser Temperatur"
+        unit_of_measurement: "°C"
+        state: >
+          {{ state_attr('sensor.ems_boiler_komplett','dhw')['curtemp'] | float(0) }}
+
+      - name: "Warmwasser Soll"
+        unit_of_measurement: "°C"
+        state: >
+          {{ state_attr('sensor.ems_boiler_komplett','dhw')['seltemp'] | float(0) }}
+
+      ###################################
+      # Betriebsmodus
+      ###################################
+
+      - name: "EMS Betriebsmodus"
+        state: >
+          {% set h = state_attr('sensor.ems_boiler_komplett','heatingactive') %}
+          {% set w = state_attr('sensor.ems_boiler_komplett','dhw')['active'] %}
+          {% set d = state_attr('sensor.ems_boiler_komplett','dhw')['disinfecting'] %}
+          {% if d == 'an' %}
+            Desinfektion
+          {% elif w == 'an' %}
+            Warmwasser
+          {% elif h == 'an' %}
+            Heizbetrieb
+          {% else %}
+            Standby
+          {% endif %}
+
+  - binary_sensor:
+
+      - name: "EMS Heizbetrieb Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','heatingactive') == 'an' }}"
+
+      - name: "EMS Warmwasser Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','dhw')['active'] == 'an' }}"
+
+      - name: "EMS Desinfektion Aktiv"
+        state: "{{ state_attr('sensor.ems_boiler_komplett','dhw')['disinfecting'] == 'an' }}"
+
+###############################################
+# INPUTS (Startzeiten + Dauer)
+###############################################
+
+input_datetime:
+  heizbetrieb_start:
+    has_date: true
+    has_time: true
+  warmwasser_start:
+    has_date: true
+    has_time: true
+  desinfektion_start:
+    has_date: true
+    has_time: true
+
+input_number:
+  heizbetrieb_dauer:
+    min: 0
+    max: 1440
+    step: 1
+  warmwasser_dauer:
+    min: 0
+    max: 1440
+    step: 1
+  desinfektion_dauer:
+    min: 0
+    max: 1440
+    step: 1
+
+###############################################
+# AUTOMATIONEN (Start + Ende + Dauer)
+###############################################
+
+automation:
+
+  ###################################
+  # HEIZBETRIEB
+  ###################################
+
+  - alias: "EMS Heizbetrieb Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_heizbetrieb_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.heizbetrieb_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Heizbetrieb Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_heizbetrieb_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.heizbetrieb_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.heizbetrieb_start')))
+                 / 60) | round(1) }}
+
+  ###################################
+  # WARMWASSER
+  ###################################
+
+  - alias: "EMS Warmwasser Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_warmwasser_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.warmwasser_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Warmwasser Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_warmwasser_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.warmwasser_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.warmwasser_start')))
+                 / 60) | round(1) }}
+
+  ###################################
+  # DESINFEKTION
+  ###################################
+
+  - alias: "EMS Desinfektion Start"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_desinfektion_aktiv
+        to: "on"
+    action:
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.desinfektion_start
+        data:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+  - alias: "EMS Desinfektion Ende"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ems_desinfektion_aktiv
+        to: "off"
+    action:
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.desinfektion_dauer
+        data:
+          value: >
+            {{ ((as_timestamp(now()) -
+                 as_timestamp(states('input_datetime.desinfektion_start')))
+                 / 60) | round(1) }}

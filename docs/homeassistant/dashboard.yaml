@@ -1,0 +1,142 @@
+title: EMS Heizung
+views:
+  - title: Übersicht
+    path: ems
+    icon: mdi:home-thermometer
+
+    cards:
+
+      ###############################################
+      # SYSTEM (api/system)
+      ###############################################
+
+      - type: entities
+        title: System
+        entities:
+          - sensor.ems_firmware_version
+          - sensor.ems_uptime
+          - sensor.ems_reset_grund
+          - sensor.ems_anlagenstatus
+          - sensor.ems_fehlercode
+          - sensor.ems_letzter_fehler
+
+      - type: gauge
+        title: WLAN Signal
+        entity: sensor.ems_wlan_signal
+        min: -100
+        max: -30
+        severity:
+          green: -60
+          yellow: -75
+          red: -100
+
+      - type: entities
+        title: System & Bus Qualität
+        entities:
+          - sensor.ems_system_gesundheit
+          - sensor.ems_bus_rx_qualitat
+          - sensor.ems_bus_tx_qualitat
+          - sensor.ems_api_fehler
+
+      ###############################################
+      # HEIZUNG / BOILER (api/boiler)
+      ###############################################
+
+      - type: thermostat
+        entity: sensor.ems_boiler_komplett
+
+      - type: entities
+        title: Heizung
+        entities:
+          - sensor.aussentemperatur
+          - sensor.vorlauftemperatur
+          - sensor.soll_vorlauf
+          - sensor.pumpenleistung
+          - sensor.brennerleistung
+          - sensor.energie_total
+          - sensor.energie_heizen
+
+      - type: gauge
+        title: Brennerleistung
+        entity: sensor.brennerleistung
+        min: 0
+        max: 100
+        severity:
+          green: 0
+          yellow: 50
+          red: 80
+
+      ###############################################
+      # WARMWASSER (dhw)
+      ###############################################
+
+      - type: entities
+        title: Warmwasser
+        entities:
+          - sensor.warmwasser_temperatur
+          - sensor.warmwasser_soll
+          - sensor.ems_betriebsmodus
+
+      - type: gauge
+        title: WW Temperatur
+        entity: sensor.warmwasser_temperatur
+        min: 30
+        max: 70
+        severity:
+          green: 50
+          yellow: 55
+          red: 60
+
+      ###############################################
+      # BETRIEBSMODUS + ZEITEN
+      ###############################################
+
+      - type: entities
+        title: Betriebszeiten
+        entities:
+          - binary_sensor.ems_heizbetrieb_aktiv
+          - input_datetime.heizbetrieb_start
+          - input_number.heizbetrieb_dauer
+
+          - binary_sensor.ems_warmwasser_aktiv
+          - input_datetime.warmwasser_start
+          - input_number.warmwasser_dauer
+
+          - binary_sensor.ems_desinfektion_aktiv
+          - input_datetime.desinfektion_start
+          - input_number.desinfektion_dauer
+
+      ###############################################
+      # THERMOSTAT (api/thermostat)
+      ###############################################
+
+      - type: entities
+        title: Heizkurve / Thermostat
+        entities:
+          - sensor.hk1_betriebsart
+          - sensor.hk1_komforttemperatur
+          - sensor.hk1_eco_temperatur
+          - sensor.hk1_solltemperatur
+          - sensor.hk1_vorlauf_soll
+          - sensor.hk1_heizungsmodus
+
+      - type: entities
+        title: Warmwasser Steuerung
+        entities:
+          - sensor.ww_solltemperatur
+          - sensor.ww_untere_solltemperatur
+          - sensor.ww_zirkulation_modus
+          - sensor.ww_desinfektion_status
+
+      ###############################################
+      # VERLAUF
+      ###############################################
+
+      - type: history-graph
+        title: Temperaturen (24h)
+        hours_to_show: 24
+        entities:
+          - sensor.aussentemperatur
+          - sensor.vorlauftemperatur
+          - sensor.warmwasser_temperatur
+          - sensor.soll_vorlauf

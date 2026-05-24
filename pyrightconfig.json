@@ -1,0 +1,22 @@
+{
+    "include": [
+        "app.py",
+        "config",
+        "lib"
+    ],
+    "exclude": [
+        "**/__pycache__",
+        ".venv",
+        "testcases",
+        "scripts"
+    ],
+    "pythonVersion": "3.12",
+    "typeCheckingMode": "basic",
+    "reportMissingTypeStubs": false,
+    "reportOptionalMemberAccess": "error",
+    "reportOptionalOperand": "error",
+    "reportOptionalSubscript": "error",
+    "reportOptionalCall": "error",
+    "reportAttributeAccessIssue": "none",
+    "reportPrivateUsage": "none"
+}
