@@ -6,13 +6,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH=/app \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
-    
+
 # Labels
 LABEL maintainer="Peter Siebler <peter.siebler@gmail.com>" \
       application="Heizungs Controller Anwendung" \
       version="2.0.0" \
       com.centurylinklabs.watchtower.enable="false" \
-      dockerhand.check-update="false"
+      dockerhand.check-update="false"  \
+      dockerhand.ignore="true"
 
 WORKDIR /app
 
