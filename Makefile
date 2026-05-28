@@ -111,6 +111,13 @@ resetdb: ## Produktiv-DB löschen (Neustart)
 prune: ## Ungenutzte Docker-Ressourcen entfernen
 	docker system prune -f
 
+git-update: ## Git Forgejo Update durchführen
+	git remote set-url origin http://10.1.1.119:3043/peter/hc_heat.git
+	git add -A
+	git commit -m "Update am $$(date +'%Y-%m-%d %H:%M')" || true
+	git push -u origin master
+
+
 # ---------------------------------------------------------
 # Hilfe
 # ---------------------------------------------------------
