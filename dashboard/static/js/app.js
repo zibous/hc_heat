@@ -150,3 +150,10 @@ function loadData() {
     });
 }
 loadData();
+
+// ─── App Info ───────────────────────────────────────────
+console.info(
+  '%c ⚡ Heizungsdashboard Dashboard %c ESM v2.3.0 ',
+  'color:#fff;background:#e94560;padding:4px 8px;border-radius:4px 0 0 4px;font-size:11px',
+  'color:#1a1a2e;background:#a8dadc;padding:4px 8px;border-radius:0 4px 4px 0;font-size:11px'
+);
