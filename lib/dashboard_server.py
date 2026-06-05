@@ -27,6 +27,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
     get_config: Optional[Callable] = None
     get_history: Optional[Callable] = None
     get_daily: Optional[Callable] = None
+    get_kpi: Optional[Callable] = None
 
     def log_message(self, format: str, *args: object) -> None:
         logger.debug("HTTP %s", format % args)
@@ -75,6 +76,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             params = parse_qs(parsed.query)
             name = params.get("name", [""])[0]
             self._send_history_csv(name)
+        elif path == "/api/kpidata":
+            self._send_json(self._get_kpi_data())
         elif path == "/":
             self._serve_file("index.html")
         else:
@@ -156,6 +159,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             return {"data": []}
         return {"data": self.get_history()}
 
+    def _get_kpi_data(self) -> dict:
+        """KPI-Daten für das zentrale Übersichts-Dashboard."""
+        if not self.get_kpi:
+            return {"app_id": "hc_heat", "status": "error", "hero": {"value": "–", "label": "Nicht verfügbar"}}
+        try:
+            return self.get_kpi()
+        except Exception as e:
+            logger.warning("KPI-Fehler: %s", e)
+            return {"app_id": "hc_heat", "status": "error", "hero": {"value": "–", "label": str(e)}}
+
     def _get_history_files(self) -> dict:
         """Listet verfügbare History-CSV-Dateien."""
         history_dir = BASE_DIR / "data" / "history"
@@ -196,6 +209,7 @@ class DashboardServer:
         get_config: Callable,
         get_history: Optional[Callable] = None,
         get_daily: Optional[Callable] = None,
+        get_kpi: Optional[Callable] = None,
     ):
         self.port = config.app.dashboard_port
         # Base-Path normalisieren: mit / am Anfang, ohne / am Ende
@@ -212,6 +226,7 @@ class DashboardServer:
             staticmethod(get_history) if get_history else None
         )
         DashboardHandler.get_daily = staticmethod(get_daily) if get_daily else None
+        DashboardHandler.get_kpi = staticmethod(get_kpi) if get_kpi else None
 
         self._server: Optional[HTTPServer] = None
         self._thread: Optional[threading.Thread] = None
