@@ -2,7 +2,7 @@
 
 .DEFAULT_GOAL := help
 .PHONY: run once simulate test install check build up down restart rebuild logs logs-tail ps stop start shell health clean resetdb prune help
-IMAGE := hc-haco2
+IMAGE := hc-heat2
 VERSION := 2.0.0
 
 PYTHON := ../.venv/bin/python
@@ -89,7 +89,7 @@ shell: ## Shell im Container öffnen
 	docker compose exec hc-haco2 /bin/bash
 
 health: ## Container Health prüfen
-	docker inspect --format='{{.State.Health.Status}}' hc-haco2
+	docker inspect --format='{{.State.Health.Status}}' hc-heat2
 
 # ---------------------------------------------------------
 # Wartung
@@ -116,6 +116,51 @@ git-update: ## Git Forgejo Update durchführen
 	git add -A
 	git commit -m "Update am $$(date +'%Y-%m-%d %H:%M')" || true
 	git push -u origin main
+
+
+compare: ## Vergleicht lokale Dateien mit Container-Inhalt
+	@mkdir -p /tmp/hc-heat2_files
+	@docker cp hc-heat2:/app/. /tmp/hc-heat2_files/
+	@echo "─── Geänderte Dateien ───"
+	@diff -qr --exclude="__pycache__" --exclude="*.pyc" --exclude=".git" \
+		--exclude="data" --exclude="logs" --exclude=".env" --exclude=".ruff_cache" \
+		./ /tmp/hc-heat2_files/ 2>/dev/null | sort || true
+	@echo ""
+	@echo "─── Nur lokal (neu/nicht im Container) ───"
+	@diff -qr --exclude="__pycache__" --exclude="*.pyc" --exclude=".git" \
+		--exclude="data" --exclude="logs" --exclude=".env" --exclude=".ruff_cache" \
+		./ /tmp/hc-heat2_files/ 2>/dev/null | grep "Nur in \./" | sort || true
+	@echo ""
+	@echo "─── Nur im Container (lokal gelöscht) ───"
+	@diff -qr --exclude="__pycache__" --exclude="*.pyc" --exclude=".git" \
+		--exclude="data" --exclude="logs" --exclude=".env" --exclude=".ruff_cache" \
+		./ /tmp/hc-heat2_files/ 2>/dev/null | grep "Nur in /tmp/" | sort || true
+	@rm -rf /tmp/hc-heat2_files
+
+diff-detail: ## Zeigt inhaltliche Unterschiede zum Container
+	@mkdir -p /tmp/hc-heat2_files
+	@docker cp hc-heat2:/app/. /tmp/hc-heat2_files/
+	@diff -ur --exclude="__pycache__" --exclude="*.pyc" --exclude=".git" \
+		--exclude="data" --exclude="logs" --exclude=".env" --exclude=".ruff_cache" \
+		/tmp/hc-heat2_files/ ./ 2>/dev/null || true
+	@rm -rf /tmp/hc-heat2_files
+
+# 🔧 Komprimiert JS und CSS parallel über Docker – maximal optimiert
+jsbuild:
+	@echo "📦 Starte JS & CSS Bundling via Docker & esbuild..."
+	@docker run --rm -v "$$(pwd)":/app -w /app node:20-alpine sh -c "\
+		npx esbuild dashboard/js/app.js --bundle --minify --sourcemap --target=es2020 --outfile=dashboard/js/app.bundle.js && \
+		npx esbuild dashboard/css/style.css --minify --sourcemap --outfile=dashboard/css/style.bundle.css"
+	@echo "✅ Fertig! JS und CSS Bundles wurden erfolgreich im static-Ordner erstellt."
+
+jsclean:
+	@echo "🧼 Bereinige produktive Build-Dateien..."
+	@rm -f dashboard/js/app.bundle.js
+	@rm -f dashboard/js/app.bundle.js.map
+	@rm -f dashboard/css/style.bundle.css
+	@rm -f dashboard/css/style.bundle.css.map
+	@echo "✨ Verzeichnis ist wieder sauber."
+
 
 
 # ---------------------------------------------------------

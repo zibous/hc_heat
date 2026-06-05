@@ -108,6 +108,7 @@ class HeatingController:
             self._get_dashboard_config,
             lambda: self.history_buffer.get_last_hours(48),
             self.db.query_daily,
+            self._get_kpi_data,
         )
 
     def _get_live_snapshot(self) -> dict:
@@ -126,6 +127,83 @@ class HeatingController:
             "gas_price_kwh": self.config.costs.gas_price_per_kwh,
             "gas_price_m3": self.config.costs.gas_price_per_m3,
             "currency": self.config.costs.currency,
+        }
+
+    def _get_kpi_data(self) -> dict:
+        """KPI-Daten für das zentrale Übersichts-Dashboard."""
+        from datetime import datetime
+
+        now = datetime.now()
+        live = self._live_data
+
+        # Modus bestimmen
+        mode = live.get("mode", "standby")
+        boiler = live.get("boiler", {})
+        dhw = live.get("dhw", {})
+        today = live.get("today", {})
+
+        # Status
+        burner_active = boiler.get("burner_active", False)
+        status = "ok"
+
+        # Modus-Text für Label
+        mode_labels = {
+            "heating": "Heizbetrieb",
+            "dhw": "Warmwasser",
+            "disinfection": "Desinfektion",
+            "standby": "Standby",
+        }
+        mode_text = mode_labels.get(mode, mode)
+
+        # Zusatzinfos
+        outdoor_temp = live.get("system", {}).get("outdoor_temp")
+        flow_temp = boiler.get("flow_temp")
+        dhw_temp = dhw.get("curtemp")
+
+        # Label zusammenbauen
+        label_parts = [mode_text]
+        if outdoor_temp is not None:
+            label_parts.append(f"Außen {outdoor_temp:.0f}°C")
+        if burner_active and boiler.get("burner_power_percent"):
+            label_parts.append(f"Brenner {boiler['burner_power_percent']}%")
+        label = " · ".join(label_parts)
+
+        # Hero: Tagesverbrauch Energie (kWh)
+        energy_today = today.get("energy_kwh", 0)
+
+        # Detail: Heizung/WW aufgeteilt
+        heat_kwh = today.get("heat_kwh", 0)
+        dhw_kwh = today.get("dhw_kwh", 0)
+        detail = f"Heute {now.strftime('%d.%m.%Y')} · Heizung {heat_kwh} · WW {dhw_kwh} kWh"
+
+        # Sparkline: letzte 7 Tage energy_kwh
+        try:
+            daily = self.db.query_daily(7)
+            sparkline = [row["energy_kwh"] for row in daily]
+        except Exception:
+            sparkline = []
+
+        indicator = None
+        if sparkline:
+            indicator = {
+                "type": "sparkline",
+                "values": sparkline,
+            }
+
+        return {
+            "app_id": "hc_heat",
+            "app_name": "Heizung",
+            "icon": "local_fire_department",
+            "url": "http://nuc:5028",
+            "status": status,
+            "ts": now.isoformat(timespec="seconds"),
+            "hero": {
+                "value": round(energy_today, 2),
+                "unit": "kWh",
+                "label": label,
+            },
+            "detail": detail,
+            "indicator": indicator,
         }
 
     def run(self) -> None:
