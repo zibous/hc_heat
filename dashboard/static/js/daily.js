@@ -2,49 +2,23 @@
 'use strict';
 
 var dailyChart = null;
-var currentDays = localStorage.getItem('haco-period') !== null ? parseInt(localStorage.getItem('haco-period')) : 1;
+var _dailyRefresh = null;
 
-/* Gespeicherte Periode beim Start aktivieren */
-document.querySelectorAll('.ptab').forEach(function (t) {
-    t.classList.toggle('active', parseInt(t.dataset.d) === currentDays);
-});
-if (currentDays === 0) {
-    document.getElementById('dateFrom').style.display = '';
-    document.getElementById('dateTo').style.display = '';
+function exportCSV() {
+    window.location.href = _bp + '/api/export?days=30';
 }
 
-function exportCSV() { window.location.href = _bp + '/api/export?days=' + (currentDays || 30); }
-
-function switchPeriod(days) {
-    currentDays = days;
-    localStorage.setItem('haco-period', days);
-    document.querySelectorAll('.ptab').forEach(function (t) { t.classList.toggle('active', parseInt(t.dataset.d) === days); });
-    var showRange = days === 0;
-    document.getElementById('dateFrom').style.display = showRange ? '' : 'none';
-    document.getElementById('dateTo').style.display = showRange ? '' : 'none';
-    loadDaily();
-}
-
-function loadDaily() {
-    var days = currentDays;
-    if (days === null || days === undefined) days = 14;
-    var url;
-    if (days === 0) {
-        var from = document.getElementById('dateFrom').value;
-        var to = document.getElementById('dateTo').value;
-        url = (from && to) ? _bp + '/api/daily?from=' + from + '&to=' + to : _bp + '/api/daily?days=30';
-    } else {
-        url = _bp + '/api/daily?days=' + days;
-    }
-    _fetch(url).then(function (r) { return r.json() }).then(function (res) { renderDaily(res.data || []) }).catch(function () { });
+function loadDaily(from, to) {
+    var url = _bp + '/api/daily?from=' + from + '&to=' + to;
+    _fetch(url).then(function (r) { return r.json(); }).then(function (res) { renderDaily(res.data || []); }).catch(function () { });
 }
 
 function renderDaily(data) {
     if (!data || !data.length) return;
     var c = cc();
-    _fetch(_bp + '/api/config').then(function (r) { return r.json() }).then(function (cfg) {
+    _fetch(_bp + '/api/config').then(function (r) { return r.json(); }).then(function (cfg) {
         _renderDailyInner(data, c, cfg.gas_price_kwh || 0.103);
-    }).catch(function () { _renderDailyInner(data, c, 0.103) });
+    }).catch(function () { _renderDailyInner(data, c, 0.103); });
 }
 
 function _renderDailyInner(data, c, gpk) {
@@ -61,7 +35,7 @@ function _renderDailyInner(data, c, gpk) {
             var dt = new Date(d.day);
             return (!isNaN(dt) && dt.getDay() === 6) ? Math.min(d.dhw_kwh, d.energy_kwh * 0.05) : 0;
         });
-        var wwOnly = data.map(function (d, i) { return Math.max(0, d.dhw_kwh - disData[i]) });
+        var wwOnly = data.map(function (d, i) { return Math.max(0, d.dhw_kwh - disData[i]); });
 
         var ctx = document.getElementById('dailyChart').getContext('2d');
         if (dailyChart) dailyChart.destroy();
@@ -70,11 +44,11 @@ function _renderDailyInner(data, c, gpk) {
             data: {
                 labels: labels,
                 datasets: [
-                    { label: '🏠 Heizung', data: data.map(function (d) { return d.heat_kwh }), backgroundColor: 'rgba(239,68,68,0.7)', stack: 'kwh', yAxisID: 'y' },
+                    { label: '🏠 Heizung', data: data.map(function (d) { return d.heat_kwh; }), backgroundColor: 'rgba(239,68,68,0.7)', stack: 'kwh', yAxisID: 'y' },
                     { label: '💧 Warmwasser', data: wwOnly, backgroundColor: 'rgba(59,130,246,0.7)', stack: 'kwh', yAxisID: 'y' },
                     { label: '🧹 Desinfektion', data: disData, backgroundColor: 'rgba(245,158,11,0.7)', stack: 'kwh', yAxisID: 'y' },
-                    { label: '⛽ Gas m³', data: data.map(function (d) { return d.gas_m3 || 0 }), type: 'line', borderColor: '#f59e0b', borderWidth: 2, pointRadius: 2, tension: .3, yAxisID: 'y1', fill: false, borderDash: [4, 2] },
-                    { label: '💰 Kosten €', data: data.map(function (d) { return Math.round(d.energy_kwh * gpk * 100) / 100 }), type: 'line', borderColor: '#10b981', borderWidth: 2, pointRadius: 3, tension: .3, yAxisID: 'y1', fill: false }
+                    { label: '⛽ Gas m³', data: data.map(function (d) { return d.gas_m3 || 0; }), type: 'line', borderColor: '#f59e0b', borderWidth: 2, pointRadius: 2, tension: .3, yAxisID: 'y1', fill: false, borderDash: [4, 2] },
+                    { label: '💰 Kosten €', data: data.map(function (d) { return Math.round(d.energy_kwh * gpk * 100) / 100; }), type: 'line', borderColor: '#10b981', borderWidth: 2, pointRadius: 3, tension: .3, yAxisID: 'y1', fill: false }
                 ]
             },
             options: {
@@ -90,7 +64,7 @@ function _renderDailyInner(data, c, gpk) {
 
         /* Zusammenfassung */
         var sumE = 0, sumH = 0, sumD = 0, sumG = 0, sumB = 0, sumDis = 0;
-        data.forEach(function (d, i) { sumE += d.energy_kwh; sumH += d.heat_kwh; sumD += d.dhw_kwh; sumG += d.gas_m3; sumB += d.burner_min; sumDis += disData[i] });
+        data.forEach(function (d, i) { sumE += d.energy_kwh; sumH += d.heat_kwh; sumD += d.dhw_kwh; sumG += d.gas_m3; sumB += d.burner_min; sumDis += disData[i]; });
         var sumWW = sumD - sumDis, days = data.length;
         var s = '<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:6px 0">';
         s += '<span>Σ <b>' + F(sumE, 1) + '</b> kWh</span>';
@@ -100,7 +74,7 @@ function _renderDailyInner(data, c, gpk) {
         s += '<span>⛽ ' + F(sumG, 2) + ' m³</span>';
         s += '<span style="color:var(--green)">💰 ' + F(sumE * gpk, 2) + ' €</span>';
         s += '<span>⏱ ' + fH(sumB) + '</span>';
-        if (days > 1) s += '<span style="color:var(--muted)">⌀ ' + F(sumE / days, 1) + ' kWh/' + (currentDays > 90 ? 'Monat' : 'Tag') + '</span>';
+        if (days > 1) s += '<span style="color:var(--muted)">⌀ ' + F(sumE / days, 1) + ' kWh/' + (days > 90 ? 'Monat' : 'Tag') + '</span>';
         s += '</div>';
         document.getElementById('mainTable').innerHTML = s;
     } catch (e) {
@@ -108,11 +82,12 @@ function _renderDailyInner(data, c, gpk) {
     }
 }
 
-/* Zeitraum-Inputs */
-var _today = new Date().toISOString().split('T')[0];
-var _monthAgo = new Date(Date.now() - 30 * 86400000).toISOString().split('T')[0];
-document.getElementById('dateFrom').value = localStorage.getItem('haco-from') || _monthAgo;
-document.getElementById('dateTo').value = localStorage.getItem('haco-to') || _today;
-document.getElementById('dateFrom').addEventListener('change', function () { localStorage.setItem('haco-from', this.value); loadDaily() });
-document.getElementById('dateTo').addEventListener('change', function () { localStorage.setItem('haco-to', this.value); loadDaily() });
-loadDaily();
+/* DateSelector initialisieren */
+_dailyRefresh = initDateSelector(document.getElementById('dailyPeriodSelector'), function (sel) {
+    var p = sel.params;
+    if (sel.period === 'today') {
+        loadDaily(null, null, 1);
+    } else {
+        loadDaily(p.from, p.to);
+    }
+});

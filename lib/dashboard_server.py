@@ -61,7 +61,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             if "from" in params and "to" in params:
                 from_date = params["from"][0]
                 to_date = params["to"][0]
-                data = self.get_daily(0, from_date, to_date) if self.get_daily else []
+                if from_date == to_date:
+                    # Einzeltag → Stundendaten (wie days=1)
+                    data = self.get_daily(1, from_date) if self.get_daily else []
+                else:
+                    data = self.get_daily(0, from_date, to_date) if self.get_daily else []
             else:
                 days = int(params.get("days", ["14"])[0])
                 data = self.get_daily(days) if self.get_daily else []

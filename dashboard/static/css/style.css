@@ -1,34 +1,17 @@
+@import "./theme.css";
+
+/* App-spezifische Farben */
 :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --border: #2e3350;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --accent: #3b82f6;
-    --green: #10b981;
-    --red: #ef4444;
-    --orange: #f59e0b;
-    --grid: #1e2235;
-    --heat: #ef4444;
-    --dhw: #3b82f6;
-    --gas: #f59e0b;
+    --heat: var(--red);
+    --dhw: var(--accent);
+    --gas: var(--orange);
     --prev: #8b9dc3
 }
 
 body.light {
-    --bg: #f1f5f9;
-    --surface: #fff;
-    --border: #e2e8f0;
-    --text: #0f172a;
-    --muted: #94a3b8;
-    --accent: #2563eb;
-    --green: #059669;
-    --red: #dc2626;
-    --orange: #d97706;
-    --grid: #e2e8f0;
-    --heat: #dc2626;
-    --dhw: #2563eb;
-    --gas: #d97706;
+    --heat: var(--red);
+    --dhw: var(--accent);
+    --gas: var(--orange);
     --prev: #475569
 }
 
@@ -224,10 +207,8 @@ h1 {
 }
 
 .detail-grid {
-    width: 100%
-}
-
-gap: 4px
+    width: 100%;
+    gap: 4px;
 }
 
 .detail-item {

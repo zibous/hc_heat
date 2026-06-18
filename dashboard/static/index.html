@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Heizung Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-    <link rel="stylesheet" href="css/style.css?v=73">
+    <link rel="stylesheet" href="css/style.bundle.css">
 </head>
 
 <body>
@@ -57,21 +57,13 @@
     </div>
 
     <div class="card">
-        <h3>⚡ Verbrauch · ⛽ Gas · 💰 Kosten</h3>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center">
-            <button class="ptab active" data-d="1" onclick="switchPeriod(1)">Heute</button>
-            <button class="ptab" data-d="7" onclick="switchPeriod(7)">7 Tage</button>
-            <button class="ptab" data-d="30" onclick="switchPeriod(30)">Monat</button>
-            <button class="ptab" data-d="365" onclick="switchPeriod(365)">Jahr</button>
-            <button class="ptab" data-d="0" onclick="switchPeriod(0)">Zeitraum</button>
-            <input type="date" id="dateFrom"
-                style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:4px 8px;font-size:.8rem;color-scheme:dark">
-            <input type="date" id="dateTo"
-                style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:4px 8px;font-size:.8rem;color-scheme:dark">
-            <button class="ptab" onclick="exportCSV()" style="margin-left:auto">📥 CSV</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+            <h3 style="margin:0">⚡ Verbrauch · ⛽ Gas · 💰 Kosten</h3>
+            <div id="dailyPeriodSelector" style="display:flex;align-items:center"></div>
         </div>
         <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
         <div id="mainTable" style="margin-top:8px;font-size:.75rem;color:var(--muted);text-align:center"></div>
+        <div style="text-align:right;margin-top:6px"><button class="ptab" onclick="exportCSV()">📥 CSV</button></div>
     </div>
 
     <div class="card">
@@ -83,12 +75,8 @@
         Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s · v79
     </footer>
 
-    <!-- JS: Reihenfolge wichtig (app → render → charts → daily) -->
-    <script src="js/app.js?v=73"></script>
-    <script src="js/render.js?v=79"></script>
-    <script src="js/schema.js?v=78"></script>
-    <script src="js/charts.js?v=73"></script>
-    <script src="js/daily.js?v=73"></script>
+    <!-- JS Bundle -->
+    <script src="js/app.bundle.js"></script>
 </body>
 
 </html>
