@@ -1,0 +1,84 @@
+{
+    "data": [
+        {
+            "day": "00:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "01:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "02:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "03:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "04:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "05:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "06:00",
+            "energy_kwh": 0.23,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.22,
+            "gas_m3": 0.0,
+            "burner_min": 15
+        },
+        {
+            "day": "07:00",
+            "energy_kwh": 3.07,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 3.07,
+            "gas_m3": 0.299,
+            "burner_min": 68
+        },
+        {
+            "day": "08:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        },
+        {
+            "day": "09:00",
+            "energy_kwh": 0.0,
+            "heat_kwh": 0.0,
+            "dhw_kwh": 0.0,
+            "gas_m3": 0.0,
+            "burner_min": 0
+        }
+    ]
+}

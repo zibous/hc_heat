@@ -1,0 +1,171 @@
+{
+    "timestamp": "2026-06-19T09:20:34.575012+02:00",
+    "mode": "standby",
+    "mode_since": "2026-06-19T07:12:22.405997+02:00",
+    "mode_duration_sec": 7692.169015,
+    "today": {
+        "energy_kwh": 3.35,
+        "heat_kwh": 0.0,
+        "dhw_kwh": 3.34,
+        "gas_m3": 0.299,
+        "burner_min": 83,
+        "cost_eur": 0.39,
+        "cost_heat_eur": 0.0,
+        "cost_dhw_eur": 0.39
+    },
+    "system": {
+        "outdoor_temp": 25.5,
+        "heating_active": false,
+        "heating_off": false,
+        "tapwater_active": false,
+        "curve_on": false,
+        "summer_temp": 16.0,
+        "frost_mode": false
+    },
+    "boiler": {
+        "flow_temp": 48.2,
+        "flow_set_temp": 5.0,
+        "outdoor_temp": 25.5,
+        "burner_active": false,
+        "heating_active": false,
+        "heating_enabled": false,
+        "burner_power_percent": 0,
+        "flame_current": 0.0,
+        "nominal_power_kw": 14,
+        "current_power_kw": 0.0,
+        "pump_active": false,
+        "pump_modulation": 0,
+        "pump_mode": "deltaP-2",
+        "lastcode": "4C(224) 23.04.2026 14:17 (0 min)",
+        "service_code": "0H",
+        "maintenance_date": "30.06.2026"
+    },
+    "dhw": {
+        "curtemp": 58.9,
+        "settemp": 57.0,
+        "active": false,
+        "charging": false,
+        "tempok": true,
+        "disinfecting": false,
+        "disinfection_temp": 70.0,
+        "comfort": "Eco",
+        "storage_type": "Speicher",
+        "flowtempoffset": 40.0
+    },
+    "heating_circuit": {
+        "flow_temp": 48.2,
+        "return_temp": null,
+        "set_flow_temp": 5.0,
+        "pump_active": false
+    },
+    "gas": {
+        "display_m3": 32421.936,
+        "total_m3": 3361.282,
+        "timestamp": "2026-06-19T07:12:19"
+    },
+    "consumption": {
+        "energy_total_kwh": 16283.92,
+        "energy_heat_kwh": 11280.08,
+        "energy_dhw_kwh": 5003.84,
+        "energy_dhw_only_kwh": 5003.84,
+        "energy_disinfection_kwh": 0.0,
+        "period_energy_total_kwh": 683.9200000000001,
+        "period_energy_heat_kwh": 330.0799999999999,
+        "period_energy_dhw_kwh": 353.84000000000015,
+        "period_energy_dhw_only_kwh": 353.84000000000015,
+        "period_energy_disinfection_kwh": 0.0,
+        "period_gas_m3": 501.9360000000015,
+        "burner_starts": 61763,
+        "burner_runtime_min": 485846,
+        "heating_starts": 56226,
+        "heating_runtime_min": 435601,
+        "dhw_runtime_min": 50245,
+        "dhw_starts": 5537,
+        "disinfection_ratio": 0.0
+    },
+    "costs": {
+        "gas_total_eur": 595.3543205760018,
+        "energy_total_eur": 79.60828800000002,
+        "energy_heat_eur": 38.42131199999999,
+        "energy_dhw_eur": 41.186976000000016,
+        "energy_dhw_only_eur": 41.186976000000016,
+        "energy_disinfection_eur": 0.0,
+        "gas_period": "2025-09-01 – 2026-08-31",
+        "energy_period": "2026",
+        "currency": "EUR"
+    },
+    "errors": {
+        "count": 0,
+        "boiler": {
+            "code": null,
+            "description": null,
+            "date": null
+        },
+        "thermostat": {
+            "code": null,
+            "description": null,
+            "date": null
+        }
+    },
+    "thermostat": {
+        "lastcode": " 4C(224) 23.04.2026 14:17-23.04.2026 14:37",
+        "datetime": "19.06.2026 09:20",
+        "damped_outdoor_temp": 25.5,
+        "building": "Leicht",
+        "hc1": {
+            "mode": "auto",
+            "modetype": "Komfort",
+            "seltemp": 25.0,
+            "comforttemp": 25.0,
+            "ecotemp": 21.0,
+            "manualtemp": 24.0,
+            "summertemp": 18.0,
+            "designtemp": 45.0,
+            "targetflowtemp": 28.0,
+            "minflowtemp": 25.0,
+            "maxflowtemp": 60.0,
+            "heatingtype": "Heizkörper",
+            "summermode": "Winter",
+            "controlmode": "Wetter kompensiert",
+            "nofrostmode": "Außen",
+            "nofrosttemp": 0.0,
+            "program": "prog 1",
+            "control": "RC310"
+        },
+        "wwk": {
+            "mode": "Eigenprog.",
+            "settemp": 56.0,
+            "settemplow": 45.0,
+            "circmode": "Eigenprog.",
+            "chargeduration": 60,
+            "charge": false,
+            "disinfecting": false,
+            "disinfectday": "Sa",
+            "disinfecttime": 120,
+            "dailyheating": false,
+            "dailyheattime": 120,
+            "extra": false
+        }
+    },
+    "prev": {
+        "outdoor_temp": 25.5,
+        "flow_temp": 50.4,
+        "dhw_temp": 59.2,
+        "burner_power": 0,
+        "pump_modulation": 0,
+        "energy_total": 683.9200000000001,
+        "gas_m3": 501.9360000000015,
+        "mode": "standby"
+    },
+    "last_cycles": {
+        "dhw": {
+            "mode": "dhw",
+            "start": "2026-06-19T06:57:22.764495+02:00",
+            "end": "2026-06-19T07:12:22.405929+02:00",
+            "duration_min": 15.0,
+            "energy_kwh": 3.33,
+            "gas_m3": 0.299
+        }
+    },
+    "cycle_count": 628
+}

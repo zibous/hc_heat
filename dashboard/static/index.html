@@ -1,82 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Heizung Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-    <link rel="stylesheet" href="css/style.bundle.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heizungs-Dashboard v2</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="css/style2.css">
 </head>
-
 <body>
+
     <div class="header">
-        <div>
+        <div class="title-info">
             <h1 id="title">Heizung · Dashboard</h1>
-            <div class="subtitle" id="subtitle"></div>
+            <div class="subtitle" id="subtitle">Lade Konfiguration...</div>
         </div>
-        <div style="display:flex;align-items:center;gap:10px">
-            <span id="updateTime" style="font-size:.72rem;color:var(--muted)"></span>
-            <button class="theme-btn" onclick="toggleTheme()">🌙</button>
-            <button class="theme-btn" onclick="document.getElementById('bgPicker').click()">🎨</button>
-            <input type="color" id="bgPicker" style="display:none" oninput="applyBgColor(this.value)"
-                onchange="applyBgColor(this.value)">
-            <button class="theme-btn" id="bgResetBtn" onclick="resetBgColor()" style="display:none;font-size:.7rem"
-                title="Farbe zurücksetzen">✕</button>
+        <div class="header-right">
+            <span id="header-update" style="font-size:.72rem;color:var(--text-muted)"></span>
+            <button id="themeBtn" class="ibtn" style="background:none;border:1px solid var(--border);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:1rem;">🌙</button>
         </div>
     </div>
 
-    <div class="card">
-        <div class="row" id="statusRow"></div>
-        <div class="row" id="infoRow" style="margin-top:12px"></div>
-    </div>
-
-    <div class="card">
-        <h3>🔥 Heizungsanlage</h3>
-        <div id="flowChart"></div>
-        <div id="flowMobile" style="display:none"></div>
-        <div id="statusBanner" style="margin-top:12px;font-size:.85rem;text-align:center"></div>
-        <div id="progressBar" style="margin-top:10px"></div>
-    </div>
-
-    <div class="card">
-        <h3>🌡️ Temperaturen</h3>
-        <div class="tiles" id="tempTiles"></div>
-    </div>
-
-    <div class="card">
-        <h3>📈 Temperaturverlauf</h3>
-        <div class="chart-wrap"><canvas id="tempChart"></canvas></div>
-        <div id="tempInfo" style="margin-top:6px;font-size:.75rem;color:var(--muted);text-align:center"></div>
-    </div>
-
-    <div class="card">
-        <h3>📉 Heizkurve – Außentemperatur → Vorlauf</h3>
-        <div class="chart-wrap"><canvas id="curveChart"></canvas></div>
-        <div id="curveInfo" style="margin-top:6px;font-size:.75rem;color:var(--muted);text-align:center"></div>
-    </div>
-
-    <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-            <h3 style="margin:0">⚡ Verbrauch · ⛽ Gas · 💰 Kosten</h3>
-            <div id="dailyPeriodSelector" style="display:flex;align-items:center"></div>
-        </div>
-        <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
-        <div id="mainTable" style="margin-top:8px;font-size:.75rem;color:var(--muted);text-align:center"></div>
-        <div style="text-align:right;margin-top:6px"><button class="ptab" onclick="exportCSV()">📥 CSV</button></div>
-    </div>
-
-    <div class="card">
-        <h3>📊 Erweiterte Werte</h3>
-        <div id="detailGrid" class="detail-grid"></div>
-    </div>
+    <div id="dashboard-container"></div>
 
     <footer style="text-align:center;color:var(--muted);font-size:.7rem;padding:16px">
-        Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s · v79
+        Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s
     </footer>
 
-    <!-- JS Bundle -->
-    <script src="js/app.bundle.js"></script>
-</body>
+    <!-- DEV: einzelne Module -->
+    <script type="module" src="js/v2/main.js"></script>
+    <!-- PROD: gebundelt -->
+    <!-- <script type="module" src="js/v2/main.bundle.js"></script> -->
 
+</body>
 </html>
