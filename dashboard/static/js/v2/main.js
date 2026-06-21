@@ -5,20 +5,18 @@ import { getAppleIcon } from './components/icons.js';
 const dashboard = new HeizungDashboard('dashboard-container');
 
 const REFRESH_INTERVAL_SEC = 60;
-let countdown = REFRESH_INTERVAL_SEC;
+let refreshInterval = REFRESH_INTERVAL_SEC;
+let countdown = refreshInterval;
 let historyLoaded = false;
 
 /**
  * Holt Live-Daten + History/Daily und aktualisiert das Dashboard.
- * Nur 1 API-Call pro Refresh (live), History+Daily nur beim Start.
  */
 async function fetchData() {
   try {
     const res = await fetch('./api/live');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-
-    // History + Daily nur beim ersten Laden (oder alle 5 Min)
     if (!historyLoaded) {
       const [hRes, dRes] = await Promise.all([
         fetch('./api/history').catch(() => null),
@@ -50,7 +48,7 @@ async function fetchData() {
       }
     }
 
-    countdown = REFRESH_INTERVAL_SEC;
+    countdown = refreshInterval;
     updateTimerUI();
   } catch (err) {
     console.error('Datenabruf fehlgeschlagen:', err);
@@ -70,12 +68,23 @@ fetchData();
 let _configData = {};
 fetch('./api/config').then(r => r.json()).then(cfg => {
   _configData = cfg;
-  if (cfg.title) document.getElementById('title').textContent = cfg.title;
+  if (cfg.title) {
+    // 🌟 Verhindert das Überschreiben unserer farbigen <span> Elemente aus dem HTML-Skelett
+    const titleEl = document.getElementById('title');
+    if (titleEl && !titleEl.innerHTML.includes('span')) {
+      titleEl.textContent = cfg.title;
+    }
+  }
   const sub = [];
   if (cfg.manufacturer) sub.push(cfg.manufacturer);
   if (cfg.model) sub.push(cfg.model);
   if (cfg.installed) sub.push('Installiert: ' + cfg.installed.substring(0, 10));
   if (sub.length) document.getElementById('subtitle').textContent = sub.join(' · ');
+  // Intervall aus Config übernehmen (Simulate = 5s, Produktion = 60s)
+  if (cfg.interval && cfg.interval > 0) {
+    refreshInterval = cfg.interval;
+    countdown = refreshInterval;
+  }
 }).catch(() => {});
 
 setInterval(() => {
@@ -91,27 +100,44 @@ setInterval(() => {
 setInterval(() => { historyLoaded = false; }, 300000);
 
 
-// Theme Toggle
-const themeBtn = document.getElementById('themeBtn');
-if (themeBtn) {
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.body.classList.toggle('light', theme === 'light');
-    themeBtn.innerHTML = theme === 'dark' ? getAppleIcon('sun', 16, '#f59e0b') : getAppleIcon('moon', 16, '#64748b');
-    // Chart.js Gridlines und Texte aktualisieren
-    syncChartColors();
+// 🌟 THEME LOGIK & FOOTER INTEGRATION
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.classList.toggle('light', theme === 'light');
+
+  // Text im Footer synchronisieren
+  const footerBtn = document.getElementById('themeToggleFooter');
+  if (footerBtn) {
+    footerBtn.innerHTML = theme === 'dark' ? '☀️ Helles Design' : '🌙 Dunkles Design';
   }
 
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  applyTheme(savedTheme);
+  // Chart.js Gridlines und Texte aktualisieren
+  syncChartColors();
+}
 
-  themeBtn.addEventListener('click', () => {
+// Initialer Theme-Start (synchronisiert über health-theme)
+const savedTheme = localStorage.getItem('health-theme') || localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
+
+// Globaler Klick-Abfänger für den neuen Footer-Link
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.id === 'themeToggleFooter') {
     const current = document.documentElement.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
     applyTheme(next);
+    localStorage.setItem('health-theme', next);
     localStorage.setItem('theme', next);
-  });
-}
+  }
+});
+
+// Setzt den korrekten Zustand beim DOM-Ready
+document.addEventListener('DOMContentLoaded', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const footerBtn = document.getElementById('themeToggleFooter');
+  if (footerBtn) {
+    footerBtn.innerHTML = current === 'dark' ? '☀️ Helles Design' : '🌙 Dunkles Design';
+  }
+});
 
 function syncChartColors() {
   const style = getComputedStyle(document.documentElement);
@@ -135,6 +161,7 @@ function syncChartColors() {
     chart.update('none');
   }
 }
+
 /* ----------------------------------------------------
    INFO
 ---------------------------------------------------- */

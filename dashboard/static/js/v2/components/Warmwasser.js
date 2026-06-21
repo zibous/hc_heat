@@ -2,47 +2,47 @@
 export class Warmwasser {
     render() {
         return `
-            <g id="comp-ww">
+            <g id="comp-ww" transform="translate(0, 15)">
                 <!-- Warmwasserspeicher BS 150 -->
-                <rect id="box-speicher" x="80" y="220" width="180" height="105" class="bx" />
-                <text x="170" y="242" text-anchor="middle" class="sv">BS 150</text>
-                <circle id="dot-ww" cx="248" cy="232" r="4" fill="#64748b"/>
+                <rect id="box-speicher" x="80" y="230" width="180" height="105" class="bx" />
+                <text x="170" y="252" text-anchor="middle" class="sv">BS 150</text>
+                <circle id="dot-ww" cx="248" cy="242" r="4" fill="#64748b"/>
 
                 <!-- Dynamische Speicher-Zeile mit integriertem Vektor-Tropfen -->
                 <g id="speicher-werte-group">
-                    <g id="speicher-icon-container" transform="translate(100, 247)">
+                    <g id="speicher-icon-container" transform="translate(100, 257)">
                         <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-13-7-13S5 10.7 5 15a7 7 0 0 0 7 7z" fill="currentColor" stroke="none"/>
                     </g>
-                    <text id="speicher-werte" x="122" y="259" class="st">--°C · Soll --°C</text>
+                    <text id="speicher-werte" x="122" y="269" class="st">--°C · Soll --°C</text>
                 </g>
 
-                <text id="speicher-status" x="170" y="276" text-anchor="middle" class="su">Bereit</text>
-                <rect x="95" y="285" width="150" height="4" rx="2" class="bg-bar" />
-                <rect id="bar-speicher" x="95" y="285" width="150" height="4" rx="2" class="p-blue" />
+                <text id="speicher-status" x="170" y="286" text-anchor="middle" class="su">Bereit</text>
+                <rect x="95" y="295" width="150" height="4" rx="2" class="bg-bar" />
+                <rect id="bar-speicher" x="95" y="295" width="150" height="4" rx="2" class="p-blue" />
 
                 <!-- Rohrleitung & Pfeil -->
-                <line id="rohr-ww-speisung" x1="260" y1="270" x2="470" y2="270" class="pipe" />
-                <polygon id="pfeil-ww" points="465,265 475,270 465,275" class="bg-bar" />
+                <line id="rohr-ww-speisung" x1="260" y1="280" x2="470" y2="280" class="pipe" />
+                <polygon id="pfeil-ww" points="465,275 475,280 465,285" class="bg-bar" />
 
                 <!-- Verbrauchsanzeige Warmwasser -->
-                <rect id="box-ww" x="480" y="245" width="250" height="150" class="bx" />
+                <rect id="box-ww" x="480" y="255" width="250" height="150" class="bx" />
 
                 <!-- Modernes Dusch-Icon -->
-                <g class="icon-svg" transform="translate(500, 256)">
+                <g class="icon-svg" transform="translate(500, 266)">
                     <path d="M4 4h16v2H4z" fill="currentColor"/>
                     <path d="M12 6v6M8 14v4M12 14v4M16 14v4M6 14v2M18 14v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </g>
-                <text x="530" y="271" class="sv">Warmwasser</text>
+                <text x="530" y="281" class="sv">Warmwasser</text>
 
-                <text id="ww-werte" x="605" y="288" text-anchor="middle" class="su">--°C</text>
-                <rect x="510" y="297" width="190" height="4" rx="2" class="bg-bar" />
-                <rect id="bar-ww" x="510" y="297" width="0" height="4" rx="2" class="p-blue" />
-                <text id="ww-zeit" x="605" y="317" text-anchor="middle" class="sl">Letzter: --:-- · --m</text>
-                <text id="ww-verbrauch" x="605" y="333" text-anchor="middle" class="sl">--,-- kWh · --,--- m³</text>
+                <text id="ww-werte" x="605" y="298" text-anchor="middle" class="su">--°C</text>
+                <rect x="510" y="307" width="190" height="4" rx="2" class="bg-bar" />
+                <rect id="bar-ww" x="510" y="307" width="0" height="4" rx="2" class="p-blue" />
+                <text id="ww-zeit" x="605" y="327" text-anchor="middle" class="sl">Letzter: --:-- · --m</text>
+                <text id="ww-verbrauch" x="605" y="343" text-anchor="middle" class="sl">--,-- kWh · --,--- m³</text>
 
                 <!-- Kaltwasseranschluss -->
-                <line x1="170" y1="325" x2="170" y2="400" class="pipe" style="stroke:#06b6d4" />
-                <text x="185" y="390" class="sl" style="fill:#06b6d4">Kaltwasser</text>
+                <line x1="170" y1="335" x2="170" y2="410" class="pipe" style="stroke:#06b6d4" />
+                <text x="185" y="400" class="sl" style="fill:#06b6d4">Kaltwasser</text>
             </g>
         `;
     }
@@ -79,13 +79,19 @@ export class Warmwasser {
 
         // Warmwasserbereitung läuft wenn der Server "charging" meldet, das "aktiv" Flag gesetzt ist ODER Modus "dhw" ist
         const istWwAktiv = dhw.charging || aktiv || data.mode === 'dhw';
+        // Desinfektion: Nur der Speicher (BS 150) wird geheizt, kein WW-Verbrauch
+        const istSpeicherAktiv = istWwAktiv || dhw.disinfecting || data.mode === 'disinfection';
 
         // 2. Speicher-Inhalte (BS 150) einpflegen
         if (speicherWerte) {
             speicherWerte.textContent = `${formatNum(dhw.curtemp)}°C · Soll ${formatNum(dhw.settemp, 0)}°C`;
         }
         if (speicherStatus) {
-            speicherStatus.textContent = istWwAktiv ? 'Lädt...' : 'Bereit';
+            if (dhw.disinfecting || data.mode === 'disinfection') {
+                speicherStatus.textContent = 'Desinfektion';
+            } else {
+                speicherStatus.textContent = istWwAktiv ? 'Lädt...' : 'Bereit';
+            }
         }
 
         // 3. Verbrauchsanzeige Warmwasser (Kachel rechts) einpflegen
@@ -125,7 +131,11 @@ export class Warmwasser {
         }
 
         // 6. Visuelle Statusklassen und Theme-Farbvariablen toggeln
-        if (boxSpeicher) boxSpeicher.classList.toggle('active-ww', istWwAktiv);
+        const istDesinfektion = dhw.disinfecting || data.mode === 'disinfection';
+        if (boxSpeicher) {
+            boxSpeicher.classList.toggle('active-ww', istSpeicherAktiv && !istDesinfektion);
+            boxSpeicher.classList.toggle('active-disinfection', istDesinfektion);
+        }
         if (boxWw) boxWw.classList.toggle('active-ww', istWwAktiv);
 
         if (speicherWerte) {
@@ -142,11 +152,13 @@ export class Warmwasser {
 
         // 7. Animations- und Durchflussklassen auf Leitungen übertragen
         if (rohrWw) {
-            rohrWw.classList.toggle('p-blue', istWwAktiv);
-            rohrWw.classList.toggle('pulse', istWwAktiv);
+            rohrWw.classList.toggle('p-blue', istWwAktiv && !istDesinfektion);
+            rohrWw.classList.toggle('p-orange', istDesinfektion);
+            rohrWw.classList.toggle('pulse', istSpeicherAktiv);
         }
         if (pfeilWw) {
-            pfeilWw.classList.toggle('p-blue', istWwAktiv);
+            pfeilWw.classList.toggle('p-blue', istWwAktiv && !istDesinfektion);
+            pfeilWw.classList.toggle('p-orange', istDesinfektion);
         }
     }
 }

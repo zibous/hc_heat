@@ -11,21 +11,56 @@
 </head>
 <body>
 
-    <div class="header">
+     <div class="header" style="position: relative; padding-right: 20px;">
         <div class="title-info">
-            <h1 id="title">Heizung · Dashboard</h1>
+            <!-- 🌟 OPTIMIERT: Titel farblich getrennt in Heizung (Rot), Gas (Gelb) & Wasser (Blau) -->
+            <h1 id="title">
+              <span style="color: #ef4444;">Heizung</span> ·
+              <span style="color: #f59e0b;">Gas</span> &amp;
+              <span style="color: #0ea5e9;">Wasser</span>
+            </h1>
             <div class="subtitle" id="subtitle">Lade Konfiguration...</div>
         </div>
         <div class="header-right">
             <span id="header-update" style="font-size:.72rem;color:var(--text-muted)"></span>
-            <button id="themeBtn" class="ibtn" style="background:none;border:1px solid var(--border);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:1rem;">🌙</button>
+        </div>
+
+        <!-- 🌟 OPTIMIERT: Das Hintergrundbild passend zur Gas-Wasser-Heizanlage (45% Deckkraft) -->
+        <div class="header-bg-wrapper" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; z-index: 1;">
+          <svg style="width: auto; height: 75px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0.45;" viewBox="0 0 800 200">
+
+            <!-- 🔥 Gasflamme links (Gelb/Orange mit warmem rotem Kern) -->
+            <path d="M 120 120 C 120 95, 135 70, 147 50 C 151 62, 160 76, 164 85 C 172 72, 180 57, 180 40 C 188 62, 192 90, 180 116 C 172 130, 156 140, 147 140 C 131 140, 120 130, 120 120 Z" stroke="#f59e0b" fill="#f59e0b" fill-opacity="0.15" stroke-width="4" />
+            <path d="M 135 120 C 135 108, 143 95, 147 87 C 151 95, 160 108, 160 120 C 160 128, 152 133, 147 133 C 142 133, 135 128, 135 120 Z" stroke="#ef4444" fill="#ef4444" fill-opacity="0.2" stroke-width="3" />
+
+            <!-- ⚡ Erste Verbindungslinie (In der Textfarbe des Dashboards) -->
+            <path d="M 50 100 L 105 100 M 195 100 L 290 100 L 305 100 L 315 45 L 330 155 L 345 25 L 360 135 L 370 100 L 410 100" stroke="currentColor" stroke-width="5" />
+
+            <!-- 🌡️ Heizungsrohre Mitte-Rechts (Rot = Heißer Vorlauf / Blau = Rücklauf) -->
+            <path d="M 410 100 L 440 100 L 450 65 L 465 145 L 480 35 L 490 100 L 520 100" stroke="#ef4444" stroke-width="5" />
+            <path d="M 410 120 L 435 120 L 445 85 L 460 165 L 475 55 L 485 120 L 520 120" stroke="#0ea5e9" stroke-width="4" opacity="0.8" />
+
+            <!-- ⚡ Zweite Verbindungslinie nach den Rohren -->
+            <path d="M 520 100 L 590 100" stroke="currentColor" stroke-width="5" />
+
+            <!-- 💧 Wassertropfen ganz rechts (Klares Heizwasser-Blau) -->
+            <path d="M 620 115 C 620 135, 638 150, 660 150 C 682 150, 700 135, 700 115 C 700 95, 660 40, 660 40 C 660 40, 620 95, 620 115 Z" stroke="#0ea5e9" fill="#0ea5e9" fill-opacity="0.15" stroke-width="5" />
+            <path d="M 640 110 C 640 100, 650 90, 655 85" stroke="#38bdf8" stroke-width="3" />
+
+            <!-- Abschlusslinie -->
+            <path d="M 710 100 L 760 100" stroke="currentColor" stroke-width="5" />
+          </svg>
         </div>
     </div>
 
+
     <div id="dashboard-container"></div>
 
-    <footer>
+
+    <footer style="user-select: none;">
         <span>Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s</span>
+        <span style="margin: 0 8px; color: var(--border);">|</span>
+        <span id="themeToggleFooter" style="cursor: pointer; font-weight: 500; text-decoration: underline;">🌓 Design wechseln</span>
         <span id="header-update"></span>
     </footer>
 
@@ -36,6 +71,3 @@
 
 </body>
 </html>
-
-
-

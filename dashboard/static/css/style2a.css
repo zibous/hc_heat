@@ -102,17 +102,17 @@ body.light .bg-bar { fill: #e2e8f0; }
 .p-green { fill: #10b981; }
 
 /* --- Dynamische SVG-Statusklassen --- */
-.active-gas { stroke: #eab308 !important; fill: #2e2516 !important; }
-body.light .active-gas { fill: #fef9c3 !important; stroke: #ca8a04 !important; }
+.active-gas { stroke: var(--yellow, #eab308) !important; fill: #2e2516 !important; }
+[data-theme="light"] .active-gas { fill: #fef9c3 !important; stroke: var(--yellow, #ca8a04) !important; }
 
-.active-therme { stroke: #ef4444 !important; fill: #241a1c !important; }
-body.light .active-therme { fill: #fff5f5 !important; stroke: #dc2626 !important; }
+.active-therme { stroke: var(--red, #ef4444) !important; fill: #241a1c !important; }
+[data-theme="light"] .active-therme { fill: #fff5f5 !important; stroke: var(--red, #dc2626) !important; }
 
-.active-hk { stroke: #ef4444 !important; fill: #292524 !important; }
-body.light .active-hk { fill: #fef2f2 !important; stroke: #dc2626 !important; }
+.active-hk { stroke: var(--red, #ef4444) !important; fill: #292524 !important; }
+[data-theme="light"] .active-hk { fill: #fef2f2 !important; stroke: var(--red, #dc2626) !important; }
 
-.active-ww { stroke: #3b82f6 !important; fill: #172554 !important; }
-body.light .active-ww { fill: #eff6ff !important; stroke: #2563eb !important; }
+.active-ww { stroke: var(--accent, #3b82f6) !important; fill: #172554 !important; }
+[data-theme="light"] .active-ww { fill: #eff6ff !important; stroke: var(--accent, #2563eb) !important; }
 
 .pulse { animation: pp 2s infinite; }
 @keyframes pp { 0%, 100% { opacity: 1 } 50% { opacity: .4 } }

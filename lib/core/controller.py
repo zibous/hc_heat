@@ -427,7 +427,12 @@ class HeatingController:
         self.tracer.trace("app", "Zyklus Ende")
 
     def run_simulate(self) -> None:
-        """Startet nur das Dashboard mit Simulate-Daten (kein HTTP-Abruf)."""
+        """Startet nur das Dashboard mit Simulate-Daten (kein HTTP-Abruf).
+
+        Springt automatisch alle 5 Sekunden zum nächsten Moduswechsel,
+        damit alle Status (heating, dhw, disinfection, standby) im
+        Flussdiagramm getestet werden können.
+        """
         logger.info("=== SIMULATE MODUS – nur Dashboard ===")
 
         db = DBManager(DB_PATH_SIM)
@@ -438,153 +443,141 @@ class HeatingController:
         logger.info("DB: %s (%d Zeilen)", DB_PATH_SIM.name, db.count())
         history_buffer = HistoryBuffer(db)
 
-        # Letzten Datenpunkt als Live-Daten verwenden
-        last_rows = db.query_last(1)
+        # Alle Datenpunkte laden – je einen repräsentativen pro Modus finden
+        _all = db.query_all()
+        seen_modes = {}
+        for row in _all:
+            m = row.get("mode") or "standby"
+            if m not in seen_modes:
+                seen_modes[m] = row
+        transitions = list(seen_modes.values())
+
+        # Gewünschte Reihenfolge
+        mode_order = ["standby", "heating", "dhw", "disinfection"]
+        transitions = sorted(transitions, key=lambda r: mode_order.index(r.get("mode", "standby")) if r.get("mode") in mode_order else 99)
+
+        logger.info("Simulate-Modi: %d (%s)", len(transitions), ", ".join(seen_modes.keys()))
+
         today = db.query_today_delta()
         _gpk = self.config.costs.gas_price_per_kwh
         today["cost_eur"] = round(today["energy_kwh"] * _gpk, 2)
         today["cost_heat_eur"] = round(today["heat_kwh"] * _gpk, 2)
         today["cost_dhw_eur"] = round(today["dhw_kwh"] * _gpk, 2)
 
-        _live_data = {"today": today, "mode": "standby", "timestamp": ""}
-        if last_rows:
-            r = last_rows[-1]
+        # Perioden-Verbrauch
+        if len(_all) >= 2:
+            _first, _last = _all[0], _all[-1]
+            _pe = round((_last["energy_total_kwh"] or 0) - (_first["energy_total_kwh"] or 0), 1)
+            _ph = round((_last["energy_heat_kwh"] or 0) - (_first["energy_heat_kwh"] or 0), 1)
+            _pd = round((_last["energy_dhw_kwh"] or 0) - (_first["energy_dhw_kwh"] or 0), 1)
+            _pg = round((_last["gas_display_m3"] or 0) - (_first["gas_display_m3"] or 0), 1)
+        else:
+            _pe = _ph = _pd = _pg = 0
 
-            # Perioden-Verbrauch aus DB berechnen (erste bis letzte Zeile)
-            _all = db.query_all()
-            if len(_all) >= 2:
-                _first, _last = _all[0], _all[-1]
-                _pe = round(
-                    (_last["energy_total_kwh"] or 0)
-                    - (_first["energy_total_kwh"] or 0),
-                    1,
-                )
-                _ph = round(
-                    (_last["energy_heat_kwh"] or 0) - (_first["energy_heat_kwh"] or 0),
-                    1,
-                )
-                _pd = round(
-                    (_last["energy_dhw_kwh"] or 0) - (_first["energy_dhw_kwh"] or 0),
-                    1,
-                )
-                _pg = round(
-                    (_last["gas_display_m3"] or 0) - (_first["gas_display_m3"] or 0),
-                    1,
-                )
-            else:
-                _pe = _ph = _pd = _pg = 0
+        _sim_consumption = {
+            "energy_total_kwh": (_all[-1]["energy_total_kwh"] if _all else 0),
+            "energy_heat_kwh": (_all[-1]["energy_heat_kwh"] if _all else 0),
+            "energy_dhw_kwh": (_all[-1]["energy_dhw_kwh"] if _all else 0),
+            "period_energy_total_kwh": _pe,
+            "period_energy_heat_kwh": _ph,
+            "period_energy_dhw_kwh": _pd,
+            "period_energy_dhw_only_kwh": _pd,
+            "period_energy_disinfection_kwh": 0,
+            "period_gas_m3": _pg,
+            "burner_starts": (_all[-1].get("burner_starts") if _all else 0),
+            "burner_runtime_min": (_all[-1].get("burner_runtime_min") if _all else 0),
+            "heating_starts": (_all[-1].get("heating_starts") if _all else 0),
+            "heating_runtime_min": (_all[-1].get("heating_runtime_min") if _all else 0),
+            "dhw_runtime_min": max(0, ((_all[-1].get("burner_runtime_min") or 0) - ((_all[-1].get("heating_runtime_min")) or 0)) if _all else 0),
+            "dhw_starts": max(0, ((_all[-1].get("burner_starts") or 0) - ((_all[-1].get("heating_starts")) or 0)) if _all else 0),
+            "disinfection_ratio": 0,
+        }
+        _sim_costs = {
+            "gas_total_eur": round(_pg * self.config.costs.gas_price_per_m3, 2),
+            "energy_total_eur": round(_pe * self.config.costs.gas_price_per_kwh, 2),
+            "energy_heat_eur": round(_ph * self.config.costs.gas_price_per_kwh, 2),
+            "energy_dhw_eur": round(_pd * self.config.costs.gas_price_per_kwh, 2),
+            "energy_dhw_only_eur": round(_pd * self.config.costs.gas_price_per_kwh, 2),
+            "energy_disinfection_eur": 0,
+            "gas_period": self.config.costs.gas_period,
+            "energy_period": self.config.costs.energy_period,
+            "currency": self.config.costs.currency,
+        }
 
-            _sim_consumption = {
-                "energy_total_kwh": r["energy_total_kwh"],
-                "energy_heat_kwh": r["energy_heat_kwh"],
-                "energy_dhw_kwh": r["energy_dhw_kwh"],
-                "period_energy_total_kwh": _pe,
-                "period_energy_heat_kwh": _ph,
-                "period_energy_dhw_kwh": _pd,
-                "period_energy_dhw_only_kwh": _pd,
-                "period_energy_disinfection_kwh": 0,
-                "period_gas_m3": _pg,
-                "burner_starts": r["burner_starts"],
-                "burner_runtime_min": r["burner_runtime_min"],
-                "heating_starts": r["heating_starts"],
-                "heating_runtime_min": r["heating_runtime_min"],
-                "dhw_runtime_min": max(
-                    0,
-                    (r["burner_runtime_min"] or 0) - (r["heating_runtime_min"] or 0),
-                ),
-                "dhw_starts": max(
-                    0, (r["burner_starts"] or 0) - (r["heating_starts"] or 0)
-                ),
-                "disinfection_ratio": 0,
-            }
-            _sim_costs = {
-                "gas_total_eur": round(_pg * self.config.costs.gas_price_per_m3, 2),
-                "energy_total_eur": round(_pe * self.config.costs.gas_price_per_kwh, 2),
-                "energy_heat_eur": round(_ph * self.config.costs.gas_price_per_kwh, 2),
-                "energy_dhw_eur": round(_pd * self.config.costs.gas_price_per_kwh, 2),
-                "energy_dhw_only_eur": round(
-                    _pd * self.config.costs.gas_price_per_kwh, 2
-                ),
-                "energy_disinfection_eur": 0,
-                "gas_period": self.config.costs.gas_period,
-                "energy_period": self.config.costs.energy_period,
-                "currency": self.config.costs.currency,
-            }
-            _live_data.update(
-                {
+        # Aktueller Index in transitions (Thread-safe via Liste)
+        _idx = [0]
+
+        def _build_live(r: dict) -> dict:
+            """Baut Live-Daten aus einem Datenpunkt."""
+            return {
+                "today": today,
+                "timestamp": r["ts"],
+                "mode": r["mode"] or "standby",
+                "mode_duration_sec": 300,
+                "system": {
+                    "outdoor_temp": r["outdoor_temp"],
+                    "heating_active": r["mode"] == "heating",
+                    "heating_off": False,
+                    "tapwater_active": r["mode"] == "dhw",
+                    "curve_on": False,
+                    "summer_temp": 16,
+                    "frost_mode": False,
+                },
+                "boiler": {
+                    "flow_temp": r["flow_temp"],
+                    "flow_set_temp": r["flow_set_temp"],
+                    "outdoor_temp": r["outdoor_temp"],
+                    "burner_active": bool(r["burner_active"]),
+                    "heating_active": r["mode"] == "heating",
+                    "heating_enabled": True,
+                    "burner_power_percent": r["burner_power"],
+                    "flame_current": 0,
+                    "nominal_power_kw": 14,
+                    "current_power_kw": (r["burner_power"] or 0) / 100 * 14,
+                    "pump_active": bool(r["pump_active"]),
+                    "pump_modulation": r["pump_modulation"] or 37,
+                    "pump_mode": "deltaP-2",
+                    "pump_min": 10,
+                    "pump_max": 100,
+                    "lastcode": r.get("lastcode_boiler"),
+                    "service_code": "0Y",
+                    "service_code_number": 204,
+                    "maintenance_date": None,
+                },
+                "dhw": {
+                    "curtemp": r["dhw_temp"],
+                    "settemp": r["dhw_set_temp"],
+                    "active": r["mode"] == "dhw",
+                    "charging": r["mode"] == "dhw",
+                    "tempok": True,
+                    "disinfecting": r["mode"] == "disinfection",
+                    "disinfection_temp": 70,
+                    "comfort": "Eco",
+                    "storage_type": "Speicher",
+                    "flowtempoffset": 40,
+                },
+                "heating_circuit": {
+                    "flow_temp": r["flow_temp"],
+                    "return_temp": None,
+                    "set_flow_temp": r["flow_set_temp"],
+                    "pump_active": r["mode"] == "heating",
+                },
+                "gas": {
+                    "display_m3": r["gas_display_m3"],
+                    "total_m3": r.get("gas_total_m3"),
                     "timestamp": r["ts"],
-                    "mode": r["mode"] or "standby",
-                    "system": {
-                        "outdoor_temp": r["outdoor_temp"],
-                        "heating_active": False,
-                        "heating_off": False,
-                        "tapwater_active": False,
-                        "curve_on": False,
-                        "summer_temp": 16,
-                        "frost_mode": False,
-                    },
-                    "boiler": {
-                        "flow_temp": r["flow_temp"],
-                        "flow_set_temp": r["flow_set_temp"],
-                        "outdoor_temp": r["outdoor_temp"],
-                        "burner_active": bool(r["burner_active"]),
-                        "heating_active": r["mode"] == "heating",
-                        "heating_enabled": True,
-                        "burner_power_percent": r["burner_power"],
-                        "flame_current": 0,
-                        "nominal_power_kw": 14,
-                        "current_power_kw": (r["burner_power"] or 0) / 100 * 14,
-                        "pump_active": bool(r["pump_active"]),
-                        "pump_modulation": r["pump_modulation"] or 37,
-                        "pump_mode": "deltaP-2",
-                        "pump_min": 10,
-                        "pump_max": 100,
-                        "lastcode": r["lastcode_boiler"],
-                        "service_code": "0Y",
-                        "service_code_number": 204,
-                        "maintenance_date": None,
-                    },
-                    "dhw": {
-                        "curtemp": r["dhw_temp"],
-                        "settemp": r["dhw_set_temp"],
-                        "active": False,
-                        "charging": r["mode"] == "dhw",
-                        "tempok": True,
-                        "disinfecting": r["mode"] == "disinfection",
-                        "disinfection_temp": 70,
-                        "comfort": "Eco",
-                        "storage_type": "Speicher",
-                        "flowtempoffset": 40,
-                    },
-                    "heating_circuit": {
-                        "flow_temp": r["flow_temp"],
-                        "return_temp": None,
-                        "set_flow_temp": r["flow_set_temp"],
-                        "pump_active": True,
-                    },
-                    "gas": {
-                        "display_m3": r["gas_display_m3"],
-                        "total_m3": r["gas_total_m3"],
-                        "timestamp": r["ts"],
-                    },
-                    "consumption": _sim_consumption,
-                    "costs": _sim_costs,
-                    "errors": {
-                        "count": 0,
-                        "boiler": {
-                            "code": None,
-                            "description": None,
-                            "date": None,
-                        },
-                        "thermostat": {
-                            "code": None,
-                            "description": None,
-                            "date": None,
-                        },
-                    },
-                    "prev": {},
-                }
-            )
+                },
+                "consumption": _sim_consumption,
+                "costs": _sim_costs,
+                "errors": {
+                    "count": 0,
+                    "boiler": {"code": None, "description": None, "date": None},
+                    "thermostat": {"code": None, "description": None, "date": None},
+                },
+                "prev": {},
+            }
+
+        _live_data = _build_live(transitions[0])
 
         def _get_live() -> dict:
             return _live_data
@@ -595,7 +588,7 @@ class HeatingController:
                 "manufacturer": self.config.heating.manufacturer,
                 "model": self.config.heating.model,
                 "installed": self.config.heating.installed,
-                "interval": 30,
+                "interval": 5,
                 "currency": self.config.costs.currency,
             }
 
@@ -612,10 +605,22 @@ class HeatingController:
             "Dashboard: http://0.0.0.0:%d/dashboardhaco",
             self.config.app.dashboard_port,
         )
+        logger.info("Simulate: %d Moduswechsel, wechselt alle 5s", len(transitions))
         logger.info("Ctrl+C zum Beenden")
 
+        step_interval = 5  # Sekunden pro Schritt
+        step_counter = 0
         while self._running_flag():
             time.sleep(1)
+            step_counter += 1
+            if step_counter >= step_interval:
+                step_counter = 0
+                _idx[0] = (_idx[0] + 1) % len(transitions)
+                r = transitions[_idx[0]]
+                _live_data.clear()
+                _live_data.update(_build_live(r))
+                logger.info("→ Simulate [%d/%d]: %s (%s)",
+                            _idx[0] + 1, len(transitions), r["mode"], r["ts"][:19])
 
         dashboard.stop()
         logger.info("=== SIMULATE beendet ===")

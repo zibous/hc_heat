@@ -11,42 +11,30 @@ FORGEJO_URL  = http://$(FORGEJO_IP):$(FORGEJO_PORT)/$(FORGEJO_USER)/$(PROJECT_NA
 IMAGE := hc-heat2
 VERSION := 2.0.0
 
-PYTHON := ../.venv/bin/python
-PIP := ../.venv/bin/pip
+PYTHON := $(shell if [ -f /dockerapps/apps_v2/.venv/bin/python ]; then echo /dockerapps/apps_v2/.venv/bin/python; else echo python3; fi)
+PIP := $(shell if [ -f /dockerapps/apps_v2/.venv/bin/pip ]; then echo /dockerapps/apps_v2/.venv/bin/pip; else echo pip3; fi)
 
 # ---------------------------------------------------------
 # Lokales Ausführen
 # ---------------------------------------------------------
 
 run: ## Startet die Anwendung lokal
-	@if [ -f ../.venv/bin/python ]; then \
-		../.venv/bin/python app.py; \
-	else \
-		python3 app.py; \
-	fi
+	@$(PYTHON) app.py
 
 once: ## Einmaliger Datenabruf (kein Loop)
-	@if [ -f ../.venv/bin/python ]; then \
-		../.venv/bin/python app.py --once; \
-	else \
-		python3 app.py --once; \
-	fi
+	@$(PYTHON) app.py --once
 
 simulate: ## 14 Tage Testdaten generieren + Dashboard starten
 	@rm -f data/heating_sim.db
 	@rm -f data/processed/*.json
-	@if [ -f ../.venv/bin/python ]; then \
-		../.venv/bin/python scripts/simulate.py && APP_MODE=simulate ../.venv/bin/python app.py; \
-	else \
-		python3 scripts/simulate.py && APP_MODE=simulate python3 app.py; \
-	fi
+	@$(PYTHON) scripts/simulate.py && APP_MODE=simulate $(PYTHON) app.py
+
+simulate-csv: ## CSV-Daten importieren + Dashboard starten (echte Modi, Standard-Port: 5029)
+	@$(PYTHON) scripts/import_csv_to_simdb.py $(CSV)
+	@APP_MODE=simulate DASHBOARD_PORT=$(or $(DASHBOARD_PORT),5029) $(PYTHON) app.py
 
 test: ## Offline-Tests ausführen
-	@if [ -f ../.venv/bin/python ]; then \
-		../.venv/bin/python test_offline.py; \
-	else \
-		python3 test_offline.py; \
-	fi
+	@$(PYTHON) test_offline.py
 
 install: ## Installiert Python-Abhängigkeiten
 	pip install -r requirements.txt
