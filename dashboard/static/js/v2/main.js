@@ -1,5 +1,6 @@
 // main.js – Entry-Point für das Heizungs-Dashboard v2
 import { HeizungDashboard } from './HeizungDashboard.js';
+import { getAppleIcon } from './components/icons.js';
 
 const dashboard = new HeizungDashboard('dashboard-container');
 
@@ -37,6 +38,7 @@ async function fetchData() {
 
     // Config-Daten für Installiert-seit injizieren
     if (_configData.installed) data._config = _configData;
+
     dashboard.update(data);
 
     // Header-Update-Timestamp
@@ -92,15 +94,58 @@ setInterval(() => { historyLoaded = false; }, 300000);
 // Theme Toggle
 const themeBtn = document.getElementById('themeBtn');
 if (themeBtn) {
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.classList.toggle('light', theme === 'light');
+    themeBtn.innerHTML = theme === 'dark' ? getAppleIcon('sun', 16, '#f59e0b') : getAppleIcon('moon', 16, '#64748b');
+    // Chart.js Gridlines und Texte aktualisieren
+    syncChartColors();
+  }
+
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyTheme(savedTheme);
+
   themeBtn.addEventListener('click', () => {
-    const body = document.body;
-    const isLight = body.classList.toggle('light');
-    themeBtn.textContent = isLight ? '☀️' : '🌙';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
   });
-  // Restore
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light');
-    themeBtn.textContent = '☀️';
+}
+
+function syncChartColors() {
+  const style = getComputedStyle(document.documentElement);
+  const text = style.getPropertyValue('--text').trim() || '#e2e8f0';
+  const muted = style.getPropertyValue('--text-muted').trim() || '#8892a4';
+  const grid = style.getPropertyValue('--border').trim() || '#2e3350';
+
+  // Alle registrierten Chart.js Instanzen updaten
+  const charts = Object.values(Chart.instances || {});
+  for (const chart of charts) {
+    if (!chart || !chart.options) continue;
+    const scales = chart.options.scales || {};
+    for (const key of Object.keys(scales)) {
+      if (scales[key].ticks) scales[key].ticks.color = muted;
+      if (scales[key].grid) scales[key].grid.color = grid;
+      if (scales[key].title) scales[key].title.color = muted;
+    }
+    if (chart.options.plugins?.legend?.labels) {
+      chart.options.plugins.legend.labels.color = text;
+    }
+    chart.update('none');
   }
 }
+/* ----------------------------------------------------
+   INFO
+---------------------------------------------------- */
+const appinfo = {
+  name: "✓ heizungsanlage-dashboard ",
+  app: "hc_smet",
+  version: "3.0.0"
+};
+
+console.info(
+  "%c " + appinfo.name + "    %c ▪︎▪︎▪︎▪︎ Version: " + appinfo.version + " ▪︎▪︎▪︎▪︎ ",
+  "color:#FFFFFF; background:#3498db;display:inline-block;font-size:12px;font-weight:200;padding: 4px 0 4px 0",
+  "color:#2c3e50; background:#ecf0f1;display:inline-block;font-size:12px;font-weight:200;padding: 4px 0 4px 0"
+);

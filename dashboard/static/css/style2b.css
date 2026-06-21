@@ -8,23 +8,26 @@ body {
     color: var(--text);
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 32px;
     transition: background-color .4s ease;
 }
 
-/* --- Reset --- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
 
 .header {
     position: sticky;
-    top: -16px;
-    padding: 0 24px;
+    top: -32px;
+    padding: 0 32px;
     height: 120px;
-    width: calc(100% + 32px);
-    margin-left: -16px;
-    margin-right: -16px;
+    width: calc(100% + 64px);
+    margin-left: -32px;
+    margin-right: -32px;
     z-index: 1000;
-    background: var(--card-bg);
+    background: var(--surface);
     box-sizing: border-box;
     margin-bottom: 3rem;
     display: flex;
@@ -33,32 +36,44 @@ body {
 }
 
 .header .title-info {
-    padding: 24px;
+    padding-bottom: 1.5rem
 }
 
 .header-right {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 24px;
+    padding-bottom: 1.5rem
 }
 
 .header #title {
     color: var(--accent);
-    font-size: 2.0rem
+    font-size: 2.5rem
 }
 
 .header .subtitle {
     font-size: .9rem
 }
 
-
 #dashboard-container {
-    flex: 1;
-    background: var(--bg);
-    padding: 0 64px;
+    flex: 1
 }
 
+footer {
+    width: calc(100% + 64px);
+    margin-left: -32px;
+    margin-right: -32px;
+    z-index: 1000;
+    background-color: var(--surface);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    font-size: .7rem;
+    color: var(--text-muted);
+    margin-top: 2rem;
+}
 
 .status-pulse-dot {
     display: inline-block;
@@ -299,7 +314,6 @@ footer {
     padding: 12px 32px;
     font-size: .7rem;
     color: var(--text-muted);
-    text-align: center;
 }
 
 .stats-grid {
@@ -397,15 +411,4 @@ footer {
 .stat-gauge-seg {
     height: 100%;
     transition: width .5s ease
-}
-
-
-.ds-custom input[type="date"]::-webkit-calendar-picker-indicator { 
-    filter: invert(var(--is-dark, 1));
-    cursor: pointer; 
-}
-
-[data-theme="dark"]  .ds-custom input[type="date"]::-webkit-calendar-picker-indicator { 
-    filter: invert(1); 
-    cursor: pointer; 
 }

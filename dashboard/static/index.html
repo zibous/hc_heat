@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heizungs-Dashboard v2</title>
+    <title>Heizungs-Dashboard</title>
+    <link rel="icon" type="image/svg+xml"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14 0-5.5 3.5-7.5 0 0 .5 4 2 5s2.17 2.97 2.17 4.73A5.5 5.5 0 0 1 12 16.5a5.5 5.5 0 0 1-3.5-2z'/></svg>">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/style.bundle.css">
 </head>
 <body>
 
@@ -22,14 +24,18 @@
 
     <div id="dashboard-container"></div>
 
-    <footer style="text-align:center;color:var(--muted);font-size:.7rem;padding:16px">
-        Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s
+    <footer>
+        <span>Heizungscontroller · Auto-Refresh <span id="refreshInterval">60</span>s</span>
+        <span id="header-update"></span>
     </footer>
 
     <!-- DEV: einzelne Module -->
-    <script type="module" src="js/v2/main.js"></script>
+    <!-- <script type="module" src="js/v2/main.js"></script> -->
     <!-- PROD: gebundelt -->
-    <!-- <script type="module" src="js/v2/main.bundle.js"></script> -->
+    <script type="module" src="js/v2/main.bundle.js"></script>
 
 </body>
 </html>
+
+
+

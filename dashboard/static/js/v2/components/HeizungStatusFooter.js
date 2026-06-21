@@ -1,4 +1,6 @@
 // components/HeizungStatusFooter.js
+import { getAppleIcon } from './icons.js';
+
 export class HeizungStatusFooter {
     render() {
         return `
@@ -29,10 +31,10 @@ export class HeizungStatusFooter {
         if (banner) {
             const errCount = data.errors?.count || 0;
             if (errCount > 0) {
-                banner.textContent = `❌ Achtung: Störung an der Heizungsanlage aktiv (${errCount} Fehler)!`;
+                banner.innerHTML = `${getAppleIcon('xCircle', 14, '#ef4444')} Achtung: Störung an der Heizungsanlage aktiv (${errCount} Fehler)!`;
                 banner.className = 'banner-error';
             } else {
-                banner.textContent = `✅ Heizungsanlage läuft und arbeitet einwandfrei`;
+                banner.innerHTML = `${getAppleIcon('checkCircle', 14, '#10b981')} Heizungsanlage läuft und arbeitet einwandfrei`;
                 banner.className = 'banner-ok';
             }
         }

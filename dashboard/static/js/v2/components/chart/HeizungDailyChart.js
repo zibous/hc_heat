@@ -32,7 +32,7 @@ export class HeizungDailyChart {
             </div>
 
             <!-- Das Diagramm -->
-            <div style="position: relative; width: 100%; height: 260px; margin-bottom: 12px;">
+            <div style="position: relative; width: 100%; height: 360px; margin-bottom: 12px;">
                 <canvas id="dailyChart"></canvas>
             </div>
 
@@ -135,11 +135,11 @@ export class HeizungDailyChart {
                 data: {
                     labels: labels,
                     datasets: [
-                        { label: '🏠 Heizung', data: dailyData.map(d => d.heat_kwh), backgroundColor: 'rgba(239, 68, 68, 0.7)', stack: 'kwh', yAxisID: 'y' },
-                        { label: '💧 Warmwasser', data: wwOnly, backgroundColor: 'rgba(59, 130, 246, 0.7)', stack: 'kwh', yAxisID: 'y' },
-                        { label: '🧹 Desinfektion', data: disData, backgroundColor: 'rgba(245, 158, 11, 0.7)', stack: 'kwh', yAxisID: 'y' },
-                        { label: '⛽ Gas m³', data: dailyData.map(d => d.gas_m3 || 0), type: 'line', borderColor: '#f59e0b', borderWidth: 2, pointRadius: 2, tension: 0.3, yAxisID: 'y1', fill: false, borderDash: [4, 2] },
-                        { label: '💰 Kosten €', data: dailyData.map(d => Math.round(d.energy_kwh * gasPriceKwh * 100) / 100), type: 'line', borderColor: '#10b981', borderWidth: 2, pointRadius: 3, tension: 0.3, yAxisID: 'y1', fill: false }
+                        { label: 'Heizung', data: dailyData.map(d => d.heat_kwh), backgroundColor: 'rgba(239, 68, 68, 0.7)', stack: 'kwh', yAxisID: 'y' },
+                        { label: 'Warmwasser', data: wwOnly, backgroundColor: 'rgba(59, 130, 246, 0.7)', stack: 'kwh', yAxisID: 'y' },
+                        { label: 'Desinfektion', data: disData, backgroundColor: 'rgba(245, 158, 11, 0.7)', stack: 'kwh', yAxisID: 'y' },
+                        { label: 'Gas m³', data: dailyData.map(d => d.gas_m3 || 0), type: 'line', borderColor: '#f59e0b', borderWidth: 2, pointRadius: 2, tension: 0.3, yAxisID: 'y1', fill: false, borderDash: [4, 2] },
+                        { label: 'Kosten €', data: dailyData.map(d => Math.round(d.energy_kwh * gasPriceKwh * 100) / 100), type: 'line', borderColor: '#10b981', borderWidth: 2, pointRadius: 3, tension: 0.3, yAxisID: 'y1', fill: false }
                     ]
                 },
                 options: {

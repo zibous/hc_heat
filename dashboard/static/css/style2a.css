@@ -1,0 +1,334 @@
+/* style.css */
+
+@import "./theme.css";
+
+/* --- Allgemeine Layout-Stile --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.4s ease;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+body.light #status-banner {
+    color: #0f172a;
+}
+
+body.light text { fill: #0f172a; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    padding: 0 24px;
+    height: 120px;
+    width: 100%;
+    z-index: 1000;
+    background: var(--surface);
+    box-sizing: border-box;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.header .title-info{
+    padding-bottom: 1.5rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 1.5rem;
+}
+
+.header #title{
+    color: var(--accent);
+    font-size: 2.5rem;
+}
+
+.header .subtitle{
+    font-size: 0.9rem;
+}
+
+#dashboard-container {
+    margin: 24px auto;
+    width: calc(100% - 64px);
+    flex: 1;
+}
+
+
+/* Kleiner pulsierender Aktivitäts-Punkt oben rechts in der Schema-Karte */
+.status-pulse-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--green);
+    border-radius: 50%;
+    animation: pp 2s infinite;
+}
+
+
+/* --- SVG-Grafik Basis & Rohre --- */
+text { fill: #e2e8f0; font-family: system-ui, sans-serif; }
+
+.sl { font-size: 13px; fill: #64748b; }
+.sv { font-size: 15px; font-weight: 700; }
+.su { font-size: 14px; fill: #94a3b8; }
+.st { font-size: 14px; }
+
+.pipe { stroke-width: 3; fill: none; stroke-linecap: round; stroke: #3b4563; transition: stroke 0.4s ease; }
+.bx { rx: 10; ry: 10; stroke-width: 2; stroke: #3b4563; fill: #1e2235; transition: all 0.4s ease; }
+body.light .bx { fill: #fff; stroke: #cbd5e1; }
+.bg-bar { fill: #3b4563; transition: all 0.4s ease; }
+body.light .bg-bar { fill: #e2e8f0; }
+
+/* SVG-Signalfarben */
+.p-red { fill: #ef4444; }
+.p-blue { fill: #3b82f6; }
+.p-green { fill: #10b981; }
+
+/* --- Dynamische SVG-Statusklassen --- */
+.active-gas { stroke: #eab308 !important; fill: #2e2516 !important; }
+body.light .active-gas { fill: #fef9c3 !important; stroke: #ca8a04 !important; }
+
+.active-therme { stroke: #ef4444 !important; fill: #241a1c !important; }
+body.light .active-therme { fill: #fff5f5 !important; stroke: #dc2626 !important; }
+
+.active-hk { stroke: #ef4444 !important; fill: #292524 !important; }
+body.light .active-hk { fill: #fef2f2 !important; stroke: #dc2626 !important; }
+
+.active-ww { stroke: #3b82f6 !important; fill: #172554 !important; }
+body.light .active-ww { fill: #eff6ff !important; stroke: #2563eb !important; }
+
+.pulse { animation: pp 2s infinite; }
+@keyframes pp { 0%, 100% { opacity: 1 } 50% { opacity: .4 } }
+
+/* --- Kachel Grid Layout --- */
+.tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    color: #e2e8f0;
+    transition: all 0.4s ease;
+}
+body.light .tile { background-color: #fff; border-color: #cbd5e1; color: #0f172a; }
+
+.tile-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.tile-head-lbl { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; }
+.tile-icon { width: 18px; height: 18px; color: #64748b; }
+
+.tile-val { font-size: 18px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+.tile-sub { font-size: 11px; color: #64748b; line-height: 1.4; }
+
+/* Kachel-Anzeigen (Balken, Segmente, Sparklines) */
+.tile-gauge, .tile-gauge-stacked { height: 6px; background-color: #3b4563; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+body.light .tile-gauge { background-color: #e2e8f0; }
+.tile-gauge-bar { width: 100%; height: 100%; }
+.tile-gauge-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+.tile-gauge-stacked { display: flex; }
+.tile-gauge-stacked .seg { height: 100%; transition: width 0.5s ease; }
+
+.mode-segments { display: flex; gap: 4px; margin-top: 10px; height: 6px; background: #3b4563; border-radius: 3px; overflow: hidden; }
+.mode-seg { flex: 1; background: transparent; transition: background 0.3s ease; }
+.mode-seg.active.style-standby { background-color: #64748b; }
+.mode-seg.active.style-heat { background-color: #ef4444; }
+.mode-seg.active.style-ww { background-color: #3b82f6; }
+.mode-seg.active.style-purple { background-color: #a855f7; }
+
+.tile-sparkline { margin-top: 12px; padding-top: 4px; border-top: 1px solid #3b4563; }
+body.light .tile-sparkline { border-top-color: #e2e8f0; }
+
+/* Split-Kachel Layout */
+.tile-split-container { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.tile-split-side { flex: 1; }
+.tile-split-side:last-child { text-align: right; }
+.tile-split-divider { width: 1px; height: 32px; background-color: #3b4563; margin: 0 12px; }
+body.light .tile-split-divider { background-color: #e2e8f0; }
+.tile-val-mini { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+
+/* Semantische Systemfarben */
+.style-heat { background-color: #ef4444; }
+.style-ww { background-color: #3b82f6; }
+
+/* Kachel Statuszustände */
+.status-ok { border-color: #10b981; }
+.status-ok .tile-icon { color: #10b981; }
+.status-error { border-color: #ef4444; background-color: #2d1a1c; }
+.status-error .tile-icon, .status-error .tile-val { color: #ef4444; }
+.status-blue { border-color: #3b82f6; }
+.status-blue .tile-icon { color: #3b82f6; }
+.status-yellow { border-color: #eab308; }
+.status-yellow .tile-icon { color: #eab308; }
+
+/* --- Status Banner --- */
+#status-banner {
+    margin-top: 16px;
+    font-size: 0.75rem;
+    text-align: center;
+    font-weight: 500;
+    font-family: system-ui, sans-serif;
+    color: #e2e8f0;
+    transition: color 0.3s ease;
+}
+#status-banner.banner-ok { color: #10b981; }
+#status-banner.banner-error { color: #ef4444; }
+
+/* --- NEU: Tages-Fortschrittsbalken --- */
+#day-progress-container {
+    margin-top: 14px;
+    font-family: system-ui, sans-serif;
+}
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+.progress-bar-bg {
+    height: 6px;
+    background-color: #3b4563;
+    border-radius: 3px;
+    overflow: hidden;
+}
+body.light .progress-bar-bg {
+    background-color: #e2e8f0;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: #10b981;
+    border-radius: 3px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #070707;
+    box-sizing: border-box;
+}
+
+
+/* === Kompakte Info-Cards (Hero + Rows + Icons) === */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-card-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card-title {
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--text-muted);
+}
+
+.stat-card-badge {
+    font-size: .6rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.stat-card-hero {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.stat-card-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .78rem;
+}
+
+.stat-row-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: .7;
+}
+
+.stat-row-icon svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
+.stat-row-lbl {
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.stat-row-val {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.stat-gauge {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    margin-top: 4px;
+    overflow: hidden;
+    display: flex;
+}
+
+.stat-gauge-seg {
+    height: 100%;
+    transition: width .5s ease;
+}

@@ -3,6 +3,7 @@
 
 const F = (v, d = 2) => v != null ? Number(v).toFixed(d).replace('.', ',') : '--';
 const ico = (path) => `<span class="stat-row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg></span>`;
+const icoInline = (path) => `<svg style="width:12px;height:12px;vertical-align:-1px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;display:inline" viewBox="0 0 24 24">${path}</svg>`;
 
 function sparkline(values, color = '#f59e0b', w = 90, h = 26) {
   if (!values || values.length < 2) return '';
@@ -86,30 +87,27 @@ export class HeizungStats {
     const rtDhw = Math.round((data.consumption?.dhw_runtime_min || 0) / 60);
     const starts = data.consumption?.burner_starts || 0;
 
-    // --- Card 1: System & Betrieb ---
-    const c1Hero = `${displayMode} · Brenner ${isBurner ? 'An' : 'Aus'}`;
+    // Modus-Farbe als Dot vor dem Hero-Text
+    const modeColors = { heating: 'var(--red, #ef4444)', dhw: 'var(--accent, #3b82f6)', disinfecting: 'var(--orange, #f59e0b)' };
+    const modeColor = modeColors[mode] || 'var(--text-muted, #64748b)';
+    const c1Hero = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${modeColor};margin-right:8px;vertical-align:middle"></span>${displayMode} · Brenner ${isBurner ? 'An' : 'Aus'}`;
     const c1Badge = errCount > 0 ? `${errCount} Fehler` : 'OK';
     const c1BadgeColor = errCount > 0 ? '#ef4444' : '#10b981';
     const c1Rows =
       row('clock', 'Modus seit', modeDur) +
       row('pump', 'Pumpe', `${data.boiler?.pump_modulation || 0}%`) +
-      row('flame', 'Brenner Laufzeit', `${rtTotal}h (HZ: ${rtHeat}h · WW: ${rtDhw}h)`) +
+      row('flame', 'Betriebszeit', `${rtTotal}h (${icoInline(ICONS.home)} ${rtHeat}h · ${icoInline(ICONS.drop)} ${rtDhw}h)`) +
       row('zap', 'Starts', starts.toLocaleString('de-DE')) +
       row('wrench', 'Service', `${data.boiler?.service_code || '0H'} · Wartung: ${data.boiler?.maintenance_date || '–'}`);
 
-    // Modus-Gauge
-    const segments = `<div class="stat-gauge">
-      <div class="stat-gauge-seg" style="width:${mode==='standby'?100:0}%;background:#64748b"></div>
-      <div class="stat-gauge-seg" style="width:${mode==='heating'?100:0}%;background:#ef4444"></div>
-      <div class="stat-gauge-seg" style="width:${mode==='dhw'?100:0}%;background:#3b82f6"></div>
-    </div>`;
-
     // --- Card 2: Anlagen-Komponenten ---
     const boilerTemp = F(data.dhw?.curtemp, 1);
-    const boilerSoll = F(data.dhw?.settemp, 0);
+    const boilerSoll = data.thermostat?.wwk?.settemp || data.dhw?.settemp || 0;
+    const boilerDeltaNum = data.dhw?.curtemp != null ? data.dhw.curtemp - boilerSoll : null;
+    const deltaStr = boilerDeltaNum != null ? `(${boilerDeltaNum > 0 ? '+' : ''}${boilerDeltaNum.toFixed(1).replace('.', ',')}°C)` : '';
     const thermoMode = data.thermostat?.hc1?.mode || 'auto';
     const summerMode = data.thermostat?.hc1?.summermode || '–';
-    const c2Hero = `${boilerTemp}°C / Soll ${boilerSoll}°C`;
+    const c2Hero = `<svg style="width:20px;height:20px;vertical-align:-3px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;display:inline" viewBox="0 0 24 24">${ICONS.drop}</svg> ${boilerTemp}°C ${deltaStr}`;
     const c2Rows =
       row('thermo', 'Thermostat', `${thermoMode} / ${data.thermostat?.hc1?.modetype || '–'}`) +
       row('sun', 'Betriebsart', summerMode) +
@@ -156,7 +154,7 @@ export class HeizungStats {
     const c5Rows =
       row('zap', 'EMS-ESP', 'Online', '#10b981') +
       row('flame', 'Boiler', `OK · ${F(data.boiler?.flow_temp, 1)}°C`, '#10b981') +
-      row('thermo', 'Thermostat', `${boilerErr ? '⚠ ' + boilerErr : 'OK'} · ${thermoMode}/${data.thermostat?.hc1?.modetype || '–'}`, boilerErr ? '#ef4444' : '#10b981') +
+      row('thermo', 'Thermostat', `${boilerErr ? 'ERR ' + boilerErr : 'OK'} · ${thermoMode}/${data.thermostat?.hc1?.modetype || '–'}`, boilerErr ? '#ef4444' : '#10b981') +
       row('gas', 'Gaszähler', `${F(data.gas?.display_m3, 1)} m³`, '#10b981') +
       row('clock', 'Installiert seit', `${installedDays} Tage`);
 
@@ -167,7 +165,7 @@ export class HeizungStats {
 
     // --- Render ---
     grid.innerHTML =
-      card('System & Betrieb', c1Hero, isBurner ? '#ef4444' : '', c1Badge, c1BadgeColor, c1Rows, segments) +
+      card('System & Betrieb', c1Hero, isBurner ? '#ef4444' : '', c1Badge, c1BadgeColor, c1Rows) +
       card('Anlagen-Komponenten', c2Hero, '#f59e0b', '', '', c2Rows, '', spark2) +
       card('Heute Verbrauch & Kosten', c3Hero, '#10b981', '', '', c3Rows, '', spark3) +
       card('Anteil Heizung / Boiler', c4Hero, '', '', '', c4Rows, gauge4) +

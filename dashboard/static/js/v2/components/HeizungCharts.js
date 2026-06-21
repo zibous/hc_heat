@@ -15,7 +15,7 @@ export class HeizungCharts {
 
         <div class="tiles-grid" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); margin-bottom: 24px; align-items: stretch;">
             <!-- 1. Temperaturverlauf -->
-            <div class="tile" style="padding: 16px; min-height: 340px; display: flex; flex-direction: column;">
+            <div class="tile" style="padding: 16px; min-height: 460px; display: flex; flex-direction: column;">
                 <div class="tile-head" style="margin-bottom: 12px;">
                     <span class="tile-head-lbl">Temperaturverlauf (24h)</span>
                     <span class="tile-head-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m18.7 8-5.1 5.2-2.8-2.7L7 14.3"/></svg></span>
@@ -76,7 +76,7 @@ export class HeizungCharts {
                     datasets: [
                         { label: 'Außen', data: sampledData.map(p => p.outdoor), borderColor: '#3b82f6', borderWidth: 1.5, pointRadius: 0, tension: 0.3 },
                         { label: 'Vorlauf', data: sampledData.map(p => p.flow), borderColor: '#ef4444', borderWidth: 1.5, pointRadius: 0, tension: 0.3 },
-                        { label: 'Vorlauf Soll', data: sampledData.map(p => p.target_flow || p.flow_set), borderColor: '#ef4444', borderWidth: 1, borderDash:[5,3], pointRadius: 0, tension: 0.3 },
+                        { label: 'Vorlauf Soll', data: sampledData.map(p => p.target_flow || p.flow_set), borderColor: '#10b981', borderWidth: 1.5, borderDash:[5,3], pointRadius: 0, tension: 0.3 },
                         { label: 'Warmwasser', data: sampledData.map(p => p.dhw), borderColor: '#f59e0b', borderWidth: 1.5, pointRadius: 0, tension: 0.3 },
                         { label: 'WW Soll', data: sampledData.map(p => p.dhw_set), borderColor: '#f59e0b', borderWidth: 1, borderDash:[4,2], pointRadius: 0, tension: 0.3 }
                     ]

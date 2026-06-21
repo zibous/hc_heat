@@ -186,22 +186,21 @@ diff-detail: ## Zeigt inhaltliche Unterschiede zum Container
 		/tmp/hc-heat2_files/ ./ 2>/dev/null || true
 	@rm -rf /tmp/hc-heat2_files
 
-# 🔧 Komprimiert JS und CSS parallel über Docker – maximal optimiert
+# 🔧 JS + CSS bundlen via Docker & esbuild (v2 Module)
 jsbuild:
-	@echo "📦 Starte JS & CSS Bundling via Docker & esbuild..."
+	@echo "📦 JS & CSS Bundling via Docker & esbuild..."
 	@cp ../shared/themes/theme.css dashboard/static/css/theme.css
 	@docker run --rm -v "$$(pwd)":/app -w /app node:20-alpine sh -c "\
-		cat dashboard/static/js/app.js dashboard/static/js/render.js dashboard/static/js/schema.js dashboard/static/js/charts.js dashboard/static/js/dateselector.js dashboard/static/js/daily.js > /tmp/combined.js && \
-		npx esbuild /tmp/combined.js --minify --sourcemap --target=es2020 --outfile=dashboard/static/js/app.bundle.js && \
-		npx esbuild dashboard/static/css/style.css --bundle --minify --sourcemap --outfile=dashboard/static/css/style.bundle.css"
+		npx esbuild dashboard/static/js/v2/main.js --bundle --minify --sourcemap --format=esm --outfile=dashboard/static/js/v2/main.bundle.js && \
+		npx esbuild dashboard/static/css/style2.css --bundle --minify --sourcemap --outfile=dashboard/static/css/style.bundle.css"
 	@echo "✅ Fertig!"
 
 jsclean:
 	@echo "🧼 Bereinige produktive Build-Dateien..."
-	@rm -f dashboard/js/app.bundle.js
-	@rm -f dashboard/js/app.bundle.js.map
-	@rm -f dashboard/css/style.bundle.css
-	@rm -f dashboard/css/style.bundle.css.map
+	@rm -f dashboard/static/js/v2/main.bundle.js
+	@rm -f dashboard/static/js/v2/main.bundle.js.map
+	@rm -f dashboard/static/css/style.bundle.css
+	@rm -f dashboard/static/css/style.bundle.css.map
 	@echo "✨ Verzeichnis ist wieder sauber."
 
 
