@@ -55,7 +55,7 @@ export class HeizungSchema {
 
         const currentMode = data.mode || 'standby';
         const isGasActive = data.boiler?.burner_active || false;
-        const isHeatingActive = currentMode === 'heating' || data.heating_circuit?.pump_active || false;
+        const isHeatingActive = currentMode === 'heating';
         const isDhwActive = currentMode === 'dhw' || data.dhw?.charging || false;
         const bModulation = data.boiler?.burner_power_percent || 0;
 

@@ -153,7 +153,7 @@ export class HeizungStats {
     const thermoErr = data.errors?.thermostat?.code;
     const c5Rows =
       row('zap', 'EMS-ESP', 'Online', '#10b981') +
-      row('flame', 'Boiler', `OK · ${F(data.boiler?.flow_temp, 1)}°C`, '#10b981') +
+      row('flame', 'Vorlauf', `OK · ${F(data.boiler?.flow_temp, 1)}°C`, '#10b981') +
       row('thermo', 'Thermostat', `${boilerErr ? 'ERR ' + boilerErr : 'OK'} · ${thermoMode}/${data.thermostat?.hc1?.modetype || '–'}`, boilerErr ? '#ef4444' : '#10b981') +
       row('gas', 'Gaszähler', `${F(data.gas?.display_m3, 1)} m³`, '#10b981') +
       row('clock', 'Installiert seit', `${installedDays} Tage`);

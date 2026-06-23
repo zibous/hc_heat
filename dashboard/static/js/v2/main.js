@@ -2,6 +2,8 @@
 import { HeizungDashboard } from './HeizungDashboard.js';
 import { getAppleIcon } from './components/icons.js';
 
+// import { t, getLang, changeLanguage, loadLanguage } from '.locales//i18n.js';
+
 const dashboard = new HeizungDashboard('dashboard-container');
 
 const REFRESH_INTERVAL_SEC = 60;
@@ -50,6 +52,7 @@ async function fetchData() {
 
     countdown = refreshInterval;
     updateTimerUI();
+
   } catch (err) {
     console.error('Datenabruf fehlgeschlagen:', err);
     countdown = 10;

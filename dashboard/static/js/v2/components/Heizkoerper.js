@@ -50,8 +50,8 @@ export class Heizkoerper {
         const hc = data.heating_circuit || {};
         const vTemp = hc.flow_temp ?? data.boiler?.flow_temp ?? null;
 
-        // Heizkreis ist aktiv wenn das Flag gesetzt ist ODER die Heizkreispumpe läuft ODER der Modus "heating" ist
-        const istHeizkreisAktiv = aktiv || hc.pump_active || data.mode === 'heating';
+        // Heizkreis ist NUR aktiv wenn der Modus "heating" ist – bei WW-Bereitung läuft die Pumpe zwar, aber kein Heizbetrieb
+        const istHeizkreisAktiv = aktiv || data.mode === 'heating';
 
         // 2. DOM-Inhalte aktualisieren
         if (statusText) {
