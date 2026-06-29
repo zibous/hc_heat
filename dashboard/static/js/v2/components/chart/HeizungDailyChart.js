@@ -16,6 +16,21 @@ export class HeizungDailyChart {
             ['30', '30 Tage'], ['90', '3 Monate'], ['365', 'Jahr']
         ].map(([v, l]) => `<option value="${v}"${v === saved ? ' selected' : ''}>${l}</option>`).join('');
 
+        // Heizperioden (01.09. – 31.08.) dynamisch generieren
+        const now = new Date();
+        const curYear = now.getFullYear();
+        const curMonth = now.getMonth() + 1; // 1-12
+        // Aktuelle Heizperiode: wenn >= September → dieses Jahr, sonst Vorjahr
+        const hpStartYear = curMonth >= 9 ? curYear : curYear - 1;
+        const hpOpts = [];
+        for (let y = hpStartYear; y >= hpStartYear - 2; y--) {
+            const from = `${y}-09-01`;
+            const to = `${y + 1}-08-31`;
+            const label = `HP ${y}/${String(y + 1).slice(2)}`;
+            const val = `hp:${from}:${to}`;
+            hpOpts.push(`<option value="${val}"${saved === val ? ' selected' : ''}>${label}</option>`);
+        }
+
         return `
         <div class="tile tile-daily" style="margin-bottom: 24px; padding: 16px;">
             <div class="tile-head" style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
@@ -23,11 +38,21 @@ export class HeizungDailyChart {
                     <span class="tile-head-lbl">Energiebilanz & Verbrauchshistorie</span>
                     <span class="tile-head-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6M3 20h18"/></svg></span>
                 </div>
-                <div style="display:flex;align-items:center;gap:8px;">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                     <span style="font-size:.72rem;color:var(--text-muted);text-transform:uppercase;font-weight:600">Zeitraum</span>
                     <select id="daily-period" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;">
                         ${opts}
+                        <optgroup label="Heizperioden">
+                            ${hpOpts.join('')}
+                        </optgroup>
+                        <option value="custom"${saved === 'custom' ? ' selected' : ''}>Von – Bis</option>
                     </select>
+                    <span id="daily-custom-range" style="display:none;align-items:center;gap:4px;">
+                        <input type="date" id="daily-from" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:6px;font-size:.75rem;">
+                        <span style="color:var(--text-muted);font-size:.75rem;">–</span>
+                        <input type="date" id="daily-to" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:6px;font-size:.75rem;">
+                        <button id="daily-range-go" style="background:var(--accent,#3b82f6);color:#fff;border:none;padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:600;cursor:pointer;">OK</button>
+                    </span>
                 </div>
             </div>
 
@@ -65,22 +90,62 @@ export class HeizungDailyChart {
 
         // Period-Selector: Bei Änderung neue Daten laden
         const periodSel = container.querySelector('#daily-period');
+        const customRange = container.querySelector('#daily-custom-range');
         if (periodSel && !periodSel._bound) {
             periodSel._bound = true;
             periodSel.addEventListener('change', async () => {
-                const days = periodSel.value;
-                localStorage.setItem('heat-daily-period', days);
+                const val = periodSel.value;
+                localStorage.setItem('heat-daily-period', val);
+
+                // Custom-Range ein-/ausblenden
+                if (customRange) customRange.style.display = val === 'custom' ? 'flex' : 'none';
+                if (val === 'custom') return; // Warten auf OK-Klick
+
                 try {
-                    const res = await fetch(`${this.basePath}/api/daily?days=${days}`);
+                    let url;
+                    if (val.startsWith('hp:')) {
+                        // Heizperiode: hp:YYYY-MM-DD:YYYY-MM-DD
+                        const [, from, to] = val.split(':');
+                        url = `${this.basePath}/api/daily?from=${from}&to=${to}`;
+                    } else {
+                        url = `${this.basePath}/api/daily?days=${val}`;
+                    }
+                    const res = await fetch(url);
                     if (!res.ok) return;
                     const json = await res.json();
                     if (json && json.data) {
                         const colors = this._getColors();
-                        const gasPrice = 0.103; // Fallback
+                        const gasPrice = 0.103;
                         this.updateChart(json.data, colors, gasPrice, container);
                     }
                 } catch (e) { console.error('Daily fetch error:', e); }
             });
+        }
+
+        // Custom-Range OK-Button
+        const rangeGoBtn = container.querySelector('#daily-range-go');
+        if (rangeGoBtn && !rangeGoBtn._bound) {
+            rangeGoBtn._bound = true;
+            rangeGoBtn.addEventListener('click', async () => {
+                const from = container.querySelector('#daily-from')?.value;
+                const to = container.querySelector('#daily-to')?.value;
+                if (!from || !to) return;
+                try {
+                    const res = await fetch(`${this.basePath}/api/daily?from=${from}&to=${to}`);
+                    if (!res.ok) return;
+                    const json = await res.json();
+                    if (json && json.data) {
+                        const colors = this._getColors();
+                        const gasPrice = 0.103;
+                        this.updateChart(json.data, colors, gasPrice, container);
+                    }
+                } catch (e) { console.error('Daily range fetch error:', e); }
+            });
+        }
+
+        // Initial: Custom-Range anzeigen falls gespeichert
+        if (customRange && localStorage.getItem('heat-daily-period') === 'custom') {
+            customRange.style.display = 'flex';
         }
     }
 
@@ -115,13 +180,9 @@ export class HeizungDailyChart {
                 return parts.length === 2 ? `${parts[1]}/${parts[0]}` : `${parts[2]}.${parts[1]}`;
             });
 
-            // 2. Berechnung der Desinfektions- und reinen Warmwasseranteile
-            const disData = dailyData.map(d => {
-                if (d.day.indexOf(':') > -1) return 0;
-                const dt = new Date(d.day);
-                return (!isNaN(dt.getTime()) && dt.getDay() === 6) ? Math.min(d.dhw_kwh, d.energy_kwh * 0.05) : 0;
-            });
-            const wwOnly = dailyData.map((d, i) => Math.max(0, d.dhw_kwh - disData[i]));
+            // 2. Desinfektions- und reine Warmwasseranteile (vom Backend geliefert)
+            const disData = dailyData.map(d => d.disinfection_kwh || 0);
+            const wwOnly = dailyData.map(d => d.dhw_kwh || 0);
 
             // 3. Vorherige Instanz zerstören (Wichtig gegen Flackern beim Hovern)
             if (this.dailyChartInstance) {
@@ -180,10 +241,9 @@ export class HeizungDailyChart {
             sumDis += disData[i] || 0;
         });
 
-        const sumWW = sumD - sumDis;
+        const sumWW = sumD;
         const days = dailyData.length;
 
-        // Lokale Formatierungshelfer passend zu deiner App
         const F = (v, dec = 1) => typeof v === 'number' ? v.toFixed(dec).replace('.', ',') : v;
         const fH = (m) => {
             const h = Math.floor(m / 60);
@@ -191,26 +251,23 @@ export class HeizungDailyChart {
             return h > 0 ? `${h}h ${remMin}m` : `${remMin}m`;
         };
 
-        const ico = (path, color='currentColor') => `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" style="vertical-align:text-bottom;margin-right:2px">${path}</svg>`;
-        const iHouse = ico('<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>', '#ef4444');
-        const iDrop = ico('<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>', '#3b82f6');
-        const iFlame = ico('<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14 0-5.5 3.5-7.5 0 0 .5 4 2 5s2.17 2.97 2.17 4.73A5.5 5.5 0 0 1 12 16.5a5.5 5.5 0 0 1-3.5-2z"/>', '#f59e0b');
-        const iGas = ico('<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>', '#f59e0b');
-        const iCoin = ico('<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>', '#10b981');
-        const iClock = ico('<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+        const badge = (value, label, color = 'var(--text)') =>
+            `<div style="display:flex;flex-direction:column;align-items:center;padding:8px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);min-width:90px;">
+                <span style="font-size:1.1rem;font-weight:700;color:${color};line-height:1.2;">${value}</span>
+                <span style="font-size:.65rem;color:var(--text-muted);margin-top:2px;white-space:nowrap;">${label}</span>
+            </div>`;
 
-        let html = `<div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; padding:4px 0;">`;
-        html += `<span>Σ <strong>${F(sumE, 1)}</strong> kWh</span>`;
-        html += `<span style="color:#ef4444">${iHouse} ${F(sumH, 1)} kWh</span>`;
-        html += `<span style="color:#3b82f6">${iDrop} ${F(sumWW, 1)} kWh</span>`;
-        if (sumDis > 0) html += `<span style="color:#f59e0b">${iFlame} ${F(sumDis, 1)} kWh</span>`;
-        html += `<span>${iGas} ${F(sumG, 2)} m³</span>`;
-        html += `<span style="color:#10b981">${iCoin} ${F(sumE * gpk, 2)} €</span>`;
-        html += `<span>${iClock} ${fH(sumB)}</span>`;
-
+        let html = `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:10px 0;">`;
+        html += badge(F(sumE, 1), 'Gesamt kWh', '#6366f1');
+        html += badge(F(sumH, 1), 'Heizung kWh', '#ef4444');
+        html += badge(F(sumWW, 1), 'Warmwasser kWh', '#3b82f6');
+        if (sumDis > 0) html += badge(F(sumDis, 1), 'Desinfektion kWh', '#f59e0b');
+        html += badge(F(sumG, 2), 'Gas m³', '#f59e0b');
+        html += badge(F(sumE * gpk, 2) + ' €', 'Kosten', '#10b981');
+        html += badge(fH(sumB), 'Brennerlaufzeit', 'var(--text)');
         if (days > 1) {
             const unit = days > 90 ? 'Monat' : 'Tag';
-            html += `<span style="color:var(--text-muted)">⌀ ${F(sumE / days, 1)} kWh/${unit}</span>`;
+            html += badge(F(sumE / days, 1), `⌀ kWh/${unit}`, 'var(--text-muted)');
         }
         html += `</div>`;
 

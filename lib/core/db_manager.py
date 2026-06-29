@@ -200,28 +200,55 @@ class DBManager:
             return self._query_monthly(days)
 
         sql = """
+            WITH daily AS (
+                SELECT
+                    substr(ts, 1, 10) as day,
+                    MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
+                    MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
+                    MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
+                    MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
+                    SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
+                FROM measurements
+                GROUP BY substr(ts, 1, 10)
+                ORDER BY day DESC
+                LIMIT ?
+            ),
+            dis_daily AS (
+                SELECT
+                    substr(ts, 1, 10) as day,
+                    MAX(energy_dhw_kwh) - MIN(energy_dhw_kwh) as dis_kwh,
+                    MAX(gas_display_m3) - MIN(gas_display_m3) as dis_gas
+                FROM measurements
+                WHERE mode = 'disinfection'
+                GROUP BY substr(ts, 1, 10)
+            )
             SELECT
-                substr(ts, 1, 10) as day,
-                MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
-                MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
-                MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
-                MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
-                SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
-            FROM measurements
-            GROUP BY substr(ts, 1, 10)
-            ORDER BY day DESC
-            LIMIT ?
+                d.day,
+                d.e_start, d.e_end,
+                d.eh_start, d.eh_end,
+                d.ed_start, d.ed_end,
+                d.g_start, d.g_end,
+                d.burner_min,
+                COALESCE(dd.dis_kwh, 0) as dis_kwh,
+                COALESCE(dd.dis_gas, 0) as dis_gas
+            FROM daily d
+            LEFT JOIN dis_daily dd ON d.day = dd.day
+            ORDER BY d.day
         """
         with self._conn() as conn:
             rows = conn.execute(sql, (days,)).fetchall()
         result = []
-        for r in reversed(rows):
+        for r in rows:
+            dhw_total = round((r[6] or 0) - (r[5] or 0), 2)
+            dis_kwh = round(r[10] or 0, 2)
+            dhw_only = round(max(0, dhw_total - dis_kwh), 2)
             result.append(
                 {
                     "day": r[0],
                     "energy_kwh": round((r[2] or 0) - (r[1] or 0), 2),
                     "heat_kwh": round((r[4] or 0) - (r[3] or 0), 2),
-                    "dhw_kwh": round((r[6] or 0) - (r[5] or 0), 2),
+                    "dhw_kwh": dhw_only,
+                    "disinfection_kwh": dis_kwh,
                     "gas_m3": round((r[8] or 0) - (r[7] or 0), 3),
                     "burner_min": r[9] or 0,
                 }
@@ -229,34 +256,64 @@ class DBManager:
         return result
 
     def _query_hourly(self) -> list[dict]:
-        """Aggregiert Verbrauch pro Stunde für den letzten Tag."""
+        """Aggregiert Verbrauch pro Stunde für den letzten Tag.
+
+        Teilt dhw_kwh anhand des mode-Felds in Warmwasser und Desinfektion auf.
+        """
         sql = """
             WITH last_day AS (
                 SELECT substr(ts, 1, 10) as day
                 FROM measurements ORDER BY ts DESC LIMIT 1
+            ),
+            hourly AS (
+                SELECT
+                    substr(ts, 12, 2) as hour,
+                    MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
+                    MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
+                    MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
+                    MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
+                    SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
+                FROM measurements
+                WHERE substr(ts, 1, 10) = (SELECT day FROM last_day)
+                GROUP BY substr(ts, 12, 2)
+            ),
+            dis_hourly AS (
+                SELECT
+                    substr(ts, 12, 2) as hour,
+                    MAX(energy_dhw_kwh) - MIN(energy_dhw_kwh) as dis_kwh,
+                    MAX(gas_display_m3) - MIN(gas_display_m3) as dis_gas
+                FROM measurements
+                WHERE substr(ts, 1, 10) = (SELECT day FROM last_day)
+                  AND mode = 'disinfection'
+                GROUP BY substr(ts, 12, 2)
             )
             SELECT
-                substr(ts, 12, 2) as hour,
-                MIN(energy_total_kwh), MAX(energy_total_kwh),
-                MIN(energy_heat_kwh), MAX(energy_heat_kwh),
-                MIN(energy_dhw_kwh), MAX(energy_dhw_kwh),
-                MIN(gas_display_m3), MAX(gas_display_m3),
-                SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END)
-            FROM measurements
-            WHERE substr(ts, 1, 10) = (SELECT day FROM last_day)
-            GROUP BY substr(ts, 12, 2)
-            ORDER BY hour
+                h.hour,
+                h.e_start, h.e_end,
+                h.eh_start, h.eh_end,
+                h.ed_start, h.ed_end,
+                h.g_start, h.g_end,
+                h.burner_min,
+                COALESCE(d.dis_kwh, 0) as dis_kwh,
+                COALESCE(d.dis_gas, 0) as dis_gas
+            FROM hourly h
+            LEFT JOIN dis_hourly d ON h.hour = d.hour
+            ORDER BY h.hour
         """
         with self._conn() as conn:
             rows = conn.execute(sql).fetchall()
         result = []
         for r in rows:
+            dhw_total = round((r[6] or 0) - (r[5] or 0), 2)
+            dis_kwh = round(r[10] or 0, 2)
+            dhw_only = round(max(0, dhw_total - dis_kwh), 2)
             result.append(
                 {
                     "day": r[0] + ":00",
                     "energy_kwh": round((r[2] or 0) - (r[1] or 0), 2),
                     "heat_kwh": round((r[4] or 0) - (r[3] or 0), 2),
-                    "dhw_kwh": round((r[6] or 0) - (r[5] or 0), 2),
+                    "dhw_kwh": dhw_only,
+                    "disinfection_kwh": dis_kwh,
                     "gas_m3": round((r[8] or 0) - (r[7] or 0), 3),
                     "burner_min": r[9] or 0,
                 }
@@ -264,30 +321,129 @@ class DBManager:
         return result
 
     def _query_range_daily(self, from_date: str, to_date: str) -> list[dict]:
-        """Aggregiert Verbrauch pro Tag für einen expliziten Zeitraum."""
+        """Aggregiert Verbrauch für einen expliziten Zeitraum.
+
+        Automatische Aggregation:
+        - <= 90 Tage: täglich
+        - > 90 Tage: monatlich
+        """
+        from datetime import date
+
+        d_from = date.fromisoformat(from_date)
+        d_to = date.fromisoformat(to_date)
+        span_days = (d_to - d_from).days
+
+        if span_days > 90:
+            return self._query_range_monthly(from_date, to_date)
+
         sql = """
+            WITH daily AS (
+                SELECT
+                    substr(ts, 1, 10) as day,
+                    MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
+                    MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
+                    MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
+                    MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
+                    SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
+                FROM measurements
+                WHERE substr(ts, 1, 10) >= ? AND substr(ts, 1, 10) <= ?
+                GROUP BY substr(ts, 1, 10)
+            ),
+            dis_daily AS (
+                SELECT
+                    substr(ts, 1, 10) as day,
+                    MAX(energy_dhw_kwh) - MIN(energy_dhw_kwh) as dis_kwh,
+                    MAX(gas_display_m3) - MIN(gas_display_m3) as dis_gas
+                FROM measurements
+                WHERE substr(ts, 1, 10) >= ? AND substr(ts, 1, 10) <= ?
+                  AND mode = 'disinfection'
+                GROUP BY substr(ts, 1, 10)
+            )
             SELECT
-                substr(ts, 1, 10) as day,
-                MIN(energy_total_kwh), MAX(energy_total_kwh),
-                MIN(energy_heat_kwh), MAX(energy_heat_kwh),
-                MIN(energy_dhw_kwh), MAX(energy_dhw_kwh),
-                MIN(gas_display_m3), MAX(gas_display_m3),
-                SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END)
-            FROM measurements
-            WHERE substr(ts, 1, 10) >= ? AND substr(ts, 1, 10) <= ?
-            GROUP BY substr(ts, 1, 10)
-            ORDER BY day
+                d.day,
+                d.e_start, d.e_end,
+                d.eh_start, d.eh_end,
+                d.ed_start, d.ed_end,
+                d.g_start, d.g_end,
+                d.burner_min,
+                COALESCE(dd.dis_kwh, 0) as dis_kwh,
+                COALESCE(dd.dis_gas, 0) as dis_gas
+            FROM daily d
+            LEFT JOIN dis_daily dd ON d.day = dd.day
+            ORDER BY d.day
         """
         with self._conn() as conn:
-            rows = conn.execute(sql, (from_date, to_date)).fetchall()
+            rows = conn.execute(sql, (from_date, to_date, from_date, to_date)).fetchall()
         result = []
         for r in rows:
+            dhw_total = round((r[6] or 0) - (r[5] or 0), 2)
+            dis_kwh = round(r[10] or 0, 2)
+            dhw_only = round(max(0, dhw_total - dis_kwh), 2)
             result.append(
                 {
                     "day": r[0],
                     "energy_kwh": round((r[2] or 0) - (r[1] or 0), 2),
                     "heat_kwh": round((r[4] or 0) - (r[3] or 0), 2),
-                    "dhw_kwh": round((r[6] or 0) - (r[5] or 0), 2),
+                    "dhw_kwh": dhw_only,
+                    "disinfection_kwh": dis_kwh,
+                    "gas_m3": round((r[8] or 0) - (r[7] or 0), 3),
+                    "burner_min": r[9] or 0,
+                }
+            )
+        return result
+
+    def _query_range_monthly(self, from_date: str, to_date: str) -> list[dict]:
+        """Aggregiert Verbrauch pro Monat für einen expliziten Zeitraum."""
+        sql = """
+            WITH monthly AS (
+                SELECT
+                    substr(ts, 1, 7) as month,
+                    MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
+                    MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
+                    MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
+                    MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
+                    SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
+                FROM measurements
+                WHERE substr(ts, 1, 10) >= ? AND substr(ts, 1, 10) <= ?
+                GROUP BY substr(ts, 1, 7)
+            ),
+            dis_monthly AS (
+                SELECT
+                    substr(ts, 1, 7) as month,
+                    MAX(energy_dhw_kwh) - MIN(energy_dhw_kwh) as dis_kwh,
+                    MAX(gas_display_m3) - MIN(gas_display_m3) as dis_gas
+                FROM measurements
+                WHERE substr(ts, 1, 10) >= ? AND substr(ts, 1, 10) <= ?
+                  AND mode = 'disinfection'
+                GROUP BY substr(ts, 1, 7)
+            )
+            SELECT
+                m.month,
+                m.e_start, m.e_end,
+                m.eh_start, m.eh_end,
+                m.ed_start, m.ed_end,
+                m.g_start, m.g_end,
+                m.burner_min,
+                COALESCE(dm.dis_kwh, 0) as dis_kwh,
+                COALESCE(dm.dis_gas, 0) as dis_gas
+            FROM monthly m
+            LEFT JOIN dis_monthly dm ON m.month = dm.month
+            ORDER BY m.month
+        """
+        with self._conn() as conn:
+            rows = conn.execute(sql, (from_date, to_date, from_date, to_date)).fetchall()
+        result = []
+        for r in rows:
+            dhw_total = round((r[6] or 0) - (r[5] or 0), 2)
+            dis_kwh = round(r[10] or 0, 2)
+            dhw_only = round(max(0, dhw_total - dis_kwh), 2)
+            result.append(
+                {
+                    "day": r[0],
+                    "energy_kwh": round((r[2] or 0) - (r[1] or 0), 2),
+                    "heat_kwh": round((r[4] or 0) - (r[3] or 0), 2),
+                    "dhw_kwh": dhw_only,
+                    "disinfection_kwh": dis_kwh,
                     "gas_m3": round((r[8] or 0) - (r[7] or 0), 3),
                     "burner_min": r[9] or 0,
                 }
@@ -297,28 +453,55 @@ class DBManager:
     def _query_monthly(self, days: int = 365) -> list[dict]:
         """Aggregiert Verbrauch pro Monat."""
         sql = """
+            WITH monthly AS (
+                SELECT
+                    substr(ts, 1, 7) as month,
+                    MIN(energy_total_kwh) as e_start, MAX(energy_total_kwh) as e_end,
+                    MIN(energy_heat_kwh) as eh_start, MAX(energy_heat_kwh) as eh_end,
+                    MIN(energy_dhw_kwh) as ed_start, MAX(energy_dhw_kwh) as ed_end,
+                    MIN(gas_display_m3) as g_start, MAX(gas_display_m3) as g_end,
+                    SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END) as burner_min
+                FROM measurements
+                GROUP BY substr(ts, 1, 7)
+                ORDER BY month DESC
+                LIMIT 12
+            ),
+            dis_monthly AS (
+                SELECT
+                    substr(ts, 1, 7) as month,
+                    MAX(energy_dhw_kwh) - MIN(energy_dhw_kwh) as dis_kwh,
+                    MAX(gas_display_m3) - MIN(gas_display_m3) as dis_gas
+                FROM measurements
+                WHERE mode = 'disinfection'
+                GROUP BY substr(ts, 1, 7)
+            )
             SELECT
-                substr(ts, 1, 7) as month,
-                MIN(energy_total_kwh), MAX(energy_total_kwh),
-                MIN(energy_heat_kwh), MAX(energy_heat_kwh),
-                MIN(energy_dhw_kwh), MAX(energy_dhw_kwh),
-                MIN(gas_display_m3), MAX(gas_display_m3),
-                SUM(CASE WHEN burner_active=1 THEN 1 ELSE 0 END)
-            FROM measurements
-            GROUP BY substr(ts, 1, 7)
-            ORDER BY month DESC
-            LIMIT 12
+                m.month,
+                m.e_start, m.e_end,
+                m.eh_start, m.eh_end,
+                m.ed_start, m.ed_end,
+                m.g_start, m.g_end,
+                m.burner_min,
+                COALESCE(dm.dis_kwh, 0) as dis_kwh,
+                COALESCE(dm.dis_gas, 0) as dis_gas
+            FROM monthly m
+            LEFT JOIN dis_monthly dm ON m.month = dm.month
+            ORDER BY m.month
         """
         with self._conn() as conn:
             rows = conn.execute(sql).fetchall()
         result = []
-        for r in reversed(rows):
+        for r in rows:
+            dhw_total = round((r[6] or 0) - (r[5] or 0), 2)
+            dis_kwh = round(r[10] or 0, 2)
+            dhw_only = round(max(0, dhw_total - dis_kwh), 2)
             result.append(
                 {
                     "day": r[0],
                     "energy_kwh": round((r[2] or 0) - (r[1] or 0), 2),
                     "heat_kwh": round((r[4] or 0) - (r[3] or 0), 2),
-                    "dhw_kwh": round((r[6] or 0) - (r[5] or 0), 2),
+                    "dhw_kwh": dhw_only,
+                    "disinfection_kwh": dis_kwh,
                     "gas_m3": round((r[8] or 0) - (r[7] or 0), 3),
                     "burner_min": r[9] or 0,
                 }

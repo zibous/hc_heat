@@ -12,9 +12,9 @@ __pycache__/
 
 # Daten (nicht ins Repo)
 # data/heating.db
-data/heating.db.bak
-data/heating_sim.db
-data/processed/*.json
+# data/heating.db.bak
+# data/heating_sim.db
+# data/processed/*.json
 data/raw/api-system-values.json
 
 
