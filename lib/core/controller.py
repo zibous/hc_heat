@@ -204,6 +204,12 @@ class HeatingController:
             },
             "detail": detail,
             "indicator": indicator,
+            "metrics": [
+                {"label": "Heizung", "value": round(heat_kwh, 1), "unit": "kWh"},
+                {"label": "WW", "value": round(dhw_kwh, 1), "unit": "kWh"},
+                {"label": "Außen", "value": round(outdoor_temp, 1), "unit": "°C"} if outdoor_temp is not None else None,
+                {"label": "Vorlauf", "value": round(flow_temp, 1), "unit": "°C"} if flow_temp is not None else None,
+            ],
         }
 
     def run(self) -> None:
