@@ -88,3 +88,7 @@
 "4C": "Kommunikationsfehler Thermostat"
 "4C(224)": "Kommunikationsfehler RC310 – Bus-Störung"
 "4Y": "Thermostat-Verbindung unterbrochen"
+
+# --- Wartung / Hinweise ---
+"H08": "Wartung fällig – Heizungsfirma informieren"
+"H08(1018)": "Wartungserinnerung – Jährliche Wartung fällig"
