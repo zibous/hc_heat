@@ -1,5 +1,32 @@
 webhooks_heating_pack:
 
+  # ═══════════════════════════════════════════════════════════════════════
+  # Home Assistant Webhook-Vorlage für hc_heat (Heizungscontroller)
+  # ═══════════════════════════════════════════════════════════════════════
+  #
+  # Konfiguration in .env:
+  #   HA_WEBHOOK_URL=http://192.168.1.xxx:8123
+  #   HA_WEBHOOK_ID=heatcontrol
+  #
+  # Verfügbare Events & Payload-Felder:
+  # ┌──────────────────────┬──────────────────────────────────────────────────────┐
+  # │ Event                │ Felder                                               │
+  # ├──────────────────────┼──────────────────────────────────────────────────────┤
+  # │ app_start            │ message                                              │
+  # │ app_stop             │ message                                              │
+  # │ mode_changed         │ old_mode, new_mode                                   │
+  # │ error_boiler         │ code                                                 │
+  # │ error_thermostat     │ code                                                 │
+  # │ temp_warning         │ dhw_curtemp, threshold                               │
+  # │ system_ok            │ message                                              │
+  # │ mqtt_unavailable     │ message, host                                        │
+  # │ endpoint_offline     │ endpoint (boiler/thermostat/gasmeter)                 │
+  # │ endpoint_online      │ endpoint (boiler/thermostat/gasmeter)                 │
+  # └──────────────────────┴──────────────────────────────────────────────────────┘
+  #
+  # Alle Payloads enthalten: event + die jeweiligen Felder
+  # ═══════════════════════════════════════════════════════════════════════
+
   input_text:
     heizung_modus:
       name: Heizungsmodus
@@ -19,6 +46,28 @@ webhooks_heating_pack:
 
       action:
         - choose:
+
+            # ── App gestartet ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'app_start' }}
+              sequence:
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: "🟢 {{ trigger.json.message | default('Gestartet') }}"
+
+            # ── App gestoppt ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'app_stop' }}
+              sequence:
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: "🔴 {{ trigger.json.message | default('Gestoppt') }}"
 
             # ── Betriebsmodus geändert ──
             - conditions:
@@ -110,6 +159,9 @@ webhooks_heating_pack:
                 - service: persistent_notification.dismiss
                   data:
                     notification_id: heizung_mqtt_error
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_endpoint_offline
                 - service: logbook.log
                   data:
                     name: Heizung
@@ -133,6 +185,39 @@ webhooks_heating_pack:
                     name: Heizung
                     message: >
                       📡 MQTT offline: {{ trigger.json.message | default('Keine Details') }}
+
+            # ── Endpoint offline (Kessel/Thermostat/Gasmeter) ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'endpoint_offline' }}
+              sequence:
+                - service: persistent_notification.create
+                  data:
+                    title: "🔌 Endpoint offline"
+                    message: >
+                      {{ trigger.json.endpoint | default('Unbekannt') }} ist nicht erreichbar
+                    notification_id: heizung_endpoint_offline
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: >
+                      🔌 Offline: {{ trigger.json.endpoint | default('?') }}
+
+            # ── Endpoint wieder online ──
+            - conditions:
+                - condition: template
+                  value_template: >
+                    {{ trigger.json is defined and trigger.json.event == 'endpoint_online' }}
+              sequence:
+                - service: persistent_notification.dismiss
+                  data:
+                    notification_id: heizung_endpoint_offline
+                - service: logbook.log
+                  data:
+                    name: Heizung
+                    message: >
+                      ✅ Online: {{ trigger.json.endpoint | default('?') }}
 
           default:
             - service: logbook.log

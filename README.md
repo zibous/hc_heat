@@ -16,10 +16,10 @@ einer Buderus LOGAMAX PLUS GB172-14 Gasheizung.
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                      app.py                             │
-│  ┌──────────┐  ┌──────────────┐  ┌───────────────────┐ │
-│  │ --once   │  │ --simulate   │  │ Produktivbetrieb  │ │
-│  │ (einmal) │  │ (Testdaten)  │  │ (Hauptschleife)   │ │
-│  └──────────┘  └──────────────┘  └─────────┬─────────┘ │
+│  ┌──────────┐  ┌──────────────┐  ┌───────────────────┐  │
+│  │ --once   │  │ --simulate   │  │ Produktivbetrieb  │  │
+│  │ (einmal) │  │ (Testdaten)  │  │ (Hauptschleife)   │  │
+│  └──────────┘  └──────────────┘  └─────────┬─────────┘  │
 └────────────────────────────────────────────┬────────────┘
                                              │
                     ┌────────────────────────┐
@@ -31,10 +31,10 @@ einer Buderus LOGAMAX PLUS GB172-14 Gasheizung.
           │                     │                     │
           ▼                     ▼                     ▼
    ┌──────────────┐   ┌─────────────────┐   ┌──────────────┐
-   │ Daten holen  │   │  Berechnen      │   │  Ausgeben     │
-   └──────┬───────┘   └────────┬────────┘   └──────┬───────┘
-          │                    │                    │
-    ┌─────┴──────┐      ┌─────┴──────┐      ┌─────┴──────┐
+   │ Daten holen  │   │  Berechnen      │   │  Ausgeben    │
+   └──────┬───────┘   └────────┬────────┘   └─────┬────────┘
+          │                    │                  │
+    ┌─────┴──────┐      ┌──────┴─────┐      ┌─────┴──────┐
     │ EMS-ESP32  │      │ Runtime    │      │ Dashboard  │
     │ /api/boiler│      │ Calc       │      │ :5028      │
     ├────────────┤      ├────────────┤      ├────────────┤
@@ -193,38 +193,38 @@ EMS-ESP32                    ESPHome ESP32
     │                             │
     └──────────┬──────────────────┘
                │
-    ┌──────────▼──────────┐
+    ┌──────────▼───────────┐
     │ HeatingSystemManager │  ← 1x Boiler-Request für System+Boiler+HC
     │ (1 Zyklus = 2-3 HTTP)│  ← 1x Thermostat-Request
-    └──────────┬──────────┘  ← 0-1x Gasmeter (bedingt)
+    └──────────┬───────────┘  ← 0-1x Gasmeter (bedingt)
                │
-    ┌──────────▼──────────┐
+    ┌──────────▼───────────┐
     │ Field Mapper         │  ← field_mappings.yaml
     │ (YAML → Dataclass)   │  ← Thermostat: Langname-Keys normalisiert
-    └──────────┬──────────┘
+    └──────────┬───────────┘
                │
-    ┌──────────▼──────────┐
+    ┌──────────▼───────────┐
     │ Models (Dataclasses) │
     │ Boiler, DHW, System, │
-    │ HeatingCircuit, Gas,  │
-    │ Thermostat            │
-    └──────────┬──────────┘
+    │ HeatingCircuit, Gas, │
+    │ Thermostat           │
+    └──────────┬───────────┘
                │
-    ┌──────────▼──────────┐
+    ┌──────────▼───────────┐
     │ Calculators          │
     │ Runtime → Modus      │  Standby/Heizung/WW/Desinfektion
     │ Consumption → kWh    │  Gesamt, Heizung, WW, Desinfektion
     │ Cost → EUR           │  basierend auf costs.yaml
     │ ErrorLog → Klartext  │  basierend auf errorcodes_de.yaml
-    └──────────┬──────────┘
+    └──────────┬───────────┘
                │
-    ┌──────────▼──────────┐
+    ┌──────────▼───────────┐
     │ Ausgabe              │
     │ ├─ SQLite DB         │  data/heating.db (Zeitreihe)
     │ ├─ Dashboard         │  :5028/dashboardhaco (Live + Charts)
     │ ├─ MQTT              │  optional, Auto-Reconnect
     │ └─ Webhooks          │  optional, bei Änderungen → HA
-    └─────────────────────┘
+    └──────────────────────┘
 ```
 
 ## Dashboard
