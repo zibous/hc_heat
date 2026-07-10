@@ -3,6 +3,8 @@
 IoT-Anwendung zur Erfassung, Berechnung und Visualisierung von Heizungsdaten
 einer Buderus LOGAMAX PLUS GB172-14 Gasheizung.
 
+![Screenshot der Anwendung](./docs/heizung.png)
+
 ## Hardware
 
 - **Gastherme**: Buderus LOGAMAX PLUS GB172-14 (14 kW)
