@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-logger = logging.getLogger("hc_haco2.history_writer")
+logger = logging.getLogger(" hc_heat.history_writer")
 
 # CSV-Spalten – alle relevanten Daten für Replay
 COLUMNS = [

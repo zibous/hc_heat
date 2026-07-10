@@ -17,7 +17,7 @@ import yaml
 
 from config.app_config import BASE_DIR
 
-logger = logging.getLogger("hc_haco2.mapper")
+logger = logging.getLogger(" hc_heat.mapper")
 
 # Globaler Cache
 _mappings: Optional[dict] = None

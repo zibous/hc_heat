@@ -21,7 +21,7 @@ from .calc.consumption_calc import ConsumptionResult
 from .calc.cost_calc import CostResult
 from config.app_config import MQTTSettings
 
-logger = logging.getLogger("hc_haco2.mqtt_pub")
+logger = logging.getLogger(" hc_heat.mqtt_pub")
 
 
 class MQTTPublisher:

@@ -1,4 +1,4 @@
-# Projekt: hc_haco2 (home-heizungscontroller)
+# Projekt:  hc_heat (home-heizungscontroller)
 
 Du bist ein erfahrener Python- und IoT-Architekt.
 Ist ein größeres Projekt, bitte arbeite extrem effizient und minimiere Tokenverbrauch.

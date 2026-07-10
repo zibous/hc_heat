@@ -11,7 +11,7 @@ from typing import Optional
 
 from config.app_config import BASE_DIR
 
-logger = logging.getLogger("hc_haco2.db")
+logger = logging.getLogger(" hc_heat.db")
 
 DB_PATH = BASE_DIR / "data" / "heating.db"
 DB_PATH_SIM = BASE_DIR / "data" / "heating_sim.db"

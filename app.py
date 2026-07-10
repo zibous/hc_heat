@@ -1,4 +1,4 @@
-"""hc_haco2 – Heizungscontroller Hauptanwendung.
+""" hc_heat – Heizungscontroller Hauptanwendung.
 
 Erfasst Heizungsdaten, berechnet Kennzahlen, speichert Snapshots
 und publiziert optional per MQTT.
@@ -22,7 +22,7 @@ from lib.calc.cost_calc import CostCalculator
 from lib.calc.runtime_calc import RuntimeCalculator
 from lib.core.controller import HeatingController
 
-logger = logging.getLogger("hc_haco2.app")
+logger = logging.getLogger(" hc_heat.app")
 
 # Graceful Shutdown
 _running = True
@@ -77,7 +77,7 @@ def run_once() -> None:
     runtime_calc = RuntimeCalculator()
 
     print("\n══════════════════════════════════════════════════")
-    print("  hc_haco2 – Einmaliger Datenabruf")
+    print("   hc_heat – Einmaliger Datenabruf")
     print("══════════════════════════════════════════════════")
 
     # Snapshot laden (Gaszähler immer holen im --once Modus)

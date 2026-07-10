@@ -9,7 +9,7 @@ from typing import Optional
 
 from .db_manager import DBManager
 
-logger = logging.getLogger("hc_haco2.history_buffer")
+logger = logging.getLogger(" hc_heat.history_buffer")
 
 
 class HistoryBuffer:

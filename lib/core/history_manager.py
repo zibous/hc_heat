@@ -8,7 +8,7 @@ from dataclasses import is_dataclass, asdict
 
 from ..models.heating_snapshot import HeatingSnapshot
 
-logger = logging.getLogger("hc_haco2.history")
+logger = logging.getLogger(" hc_heat.history")
 
 
 class HistoryManager:

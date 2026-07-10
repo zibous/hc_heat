@@ -12,7 +12,7 @@ import yaml
 
 from config.app_config import BASE_DIR
 
-logger = logging.getLogger("hc_haco2.errorcodes")
+logger = logging.getLogger(" hc_heat.errorcodes")
 
 _codes: Optional[dict] = None
 _PAREN_RE = re.compile(r"([0-9A-Za-z]+\(\d+\))")

@@ -1,4 +1,4 @@
-# Makefile for hc_haco2 (Heizungscontroller)
+# Makefile for  hc_heat (Heizungscontroller)
 # --- 1. DYNAMISCHE PARAMETER & VARIABLEN ---
 PROJECT_NAME = $(notdir $(CURDIR))
 FORGEJO_IP   = 10.1.1.19
@@ -199,7 +199,7 @@ jsclean:
 
 help: ## Diese Hilfe anzeigen
 	@echo ""
-	@echo "hc_haco2 – Heizungscontroller"
+	@echo " hc_heat – Heizungscontroller"
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?##' Makefile | awk 'BEGIN {FS = ":.*?##"}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 	@echo ""

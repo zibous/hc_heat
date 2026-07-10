@@ -7,7 +7,7 @@ from typing import Optional
 from ..models.boiler import Boiler
 from ..models.gas_meter import GasMeter
 
-logger = logging.getLogger("hc_haco2.calc.consumption")
+logger = logging.getLogger(" hc_heat.calc.consumption")
 
 
 @dataclass

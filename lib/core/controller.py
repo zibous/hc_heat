@@ -23,7 +23,7 @@ from ..webhooks import WebhookSender
 from .live_data_builder import build_live_data, extract_prev_values, enrich_today_data
 from .history_writer import HistoryWriter
 
-logger = logging.getLogger("hc_haco2.controller")
+logger = logging.getLogger(" hc_heat.controller")
 
 # Konstante für Simulate-Tage (wird auch in simulate.py verwendet)
 DAYS = 14
@@ -216,7 +216,7 @@ class HeatingController:
         """Hauptschleife: Daten erfassen, berechnen, publizieren."""
         self.dashboard.start()
 
-        logger.info("=== hc_haco2 Heizungscontroller gestartet ===")
+        logger.info("===  hc_heat Heizungscontroller gestartet ===")
         logger.info("Intervall: %ds", self.config.app.interval)
         logger.info("Heizung: %s", self.config.heating.name)
         logger.info("Boiler URL: %s", self.config.heating.sensor_url)
@@ -636,4 +636,4 @@ class HeatingController:
         self.webhook._send("app_stop", {"message": "Heizungscontroller beendet"})
         self.dashboard.stop()
         self.mqtt_client.disconnect()
-        logger.info("=== hc_haco2 beendet ===")
+        logger.info("===  hc_heat beendet ===")

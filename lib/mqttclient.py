@@ -12,7 +12,7 @@ from typing import Optional
 
 from config.app_config import MQTTSettings
 
-logger = logging.getLogger("hc_haco2.mqtt")
+logger = logging.getLogger(" hc_heat.mqtt")
 
 try:
     import paho.mqtt.client as mqtt

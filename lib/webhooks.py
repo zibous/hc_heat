@@ -14,7 +14,7 @@ import requests
 
 from config.app_config import HASettings
 
-logger = logging.getLogger("hc_haco2.webhook")
+logger = logging.getLogger(" hc_heat.webhook")
 
 
 class WebhookSender:

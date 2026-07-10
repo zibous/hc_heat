@@ -7,7 +7,7 @@ from typing import Optional
 
 from ..core.errorcodes import translate_buderus_code
 
-logger = logging.getLogger("hc_haco2.calc.error")
+logger = logging.getLogger(" hc_heat.calc.error")
 
 
 @dataclass

@@ -13,7 +13,7 @@ def setup_logging(settings: LogSettings) -> logging.Logger:
     Returns:
         Root-Logger der Anwendung.
     """
-    root = logging.getLogger("hc_haco2")
+    root = logging.getLogger(" hc_heat")
     root.setLevel(getattr(logging, settings.level.upper(), logging.INFO))
 
     # Bestehende Handler entfernen

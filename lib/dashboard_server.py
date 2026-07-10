@@ -14,7 +14,7 @@ from urllib.parse import urlparse, parse_qs
 
 from config.app_config import AppConfig, BASE_DIR
 
-logger = logging.getLogger("hc_haco2.dashboard")
+logger = logging.getLogger(" hc_heat.dashboard")
 
 
 class DashboardHandler(SimpleHTTPRequestHandler):

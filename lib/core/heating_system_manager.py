@@ -16,7 +16,7 @@ from ..models.thermostat import Thermostat
 from ..models.heating_system import HeatingSystem
 from ..models.heating_snapshot import HeatingSnapshot
 
-logger = logging.getLogger("hc_haco2.manager")
+logger = logging.getLogger(" hc_heat.manager")
 
 
 class HeatingSystemManager:

@@ -54,7 +54,7 @@ def load_json(path: str) -> dict:
 
 
 # ============================================================
-print(f"\n{BOLD}=== hc_haco2 Offline-Test ==={RESET}\n")
+print(f"\n{BOLD}===  hc_heat Offline-Test ==={RESET}\n")
 
 # ============================================================
 # 1. Imports prüfen

@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from config.app_config import CostSettings
 from .consumption_calc import ConsumptionResult
 
-logger = logging.getLogger("hc_haco2.calc.cost")
+logger = logging.getLogger(" hc_heat.calc.cost")
 
 
 @dataclass

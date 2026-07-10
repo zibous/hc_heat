@@ -5,7 +5,7 @@ from datetime import datetime
 
 from config.app_config import BASE_DIR
 
-logger = logging.getLogger("hc_haco2.flow")
+logger = logging.getLogger(" hc_heat.flow")
 
 
 class FlowTracer:

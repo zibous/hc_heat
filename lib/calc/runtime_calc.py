@@ -7,7 +7,7 @@ from typing import Optional
 from ..models.operation_state import OperationMode, OperationState
 from ..models.boiler import Boiler
 
-logger = logging.getLogger("hc_haco2.calc.runtime")
+logger = logging.getLogger(" hc_heat.calc.runtime")
 
 
 class RuntimeCalculator:
