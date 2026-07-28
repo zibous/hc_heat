@@ -293,8 +293,43 @@ class HeatingController:
         )
 
         # Betriebszustand bestimmen
+        prev_mode = self.runtime_calc.current_mode
         state = self.runtime_calc.update(snapshot.boiler)
         logger.debug("Betriebsmodus: %s", state.mode.value)
+
+        # Bei Moduswechsel: abgeschlossenen Zyklus in last_cycles speichern
+        if prev_mode is not None and prev_mode != state.mode:
+            finished = self.runtime_calc.history[-1] if self.runtime_calc.history else None
+            if finished and finished.mode.value in ("heating", "dhw", "disinfection"):
+                dur_min = finished.duration_seconds / 60
+                # Nur substantielle Zyklen speichern
+                min_dur = {"heating": 2.0, "dhw": 5.0, "disinfection": 10.0}
+                if dur_min >= min_dur.get(finished.mode.value, 2.0):
+                    e_now = snapshot.boiler.energy_total_kwh or 0
+                    e_start = getattr(self, "_cycle_energy_start", {}).get(finished.mode.value)
+                    g_now = snapshot.gas.display_m3 if snapshot.gas else None
+                    g_start = getattr(self, "_cycle_gas_start", {}).get(finished.mode.value)
+
+                    energy_diff = round(e_now - e_start, 2) if (e_start is not None and e_now > e_start) else None
+                    gas_diff = round(g_now - g_start, 3) if (g_now is not None and g_start is not None and g_now > g_start) else None
+
+                    # Nur speichern wenn mindestens Energie oder Gas gemessen
+                    if energy_diff or gas_diff:
+                        self.db.save_cycle(
+                            mode=finished.mode.value,
+                            start_ts=finished.start.isoformat(),
+                            end_ts=finished.end.isoformat() if finished.end else state.start.isoformat(),
+                            duration_min=dur_min,
+                            energy_kwh=energy_diff or 0,
+                            gas_m3=gas_diff,
+                        )
+
+            # Startwerte für den neuen Zyklus merken
+            if not hasattr(self, "_cycle_energy_start"):
+                self._cycle_energy_start = {}
+                self._cycle_gas_start = {}
+            self._cycle_energy_start[state.mode.value] = snapshot.boiler.energy_total_kwh or 0
+            self._cycle_gas_start[state.mode.value] = snapshot.gas.display_m3 if snapshot.gas else None
 
         # Historie in SQLite speichern
         thc1 = snapshot.thermostat.hc1 if snapshot.thermostat else None

@@ -78,7 +78,7 @@ export class HeizungStats {
     let modeDur = '';
     if (data.mode_duration_sec) {
       const m = Math.round(data.mode_duration_sec / 60);
-      modeDur = m > 60 ? `${Math.floor(m/60)}h ${m%60}m` : `${m} min`;
+      modeDur = m > 60 ? `${Math.floor(m / 60)}h ${m % 60}m` : `${m} min`;
     }
 
     // Laufzeiten
@@ -169,6 +169,48 @@ export class HeizungStats {
       card('Anlagen-Komponenten', c2Hero, '#f59e0b', '', '', c2Rows, '', spark2) +
       card('Heute Verbrauch & Kosten', c3Hero, '#10b981', '', '', c3Rows, '', spark3) +
       card('Anteil Heizung / Boiler', c4Hero, '', '', '', c4Rows, gauge4) +
-      card('Geräte-Status', 'Online', '#10b981', errCount > 0 ? 'Störung' : 'Alles OK', errCount > 0 ? '#ef4444' : '#10b981', c5Rows);
+      card('Geräte-Status', 'Online', '#10b981', errCount > 0 ? 'Störung' : 'Alles OK', errCount > 0 ? '#ef4444' : '#10b981', c5Rows) +
+      this._renderLastCycles(data.last_cycles);
+  }
+
+  _renderLastCycles(cycles) {
+    if (!cycles) return '';
+
+    const _date = (isoStr) => isoStr ? isoStr.slice(0, 10) : '–';
+
+    const h = cycles.heating || {};
+    const w = cycles.dhw || {};
+    const d = cycles.disinfection || {};
+
+    // Hero: letztes Datum
+    const all = [h, w, d].filter(c => c.start);
+    all.sort((a, b) => (b.start || '').localeCompare(a.start || ''));
+    const heroText = all.length ? _date(all[0].start) : '–';
+
+    const _vals = (c) => {
+      if (!c || !c.start) return '–';
+      const p = [];
+      if (c.duration_min != null) p.push(`${Math.round(c.duration_min)} min`);
+      if (c.gas_m3 != null && c.gas_m3 > 0) p.push(`${c.gas_m3.toFixed(1).replace('.', ',')} m³`);
+      if (c.energy_kwh != null && c.energy_kwh > 0) p.push(`${c.energy_kwh.toFixed(1).replace('.', ',')} kWh`);
+      return p.join(' · ') || '–';
+    };
+
+    const _entry = (icon, label, c, color) => `
+      <div class="stat-row">
+        ${ico(ICONS[icon] || ICONS.check)}
+        <span class="stat-row-lbl">${label}</span>
+        <span class="stat-row-val" style="color:${color}">${_date(c.start)}</span>
+      </div>
+      <div class="stat-row" style="padding-left:22px;">
+        <span class="stat-row-val" style="font-size:.75rem;opacity:.7">${_vals(c)}</span>
+      </div>`;
+
+    const c6Rows =
+      _entry('home', 'Heizkörper', h, '#ef4444') +
+      _entry('drop', 'Warmwasser', w, '#3b82f6') +
+      _entry('flame', 'Desinfektion', d, '#f59e0b');
+
+    return card('Betriebsinfo & Gasverbrauch', heroText, '', '', '', c6Rows);
   }
 }

@@ -45,8 +45,15 @@ CREATE TABLE IF NOT EXISTS measurements (
 );
 """
 
-CREATE_INDEX = """
-CREATE INDEX IF NOT EXISTS idx_ts ON measurements(ts);
+CREATE_LAST_CYCLES = """
+CREATE TABLE IF NOT EXISTS last_cycles (
+    mode TEXT PRIMARY KEY,
+    start_ts TEXT,
+    end_ts TEXT,
+    duration_min REAL,
+    energy_kwh REAL,
+    gas_m3 REAL
+);
 """
 
 
@@ -61,7 +68,8 @@ class DBManager:
     def _init_db(self) -> None:
         with sqlite3.connect(self.db_path) as conn:
             conn.execute(CREATE_TABLE)
-            conn.execute(CREATE_INDEX)
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_ts ON measurements(ts)")
+            conn.execute(CREATE_LAST_CYCLES)
             conn.commit()
         logger.debug("DB initialisiert: %s", self.db_path)
 
@@ -554,69 +562,44 @@ class DBManager:
         logger.info("DB geleert")
 
     def query_last_cycles(self) -> dict:
-        """Letzter abgeschlossener Zyklus pro Betriebsart aus der DB.
-
-        Liest die letzten Einträge chronologisch, erkennt Zyklen anhand
-        von Moduswechseln und gibt den jeweils letzten abgeschlossenen
-        Zyklus für heating, dhw, disinfection zurück.
+        """Letzter abgeschlossener Zyklus pro Betriebsart (schneller Lookup).
 
         Returns:
-            Dict mit mode -> {start, end, duration_min, energy_kwh, gas_m3}
+            Dict mit mode -> {mode, start, end, duration_min, energy_kwh, gas_m3}
         """
-        sql = """
-            SELECT ts, mode, energy_total_kwh, gas_display_m3
-            FROM measurements
-            ORDER BY ts DESC LIMIT 3000
-        """
+        sql = "SELECT mode, start_ts, end_ts, duration_min, energy_kwh, gas_m3 FROM last_cycles"
         with self._conn() as conn:
             rows = conn.execute(sql).fetchall()
-
-        if len(rows) < 2:
-            return {}
-
-        # Chronologisch sortieren (älteste zuerst)
-        rows = list(reversed(rows))
-
-        from datetime import datetime
-
-        # Zyklen sammeln: jeder zusammenhängende Block gleichen Modus
-        cycles: list[dict] = []
-        block_start = 0
-        for i in range(1, len(rows)):
-            if rows[i]["mode"] != rows[block_start]["mode"]:
-                mode = rows[block_start]["mode"]
-                if mode in ("heating", "dhw", "disinfection"):
-                    # Dauer: vom Block-Start bis zum nächsten Eintrag nach dem Block
-                    t_start = datetime.fromisoformat(rows[block_start]["ts"])
-                    t_end = datetime.fromisoformat(rows[i]["ts"])
-                    dur = (t_end - t_start).total_seconds()
-
-                    # Energie/Gas: Differenz zwischen nächstem Eintrag und Block-Start
-                    # (nächster Eintrag = rows[i] hat den kumulierten Wert am Ende)
-                    e_start = rows[block_start]["energy_total_kwh"] or 0
-                    e_end = rows[i]["energy_total_kwh"] or 0
-                    g_start = rows[block_start]["gas_display_m3"] or 0
-                    g_end = rows[i]["gas_display_m3"] or 0
-
-                    cycles.append({
-                        "mode": mode,
-                        "start": rows[block_start]["ts"],
-                        "end": rows[i]["ts"],
-                        "duration_min": round(dur / 60, 1),
-                        "energy_kwh": round(e_end - e_start, 2),
-                        "gas_m3": round(g_end - g_start, 3),
-                    })
-                block_start = i
-
-        # Letzten Zyklus pro Modus (rückwärts durch cycles)
-        result: dict = {}
-        for c in reversed(cycles):
-            if c["mode"] not in result:
-                result[c["mode"]] = c
-            if len(result) >= 3:
-                break
-
+        result = {}
+        for r in rows:
+            result[r["mode"]] = {
+                "mode": r["mode"],
+                "start": r["start_ts"],
+                "end": r["end_ts"],
+                "duration_min": r["duration_min"],
+                "energy_kwh": r["energy_kwh"],
+                "gas_m3": r["gas_m3"],
+            }
         return result
+
+    def save_cycle(self, mode: str, start_ts: str, end_ts: str,
+                   duration_min: float, energy_kwh: float, gas_m3: float | None) -> None:
+        """Speichert/aktualisiert den letzten Zyklus für einen Betriebsmodus."""
+        sql = """
+            INSERT INTO last_cycles (mode, start_ts, end_ts, duration_min, energy_kwh, gas_m3)
+            VALUES (?, ?, ?, ?, ?, ?)
+            ON CONFLICT(mode) DO UPDATE SET
+                start_ts = excluded.start_ts,
+                end_ts = excluded.end_ts,
+                duration_min = excluded.duration_min,
+                energy_kwh = excluded.energy_kwh,
+                gas_m3 = excluded.gas_m3
+        """
+        with self._conn() as conn:
+            conn.execute(sql, (mode, start_ts, end_ts, round(duration_min, 1),
+                               round(energy_kwh, 2), round(gas_m3, 3) if gas_m3 is not None else None))
+            conn.commit()
+        logger.debug("Zyklus gespeichert: %s %.1f min", mode, duration_min)
 
     def cleanup(self, keep_years: int = 2) -> int:
         """Erstellt Backup und löscht Daten älter als keep_years Jahre.
