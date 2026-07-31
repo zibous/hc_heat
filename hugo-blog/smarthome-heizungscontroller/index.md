@@ -43,42 +43,24 @@ Das Projekt überwacht und steuert ein mehrstöckiges Heizsystem mit folgender H
 
 Die Kernanwendung (`app.py`) lässt sich flexibel im Produktivbetrieb, für Testläufe (`--simulate`) oder zur einmaligen Abfrage (`--once`) starten. Die zentrale Logik übernimmt der `HeatingController`:
 
-```text
-┌─────────────────────────────────────────────────────────┐
-│                      app.py                             │
-│  ┌──────────┐  ┌──────────────┐  ┌───────────────────┐  │
-│  │ --once   │  │ --simulate   │  │ Produktivbetrieb  │  │
-│  │ (einmal) │  │ (Testdaten)  │  │ (Hauptschleife)   │  │
-│  └──────────┘  └──────────────┘  └─────────┬─────────┘  │
-└────────────────────────────────────────────┬────────────┘
-                                             │
-                    ┌────────────────────────┐
-                    │   HeatingController    │
-                    │   (controller.py)      │
-                    └───────────┬────────────┘
-                                │
-          ┌─────────────────────┼─────────────────────┐
-          │                     │                     │
-          ▼                     ▼                     ▼
-   ┌──────────────┐   ┌─────────────────┐   ┌──────────────┐
-   │ Daten holen  │   │  Berechnen      │   │  Ausgeben    │
-   └──────┬───────┘   └────────┬────────┘   └─────┬────────┘
-          │                    │                  │
-    ┌─────┴──────┐      ┌──────┴─────┐      ┌─────┴──────┐
-    │ EMS-ESP32  │      │ Runtime    │      │ Dashboard  │
-    │ /api/boiler│      │ Calc       │      │ :5028      │
-    ├────────────┤      ├────────────┤      ├────────────┤
-    │ EMS-ESP32  │      │ Consumption│      │ SQLite DB  │
-    │ /api/therm.│      │ Calc       │      ├────────────┤
-    ├────────────┤      ├────────────┤      │ MQTT       │
-    │ ESPHome    │      │ Cost Calc  │      │ (optional) │
-    └────────────┘      │ Error Log  │      ├────────────┤
-                        └────────────┘      │ Webhooks   │
-                                            │ (optional) │
-                                            ├────────────┤
-                                            │ CSV Export │
-                                            └────────────┘
-```
+{{< mermaid >}}
+flowchart TD
+    App["app.py<br>--once · --simulate · Produktivbetrieb"] --> HC["HeatingController<br>(controller.py)"]
+    HC --> Fetch["Daten holen"]
+    HC --> Calc["Berechnen"]
+    HC --> Output["Ausgeben"]
+    Fetch --> EMS1["EMS-ESP32 /api/boiler"]
+    Fetch --> EMS2["EMS-ESP32 /api/thermostat"]
+    Fetch --> ESP["ESPHome Gaszähler"]
+    Calc --> Runtime["Runtime Calc"]
+    Calc --> Consumption["Consumption Calc"]
+    Calc --> Cost["Cost Calc · Error Log"]
+    Output --> Dashboard["Dashboard :5028"]
+    Output --> DB["SQLite DB"]
+    Output --> MQTT["MQTT (optional)"]
+    Output --> Webhooks["Webhooks (optional)"]
+    Output --> CSV["CSV Export"]
+{{< /mermaid >}}
 
 ---
 
