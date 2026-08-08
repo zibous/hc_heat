@@ -8,10 +8,10 @@ services:
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - ${PWD}/data:/app/data
-      - ${PWD}/logs:/app/logs
-      - ${PWD}/config:/app/config
-      - ${PWD}/dashboard:/app/dashboard
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+      - ./dashboard:/app/dashboard
     ports:
       - "${DASHBOARD_PORT:-5028}:${DASHBOARD_PORT:-5028}"
     healthcheck:
